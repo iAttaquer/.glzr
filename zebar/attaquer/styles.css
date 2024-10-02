@@ -1,0 +1,312 @@
+/**
+ * Import the Nerdfonts icon font.
+ * Ref https://www.nerdfonts.com/cheat-sheet for a cheatsheet of available Nerdfonts icons.
+ */
+@import 'https://www.nerdfonts.com/assets/css/webfont.css';
+
+:root {
+  --color: #00CC6A;
+  --green: #75ea07;
+  --b-yellow: #ebec6c;
+  --yellow: #e0e109;
+  --b-orange: #FB8C00;
+  --orange: #ec6f08;
+  --b-red: #ff3e3e;
+  --red: #db1e1d;
+  --purple: #be70fa;
+  --blue: #05e7e5;
+  --night-blue: #016ff6;
+  --windows-color: #3A86FF;
+}
+
+@keyframes rubberBand {
+  from { transform: scale3d(1, 1, 1); }
+  30% { transform: scale3d(1.25, 0.75, 1); }
+  40% { transform: scale3d(0.75, 1.25, 1); }
+  50% { transform: scale3d(1.15, 0.85, 1); }
+  65% { transform: scale3d(0.95, 1.05, 1); }
+  75% { transform: scale3d(1.05, 0.95, 1); }
+  to { transform: scale3d(1, 1, 1); }
+}
+
+@keyframes tada {
+  from { transform: scale3d(1, 1, 1); }
+  10%, 20% { transform: scale3d(0.9, 0.9, 0.9) rotate3d(0, 0, 1, -3deg); }
+  30%, 50%, 70%, 90% { transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg); }
+  40%, 60%, 80% { transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg); }
+  to { transform: scale3d(1, 1, 1); }
+}
+
+@keyframes flash {
+  from, 50%, to { opacity: 1; }
+  25%, 75% { opacity: 0; }
+}
+
+@keyframes pulse-test {
+  from {
+    transform: scale(0);
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    transform: scale(2);
+  }
+}
+
+@keyframes pulse-size {
+  from,
+  20%,
+  53%,
+  to {
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    transform: translate3d(0, 0, 0);
+  }
+
+  40%,
+  43% {
+    animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+    transform: translate3d(0, -30px, 0) scaleY(1.1);
+  }
+
+  70% {
+    animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+    transform: translate3d(0, -15px, 0) scaleY(1.05);
+  }
+
+  80% {
+    transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    transform: translate3d(0, 0, 0) scaleY(0.95);
+  }
+
+  90% {
+    transform: translate3d(0, -4px, 0) scaleY(1.02);
+  }
+}
+
+@keyframes shine {
+    0%{background-position:0% 100%}
+    100%{}
+}
+@keyframes fadeInMoveUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes appear {
+  from {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.8);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+@keyframes anticlockwise {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-90deg);
+  }
+}
+@keyframes clockwise {
+  from {
+    transform: rotate(-90deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+i {
+  color: rgb(115 130 175 / 95%);
+  margin-right: 7px;
+}
+
+body {
+  color: rgb(255 255 255 / 90%);
+  font-family: CaskaydiaMono Nerd Font, ui-monospace, monospace;
+  font-size: 13px;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  overflow: hidden;
+}
+
+#root {
+  border-bottom: 1px solid #aeaeae;
+  background: #1c1c1c;
+  /* border-bottom: 1px solid rgb(255 255 255 / 5%); */
+  /* background: linear-gradient(rgb(0 0 0 / 90%), rgb(5 2 20 / 85%)); */
+}
+
+span {
+  display: flex;
+  align-items: center;
+}
+button {
+  display: flex;
+  align-items: center;
+  text-shadow: 0 0 2px black;
+  margin: 0 1px 0 0;
+  height: 22px;
+  color: #fff;
+  border: none;
+  background: none;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+}
+button:hover {
+  background: #aeaeae55;
+  box-shadow: 0 -1px 1px #9e9e9e44,
+              0 1px 1px #24242455;
+}
+
+.app {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  color: #fff;
+  height: 32px;
+  padding: 0 0 6px 0;
+}
+
+.template {
+  display: flex;
+  align-items: center;
+  user-select: none;
+  margin: 0 2px 0 2px;
+  height: 100%;
+}
+.left,
+.center,
+.right {
+  display: flex;
+  align-items: center;
+}
+
+.left {
+  padding-left: 2px;
+}
+
+.center {
+  justify-self: center;
+}
+
+.right {
+  justify-self: end;
+}
+
+.logo {
+  color: var(--windows-color);
+  padding-left: 5px;
+  width: 25px;
+  font-size: 15px;
+}
+
+.binding-mode,
+.network,
+.memory,
+.cpu,
+.battery {
+  margin-right: 20px;
+}
+
+.workspaces {
+  display: flex;
+  align-items: center;
+}
+
+.workspace {
+  width: 24px;
+  justify-content: center;
+}
+.workspace-icon {
+  display: inline-block;
+  pointer-events: none;
+}
+/* .workspace:active .workspace-content {
+  # animation: appear 0.2s ease;
+} */
+.displayed {
+  background: #aeaeae33;
+  box-shadow: 0 -1px 1px #9e9e9e44,
+              0 1px 1px #24242455;
+}
+.focused {
+  span {
+    animation: appear 0.2s ease;
+    -webkit-animation: appear 0.2s ease  ;
+  }
+}
+# { /* spotify */
+  span{
+    text-indent: -4px;
+  }
+}
+# { /* discord */
+  span{
+    text-indent: -7px;
+    font-size: 12px;
+  }
+}
+# { /* brave */
+  span{
+    font-size: 13px;
+    text-indent: -5px;
+  }
+}
+.toggle-tiling-direction {
+  width: 24px;
+  justify-content: center;
+}
+.tiling-direction {
+  text-indent: -2px;
+  font-size: 13px;
+}
+.horizontal {
+  span {
+    animation: clockwise 0.2s ease-in-out forwards;
+  }
+}
+.vertical {
+  span {
+    animation: anticlockwise 0.2s ease-in-out forwards;
+  }
+}
+
+.binding-mode {
+  margin-right: 4px;
+}
+
+.current-window {
+  color: #fff;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 700px;
+  text-overflow: ellipsis;
+}
+
+.cpu .high-usage {
+  color: #900029;
+}
+
+.battery .charging-icon {
+  position: absolute;
+  font-size: 11px;
+  left: 7px;
+  top: 2px;
+}

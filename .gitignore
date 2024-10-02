@@ -1,0 +1,10 @@
+*
+!.gitignore
+!.glzr.code-workspace
+!/glazewm/
+!/glazewm/config.yaml
+!/zebar/
+!/zebar/settings.json
+!/zebar/normalize.css
+!/zebar/attaquer/
+!/zebar/attaquer/**
