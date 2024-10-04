@@ -80,7 +80,7 @@ workspaces:
   - name: '2'
   - name: '3'
   - name: ''
-  - name: '5'
+  - name: 'web'
     bind_to_monitor: 0
     keep_alive: false
   - name: '6'
@@ -94,7 +94,7 @@ window_rules:
     match:
       # Ignores any Zebar windows.
       - window_process: { equals: 'zebar' }
-
+      - window_title: { equals: 'Mem Reduct'}
       # Ignores picture-in-picture windows for browsers.
       - window_title: { regex: '[Pp]icture.in.[Pp]icture' }
         window_class: { regex: 'Chrome_WidgetWin_1|MozillaDialogClass' }
@@ -104,7 +104,7 @@ window_rules:
       - window_process: { equals: 'Lively' }
         window_class: { regex: 'HwndWrapper*' }
 
-  - commands: ['move --workspace 5']
+  - commands: ['move --workspace web']
     match:
     # Move windows to workspace 5.
     - window_process: { equals: 'brave' }
@@ -228,6 +228,9 @@ keybindings:
 
   - commands: ['shell-exec %ProgramFiles%/SystemInformer/SystemInformer.exe']
     bindings: ['alt+''']
+  
+  - commands: ['shell-exec %ProgramFiles%/Mem Reduct/memreduct.exe']
+    bindings: ['alt+;']
     # bindings: ['alt+OemQuotes']
 
   # Focus the next/previous workspace defined in `workspaces` config.
@@ -249,7 +252,7 @@ keybindings:
     bindings: ['alt+3']
   - commands: ['focus --workspace ']
     bindings: ['alt+4']
-  - commands: ['focus --workspace 5']
+  - commands: ['focus --workspace web']
     bindings: ['alt+5']
   - commands: ['focus --workspace 6']
     bindings: ['alt+6']
@@ -282,7 +285,7 @@ keybindings:
     bindings: ['alt+shift+3']
   - commands: ['move --workspace ', 'focus --workspace ']
     bindings: ['alt+shift+4']
-  - commands: ['move --workspace 5', 'focus --workspace 5']
+  - commands: ['move --workspace web', 'focus --workspace web']
     bindings: ['alt+shift+5']
   - commands: ['move --workspace 6', 'focus --workspace 6']
     bindings: ['alt+shift+6']

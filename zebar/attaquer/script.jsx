@@ -154,7 +154,7 @@ function App() {
                   id={workspace.name}
                 >
                   <span className="workspace-icon">
-                    {workspace.name === '5'
+                    {workspace.name === 'web'
                     ? <img src="./icons/icons8-brave-web-browser-32.png" alt="5" className="i-brave" height="16" width="16"></img>
                     : workspace.displayName ?? workspace.name}
                   </span>
@@ -201,7 +201,7 @@ function App() {
 
       <div className="right">
         {output.cpu && (
-            <button className={`${getCpuUsageRate(output.cpu)}`}
+            <button className={`cpu ${getCpuUsageRate(output.cpu)}`}
               onClick={() =>{
                 output.glazewm.runCommand('shell-exec %ProgramFiles%/SystemInformer/SystemInformer.exe');
               }}>
@@ -214,7 +214,10 @@ function App() {
             </button>
         )}
         {output.memory && (
-          <div className={`template memory ${getMemoryUsageRate(output.memory)}`}>
+          <button className={`memory ${getMemoryUsageRate(output.memory)}`}
+            onClick={() => {
+              output.glazewm.runCommand('shell-exec %ProgramFiles%/Mem Reduct/memreduct.exe')
+            }}>
             <span className="i"></span>
             <div className="labels">
               <span className="label total">
@@ -227,7 +230,7 @@ function App() {
               </span>
             </div>
             <span className="mem-bar"> {Math.round(output.memory.usage)}%</span>
-          </div>
+          </button>
         )}
         {output.weather && (
           <div className="template weather">

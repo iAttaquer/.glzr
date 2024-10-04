@@ -336,7 +336,7 @@ button:hover {
 }
 
 .memory {
-  width: 3.3rem;
+  width: 3.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -386,10 +386,9 @@ button:hover {
 }
   .labels {
     position: absolute;
-    right: 0;
     display: flex;
     flex-direction: column;
-    /* width: 2.5rem; */
+    margin-left: 16px;
     opacity: 0;
     transform: translateY(-100%);
     transition: transform 0.3s ease, opcity 0.3s ease;
@@ -431,4 +430,7 @@ button:hover {
 .date {
   width: 3.8rem;
   color: rgb(180, 200, 255)
+}
+.i-time {
+  margin-bottom: 1px;
 }
