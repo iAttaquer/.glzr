@@ -164,8 +164,6 @@ body,
 #root {
   border-bottom: 1px solid #aeaeae;
   background: #1c1c1c;
-  /* border-bottom: 1px solid rgb(255 255 255 / 5%); */
-  /* background: linear-gradient(rgb(0 0 0 / 90%), rgb(5 2 20 / 85%)); */
 }
 
 span {
@@ -194,9 +192,9 @@ button:hover {
   animation: hoverbutton 0.1s ease forwards;
   -webkit-animation: hoverbutton 0.1s ease forwards;
 }
-img {
-  /* border-left: 1px solid white; */
-}
+/* img {
+  border-left: 1px solid white;
+} */
 
 .app {
   display: grid;
@@ -240,14 +238,6 @@ img {
   font-size: 15px;
 }
 
-.binding-mode,
-.network,
-.memory,
-.cpu,
-.battery {
-  margin-right: 20px;
-}
-
 .workspaces {
   display: flex;
   align-items: center;
@@ -286,12 +276,10 @@ img {
     font-size: 12px;
   }
 }
-# { /* brave */
-  span{
-    font-size: 13px;
-    text-indent: -5px;
-  }
+.i-brave {
+  margin-top: 4px;
 }
+
 .toggle-tiling-direction {
   width: 24px;
   justify-content: center;
@@ -423,9 +411,6 @@ img {
 }
 
 .weather {
-  display: flex;
-  margin-left: -16px;
-  align-self: center;
   color: var(--b-yellow);
   i {
     color: var(--b-yellow);
@@ -442,9 +427,8 @@ img {
 .i-eth {
   margin-bottom: 3px;
 }
-.battery .charging-icon {
-  position: absolute;
-  font-size: 11px;
-  left: 7px;
-  top: 2px;
+
+.date {
+  width: 3.8rem;
+  color: rgb(180, 200, 255)
 }
