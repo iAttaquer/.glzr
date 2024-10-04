@@ -11,7 +11,7 @@ import React, {
     cpu: { type: 'cpu', refreshInterval: '2000' },
     date: { type: 'date', formatting: 'EEE d MMM t' },
     battery: { type: 'battery' },
-    memory: { type: 'memory', refreshInterval: '3000' },
+    memory: { type: 'memory', refreshInterval: '4000' },
     weather: { type: 'weather' },
   });
 
@@ -24,32 +24,40 @@ import React, {
       providers.onOutput(() => setOutput(providers.outputMap));
     }, []);
 
+    function getCpuUsageRate(cpuOutput) {
+      if (cpuOutput.usage > 90) return 'extreme-usage';
+      else if (cpuOutput.usage > 65) return 'high-usage';
+      else if (cpuOutput.usage > 30) return 'medium-usage';
+      else return 'low-usage';
+    }
+    function getMemoryUsageRate(memoryOutput) {
+      if (memoryOutput.usage > 90) return 'extreme-usage';
+      else if (memoryOutput.usage > 65) return 'high-usage';
+      else if (memoryOutput.usage > 45) return 'medium-usage';
+      else return 'low-usage';
+    }
     // Get icon to show for current network status.
     function getNetworkIcon(networkOutput) {
       switch (networkOutput.defaultInterface?.type) {
         case 'ethernet':
-          return <i className="nf nf-md-ethernet_cable"></i>;
+          return <img src="./icons/icons8-wired-network-32.png" className="i-wifi" width="20" height="20"></img>;
         case 'wifi':
-          if (networkOutput.defaultGateway?.signalStrength >= 80) {
-            return <i className="nf nf-md-wifi_strength_4"></i>;
+          if (networkOutput.defaultGateway?.signalStrength >= 75) {
+            return <img src="./icons/icons8-wifi-3-32.png" className="i-wifi" width="20" height="20"></img>;
           } else if (
-            networkOutput.defaultGateway?.signalStrength >= 65
+            networkOutput.defaultGateway?.signalStrength >= 45
           ) {
-            return <i className="nf nf-md-wifi_strength_3"></i>;
+            return <img src="./icons/icons8-wifi-2-32.png" className="i-wifi" width="20" height="20"></img>;
           } else if (
-            networkOutput.defaultGateway?.signalStrength >= 40
+            networkOutput.defaultGateway?.signalStrength >= 5
           ) {
-            return <i className="nf nf-md-wifi_strength_2"></i>;
-          } else if (
-            networkOutput.defaultGateway?.signalStrength >= 25
-          ) {
-            return <i className="nf nf-md-wifi_strength_1"></i>;
+            return <img src="./icons/icons8-wifi-1-32.png" className="i-wifi" width="20" height="20"></img>;
           } else {
-            return <i className="nf nf-md-wifi_strength_outline"></i>;
+            return <img src="./icons/icons8-no-network-32.png" className="i-eth" width="20" height="20"></img>;
           }
         default:
           return (
-            <i className="nf nf-md-wifi_strength_off_outline"></i>
+            <img src="./icons/icons8-no-network-32.png" className="i-eth"  width="20" height="20"></img>
           );
       }
     }
@@ -161,54 +169,59 @@ import React, {
             </>
           )}
         </div>
-          
+
         <div className="right">
-            
-          {output.date?.formatted}
-          {output.network && (
-            <div className="network">
-              {getNetworkIcon(output.network)}
-              {output.network.defaultGateway?.ssid}
-            </div>
-          )}
-
-          {output.memory && (
-            <div className="memory">
-              <i className="nf nf-fae-chip"></i>
-              {Math.round(output.memory.usage)}%
-            </div>
-          )}
-
           {output.cpu && (
-            <div className="cpu">
-              <i className="nf nf-oct-cpu"></i>
-
-              {/* Change the text color if the CPU usage is high. */}
-              <span
-                className={output.cpu.usage > 85 ? 'high-usage' : ''}
-              >
-                {Math.round(output.cpu.usage)}%
-              </span>
+              <button className={`${getCpuUsageRate(output.cpu)}`}
+                onClick={() =>{
+                  output.glazewm.runCommand('shell-exec %ProgramFiles%/SystemInformer/SystemInformer.exe');
+                }}>
+                <span className="i-cpu">
+                  
+                </span>
+                <span className="cpu-bar">
+                  {Math.round(output.cpu.usage)}%
+                </span>
+              </button>
+          )}
+          {output.memory && (
+            <div className={`template memory ${getMemoryUsageRate(output.memory)}`}>
+              <span className="i"></span>
+              <div className="labels">
+                <span className="label total">
+                  <span>USED</span>
+                  { Math.round(output.memory.usedMemory / 1024 / 1024 / 1024) }G
+                </span>
+                <span className="label total">
+                  <span>TOT</span>
+                  { Math.round(output.memory.totalMemory / 1024 / 1024 / 1024) }G
+                </span>
+              </div>
+              <span className="mem-bar"> {Math.round(output.memory.usage)}%</span>
             </div>
           )}
-
-          {output.battery && (
-            <div className="battery">
-              {/* Show icon for whether battery is charging. */}
-              {output.battery.isCharging && (
-                <i className="nf nf-md-power_plug charging-icon"></i>
-              )}
-              {getBatteryIcon(output.battery)}
-              {Math.round(output.battery.chargePercent)}%
-            </div>
-          )}
-
           {output.weather && (
-            <div className="weather">
+            <div className="template weather">
               {getWeatherIcon(output.weather)}
               {Math.round(output.weather.celsiusTemp)}°C
             </div>
           )}
+          {output.network && (
+            <div className="template network">
+                {getNetworkIcon(output.network)}
+                {output.network.defaultGateway?.ssid}
+            </div>
+          )}
+
+          {output.battery && (
+            <div className="template battery">
+
+              {getBatteryIcon(output.battery)}
+              {Math.round(output.battery.chargePercent)}%
+              
+            </div>
+          )}
+
         </div>
       </div>
     );

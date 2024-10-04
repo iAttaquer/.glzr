@@ -35,7 +35,7 @@ window_effects:
   # Visual effects to apply to the focused window.
   focused_window:
     hide_title_bar:
-      enabled: true
+      enabled: false
     # Highlight the window with a colored border.
     # ** Exclusive to Windows 11 due to API limitations.
     border:
@@ -45,7 +45,7 @@ window_effects:
   # Visual effects to apply to non-focused windows.
   other_windows:
     hide_title_bar:
-      enabled: true
+      enabled: false
     border:
       enabled: false
       color: '#a1a1a1'
