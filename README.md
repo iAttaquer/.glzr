@@ -1,6 +1,7 @@
 # Config for [GlazeWM](https://github.com/glzr-io/glazewm) and [Zebar](https://github.com/glzr-io/zebar)
 ![Screenshot 2024-10-05 191402](https://github.com/user-attachments/assets/c820986d-5f09-4fbd-8cbc-384d2ef46420)
 
+for 1080p resolution
 
 ## Used
 Font: **CaskaydiaMono Nerd Font** <br>

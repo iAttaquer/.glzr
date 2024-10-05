@@ -156,17 +156,15 @@ body {
   color: rgb(255 255 255 / 90%);
   font-family: 'CaskaydiaMonoNerdFont Locally', CaskaydiaMono Nerd Font, CaskaydiaCove Nerd Font, ui-monospace, monospace;
   font-size: 13px;
+  overflow: hidden;
 }
-
 html,
 body,
 #root {
   height: 100%;
-  overflow: hidden;
 }
 
 #root {
-  border-bottom: 1px solid #aeaeae;
   background: #1c1c1c;
 }
 

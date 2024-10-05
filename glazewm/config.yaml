@@ -21,12 +21,13 @@ general:
     trigger: 'monitor_focus'
 
 gaps:
+  scale_with_dpi: false
   # Gap between adjacent windows.
   inner_gap: '1px'
 
   # Gap between windows and the screen edge.
   outer_gap:
-    top: '33px'
+    top: '33 px'
     right: '1px'
     bottom: '4px'
     left: '1px'
