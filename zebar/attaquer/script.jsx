@@ -189,11 +189,13 @@ function App() {
             (window) =>
             window.hasFocus && (
               <div className="current-window" key={window.id}>
-                {window.title.length > 90
+                {window.title && (
+                  window.title?.length > 90
                   ? window.title.slice(0, 90) + '...'
-                  : window.title}
-                  </div>
-                ),
+                  : window.title
+                )}
+              </div>
+              )
             )}
           </>
         )}
@@ -205,12 +207,14 @@ function App() {
               onClick={() =>{
                 output.glazewm.runCommand('shell-exec %ProgramFiles%/SystemInformer/SystemInformer.exe');
               }}>
-              <span className="i-cpu">
-                
-              </span>
-              <span className="cpu-bar">
-                {Math.round(output.cpu.usage)}%
-              </span>
+                <span className="cpu-content">
+                  <span className="i-cpu">
+                    
+                  </span>
+                  <span className="cpu-bar">
+                    {Math.round(output.cpu.usage)}%
+                  </span>
+                </span>
             </button>
         )}
         {output.memory && (
@@ -218,18 +222,20 @@ function App() {
             onClick={() => {
               output.glazewm.runCommand('shell-exec %ProgramFiles%/Mem Reduct/memreduct.exe')
             }}>
-            <span className="i"></span>
-            <div className="labels">
-              <span className="label total">
-                <span>USED</span>
-                { Math.round(output.memory.usedMemory / 1024 / 1024 / 1024) }G
-              </span>
-              <span className="label total">
-                <span>TOT</span>
-                { Math.round(output.memory.totalMemory / 1024 / 1024 / 1024) }G
-              </span>
-            </div>
-            <span className="mem-bar"> {Math.round(output.memory.usage)}%</span>
+              <div className="template mem-content">
+                <span className="i"></span>
+                <div className="labels">
+                  <span className="label total">
+                    <span>USED</span>
+                    { Math.round(output.memory.usedMemory / 1024 / 1024 / 1024) }G
+                  </span>
+                  <span className="label total">
+                    <span>TOT</span>
+                    { Math.round(output.memory.totalMemory / 1024 / 1024 / 1024) }G
+                  </span>
+                </div>
+                <span className="mem-bar"> {Math.round(output.memory.usage)}%</span>
+              </div>
           </button>
         )}
         {output.weather && (
@@ -255,7 +261,7 @@ function App() {
         {output.date && (
           <div className="template date">
             <img src="./icons/icons8-time-32.png" className="i-time" width="17" height="17"></img>
-            <span class="time">{output.date?.formatted}</span>
+            <span className="time">{output.date?.formatted}</span>
           </div>
         )}
 

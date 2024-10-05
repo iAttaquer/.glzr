@@ -150,7 +150,7 @@ i {
 
 body {
   color: rgb(255 255 255 / 90%);
-  font-family: CaskaydiaMono Nerd Font, ui-monospace, monospace;
+  font-family: CaskaydiaMono Nerd Font, CaskaydiaCove Nerd Font, ui-monospace, monospace;
   font-size: 13px;
 }
 
@@ -324,6 +324,11 @@ button:hover {
 .extreme-usage {
   color: var(--b-red);
 }
+
+.cpu-content:active {
+  animation: appear 0.2s ease;
+  -webkit-animation: appear 0.2s ease;
+}
 .i-cpu{
   font-size: 13px;
   width: 14px;
@@ -336,16 +341,21 @@ button:hover {
 }
 
 .memory {
-  width: 3.5rem;
+  width: 3.6rem;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   position: relative;
   .i {
-    width: 12px;
+    width: 14px;
     font-size: 14px;
+    margin-left: 2px;
   }
+  .mem-content:active {
+    animation: appear 0.2s ease;
+    -webkit-animation: appear 0.2s ease;
+}
   &:hover {
     .mem-bar {
       transform: translateY(200%);
@@ -388,7 +398,7 @@ button:hover {
     position: absolute;
     display: flex;
     flex-direction: column;
-    margin-left: 16px;
+    margin-left: 18px;
     opacity: 0;
     transform: translateY(-100%);
     transition: transform 0.3s ease, opcity 0.3s ease;
