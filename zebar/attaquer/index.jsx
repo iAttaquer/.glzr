@@ -44,7 +44,7 @@ function App() {
   function getNetworkIcon(networkOutput) {
     switch (networkOutput.defaultInterface?.type) {
       case 'ethernet':
-        return <img src="./icons/icons8-wired-network-32.png" className="i-wifi" width="20" height="20"></img>;
+        return <img src="./icons/icons8-wired-network-32.png" className="i-eth" width="20" height="20"></img>;
       case 'wifi':
         if (networkOutput.defaultGateway?.signalStrength >= 75) {
           return <img src="./icons/icons8-wifi-3-32.png" className="i-wifi" width="20" height="20"></img>;
@@ -87,14 +87,14 @@ function App() {
 
   // Change the color of the battery bar based on how much of the battery is charged.
   function getBatteryUsageRate(batteryOutput) {
-      if (batteryOutput.chargePercent > 70)
-        return 'low-usage';
-      if (batteryOutput.chargePercent > 45)
-        return 'medium-battery';
-      if (batteryOutput.chargePercent > 15)
-        return 'high-usage';
-      return 'extreme-usage';
-    }
+    if (batteryOutput.chargePercent > 70)
+      return 'low-usage';
+    if (batteryOutput.chargePercent > 45)
+      return 'medium-battery';
+    if (batteryOutput.chargePercent > 15)
+      return 'high-usage';
+    return 'extreme-usage';
+  }
 
   // Get icon to show for current weather status.
   function getWeatherIcon(weatherOutput) {
@@ -136,9 +136,22 @@ function App() {
   return (
     <div className="app">
       <div className="left">
-        <div className="template logo">
-          
-        </div>
+        <button className="logo"
+          onClick={() => {
+            output.glazewm.runCommand('shell-exec %userprofile%/.glzr/zebar/attaquer/scripts/OpenStartMenu.vbs')
+          }}>
+          <span className="content">
+            
+          </span>
+        </button>
+        <button className="search"
+          onClick={() => {
+            output.glazewm.runCommand('shell-exec %userprofile%/.glzr/zebar/attaquer/scripts/OpenWindowsSearch.ahk')
+          }}>
+          <span className="content">
+            <img src="./icons/icons8-search-32.png" width="19" height="19"></img>
+          </span>
+        </button>
         {output.glazewm && (
           <>
             <div className="workspaces">
@@ -207,7 +220,7 @@ function App() {
               onClick={() =>{
                 output.glazewm.runCommand('shell-exec %ProgramFiles%/SystemInformer/SystemInformer.exe');
               }}>
-                <span className="cpu-content">
+                <span className="content">
                   <span className="i-cpu">
                     
                   </span>
@@ -222,7 +235,7 @@ function App() {
             onClick={() => {
               output.glazewm.runCommand('shell-exec %ProgramFiles%/Mem Reduct/memreduct.exe')
             }}>
-              <div className="template mem-content">
+              <span className="content">
                 <span className="i"></span>
                 <div className="labels">
                   <span className="label total">
@@ -235,7 +248,7 @@ function App() {
                   </span>
                 </div>
                 <span className="mem-bar"> {Math.round(output.memory.usage)}%</span>
-              </div>
+              </span>
           </button>
         )}
         {output.weather && (
@@ -245,10 +258,15 @@ function App() {
           </div>
         )}
         {output.network && (
-          <div className="template network">
-              {getNetworkIcon(output.network)}
-              {output.network.defaultGateway?.ssid}
-          </div>
+          <button className="network"
+            onClick={() => {
+              output.glazewm.runCommand('shell-exec %userprofile%/.glzr/zebar/attaquer/scripts/OpenActionCenter.ahk');
+            }}>
+              <span className="content">
+                {getNetworkIcon(output.network)}
+                {output.network.defaultGateway?.ssid}
+              </span>
+          </button>
         )}
 
         {output.battery && (
@@ -259,10 +277,15 @@ function App() {
         )}
 
         {output.date && (
-          <div className="template date">
-            <img src="./icons/icons8-time-32.png" className="i-time" width="17" height="17"></img>
-            <span className="time">{output.date?.formatted}</span>
-          </div>
+          <button className="date"
+            onClick={() => {
+              output.glazewm.runCommand('shell-exec explorer.exe ms-actioncenter://');
+            }}>
+            <span className="content">
+              <img src="./icons/icons8-time-32.png" className="i-time" width="17" height="17"></img>
+              <span className="time">{output.date?.formatted}</span>
+            </span>
+          </button>
         )}
 
       </div>

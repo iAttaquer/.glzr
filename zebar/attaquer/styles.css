@@ -19,7 +19,14 @@
   --windows-color: #3A86FF;
 }
 
-@keyframes rubberBand {
+@font-face {
+  font-family: 'CaskaydiaMonoNerdFont Locally';
+  src: url('./fonts/CaskaydiaMonoNerdFont-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* @keyframes rubberBand {
   from { transform: scale3d(1, 1, 1); }
   30% { transform: scale3d(1.25, 0.75, 1); }
   40% { transform: scale3d(0.75, 1.25, 1); }
@@ -96,7 +103,7 @@
     opacity: 1;
     transform: translateY(0);
   }
-}
+} */
 @keyframes appear {
   from {
     transform: scale(1);
@@ -128,14 +135,14 @@
   from {
   }
   to {
-    background: #aeaeae55;
+    background: #aeaeae50;
     box-shadow: 0 -1px 1px #9e9e9e44,
                 0 1px 1px #24242455;
   }
 }
 @keyframes unhoverbutton {
   from {
-    background: #aeaeae55;
+    background: #aeaeae50;
     box-shadow: 0 -1px 1px #9e9e9e44,
                 0 1px 1px #24242455;
   }
@@ -143,14 +150,11 @@
   }
 }
 
-i {
-  color: rgb(115 130 175 / 95%);
-  margin-right: 7px;
-}
+
 
 body {
   color: rgb(255 255 255 / 90%);
-  font-family: CaskaydiaMono Nerd Font, CaskaydiaCove Nerd Font, ui-monospace, monospace;
+  font-family: 'CaskaydiaMonoNerdFont Locally', CaskaydiaMono Nerd Font, CaskaydiaCove Nerd Font, ui-monospace, monospace;
   font-size: 13px;
 }
 
@@ -164,6 +168,11 @@ body,
 #root {
   border-bottom: 1px solid #aeaeae;
   background: #1c1c1c;
+}
+
+i {
+  color: rgb(115 130 175 / 95%);
+  margin-right: 5px;
 }
 
 span {
@@ -187,6 +196,12 @@ button {
   -moz-border-radius: 4px;
   -ms-border-radius: 4px;
   -o-border-radius: 4px;
+  &:active {
+    .content {
+      animation: appear 0.2s ease;
+      -webkit-animation: appear 0.2s ease;
+}
+  }
 }
 button:hover {
   animation: hoverbutton 0.1s ease forwards;
@@ -194,6 +209,7 @@ button:hover {
 }
 /* img {
   border-left: 1px solid white;
+  user-select: none;
 } */
 
 .app {
@@ -212,6 +228,8 @@ button:hover {
   margin: 0 2px 0 2px;
   height: 100%;
 }
+
+
 .left,
 .center,
 .right {
@@ -233,9 +251,15 @@ button:hover {
 
 .logo {
   color: var(--windows-color);
-  padding-left: 5px;
-  width: 25px;
-  font-size: 15px;
+  width: 24px;
+  align-items: center;
+  font-size: 16px;
+  padding: 1px 0 0 5px;
+}
+.search {
+  width: 24px;
+  padding: 1px 2px 0;
+  margin-right: 3px;
 }
 
 .workspaces {
@@ -285,7 +309,7 @@ button:hover {
   justify-content: center;
 }
 .tiling-direction {
-  text-indent: -4px;
+  text-indent: -3px;
   font-size: 13px;
 }
 .horizontal {
@@ -324,10 +348,8 @@ button:hover {
 .extreme-usage {
   color: var(--b-red);
 }
-
-.cpu-content:active {
-  animation: appear 0.2s ease;
-  -webkit-animation: appear 0.2s ease;
+.cpu {
+  width: 3.1rem;
 }
 .i-cpu{
   font-size: 13px;
@@ -347,6 +369,7 @@ button:hover {
   justify-content: center;
   text-align: center;
   position: relative;
+  padding-left: 2px;
   .i {
     width: 14px;
     font-size: 14px;
@@ -375,12 +398,13 @@ button:hover {
     }
   }
   .mem-bar {
+    /* border: 1px solid white; */
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     height: 100%;
-    width: 2.5rem;
+    width: 2.3rem;
     overflow: hidden;
     opacity: 1;
     transform: translateY(0%);
@@ -395,6 +419,7 @@ button:hover {
     -o-transition: transform 0.3s ease, opacity 0.3s ease;
 }
   .labels {
+    /* border: 1px solid white; */
     position: absolute;
     display: flex;
     flex-direction: column;
@@ -429,12 +454,15 @@ button:hover {
 
 .network {
   color: var(--blue);
+  padding: 0 5px 0 5px;
 }
 .i-wifi {
   margin-bottom: 6px;
+  margin-left: -4px;
 }
 .i-eth {
-  margin-bottom: 3px;
+  margin-bottom: 2px;
+  margin-left: -3px;
 }
 
 .date {
