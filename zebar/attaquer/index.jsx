@@ -6,13 +6,13 @@ import { createRoot } from 'https://esm.sh/react-dom@18/client?dev';
 import * as zebar from 'https://esm.sh/zebar@2';
 
 const providers = zebar.createProviderGroup({
-  network: { type: 'network', refreshInterval: '2000' },
   glazewm: { type: 'glazewm' },
   cpu: { type: 'cpu', refreshInterval: '2000' },
-  date: { type: 'date', formatting: 'HH:mm' },
-  battery: { type: 'battery', refreshInterval: '10000'},
   memory: { type: 'memory', refreshInterval: '4000' },
   weather: { type: 'weather' },
+  network: { type: 'network', refreshInterval: '2000' },
+  battery: { type: 'battery', refreshInterval: '10000'},
+  date: { type: 'date', formatting: 'HH:mm' },
 });
 
 createRoot(document.getElementById('root')).render(<App />);
@@ -126,12 +126,6 @@ function App() {
     }
   }
 
-  function convertTimeStampToTime(timestamp) {
-    const date = new Date(timestamp);
-    const hours = date.getHours().toString().padStart(2, '0');
-    const minutes = date.getMinutes().toString().padStart(2, '0');
-    return `${hours}:${minutes}`;
-  }
 
   return (
     <div className="app">
@@ -264,7 +258,16 @@ function App() {
             }}>
               <span className="content">
                 {getNetworkIcon(output.network)}
-                {output.network.defaultGateway?.ssid}
+                <div className="labels">
+                  <span className="label">
+                    <span className="ii"></span>
+                    <span className="net-line">{ output.network.traffic.received.siValue } { output.network.traffic.received.siUnit }</span>
+                  </span>
+                  <span className="label">
+                    <span className="ii"></span>
+                    <span className="net-line">{ output.network.traffic.transmitted.siValue } { output.network.traffic.transmitted.siUnit }</span>
+                  </span>
+                </div>
               </span>
           </button>
         )}

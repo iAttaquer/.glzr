@@ -157,6 +157,7 @@ body {
   font-family: 'CaskaydiaMonoNerdFont Locally', CaskaydiaMono Nerd Font, CaskaydiaCove Nerd Font, ui-monospace, monospace;
   font-size: 13px;
   overflow: hidden;
+  background: #1c1c1ccc;
 }
 html,
 body,
@@ -164,9 +165,6 @@ body,
   height: 100%;
 }
 
-#root {
-  background: #1c1c1c;
-}
 
 i {
   color: rgb(115 130 175 / 95%);
@@ -205,10 +203,11 @@ button:hover {
   animation: hoverbutton 0.1s ease forwards;
   -webkit-animation: hoverbutton 0.1s ease forwards;
 }
-/* img {
-  border-left: 1px solid white;
-  user-select: none;
-} */
+img {
+  /* border: 1px solid white; */
+  /* user-select: none; */
+  pointer-events: none;
+}
 
 .app {
   display: grid;
@@ -268,6 +267,11 @@ button:hover {
 .workspace {
   width: 24px;
   justify-content: center;
+  transition: background 0.5s ease, width 0.5s ease;
+  -webkit-transition: background 0.5s ease, width 0.5s ease;
+  -moz-transition: background 0.5s ease, width 0.5s ease;
+  -ms-transition: background 0.5s ease, width 0.5s ease;
+  -o-transition: background 0.5s ease, width 0.5s ease;
 }
 .workspace-icon {
   display: inline-block;
@@ -453,20 +457,36 @@ button:hover {
 .network {
   color: var(--blue);
   padding: 0 5px 0 5px;
+
+  .ii{
+    font-size: 7px;
+    width: 0;
+  }
+  .labels {
+    width: 3rem;
+    display: flex;
+    flex-direction: column;
+  }
+  .label {
+    display: flex;
+    gap: 3px;
+    justify-content: space-between;
+    font-size: 8px;
+  }
+  .net-line {
+    width: 2.7rem;
+    justify-content: end;
+  }
 }
 .i-wifi {
-  margin-bottom: 6px;
+  margin-bottom: 0px;
   margin-left: -4px;
 }
 .i-eth {
-  margin-bottom: 2px;
-  margin-left: -3px;
+  margin: 0 1px 0px -3px;
 }
 
 .date {
   width: 3.8rem;
   color: rgb(180, 200, 255)
-}
-.i-time {
-  margin-bottom: 1px;
 }
