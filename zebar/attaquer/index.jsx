@@ -198,9 +198,9 @@ function App() {
       );
     } else if (child.type === 'split') {
       return (
-        <div key={`split-${index}`}>
-          {child.children.map((subChild, subIndex) => 
-            renderChilds(subChild, subIndex) // Używamy rekurencyjnie, przekazując subIndex jako key
+        <div className="template" key={`split-${index}`}>
+          {child.children.map((subChild, subIndex) =>
+            renderChilds(subChild, subIndex)
           )}
         </div>
       );
