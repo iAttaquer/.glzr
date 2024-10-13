@@ -240,6 +240,7 @@ img {
 
 .center {
   justify-self: center;
+  flex-direction: row;
 }
 
 .right {
@@ -255,7 +256,7 @@ img {
 }
 .search {
   width: 24px;
-  padding: 1px 2px 0;
+  padding: 1px 2px 2px;
   margin-right: 3px;
 }
 
@@ -336,6 +337,26 @@ img {
   max-width: 700px;
   text-overflow: ellipsis;
 }
+
+.app-icon {
+  width: 19px;
+  height: 19px;
+}
+.element {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 1px 0 1px;
+  /* padding: 0 3px 0 3px; */
+  width: 24px;
+  height: 22px;
+  border-radius: 4px;
+}
+.focus {
+  background: #aeaeae33;
+  box-shadow:    0 -1px 1px #9e9e9e44,    0 1px 1px #24242455;
+}
+
 
 /* usage */
 .low-usage {

@@ -90,7 +90,7 @@ function App() {
     if (batteryOutput.chargePercent > 70)
       return 'low-usage';
     if (batteryOutput.chargePercent > 45)
-      return 'medium-battery';
+      return 'medium-usage';
     if (batteryOutput.chargePercent > 15)
       return 'high-usage';
     return 'extreme-usage';
@@ -124,6 +124,88 @@ function App() {
       case 'thunder_night':
         return <i className="nf nf-weather-night_alt_lightning"></i>;
     }
+  }
+  function getAppIcon(appName) {
+    switch (appName) {
+      case 'brave':
+        return <img src="./icons/icons8-brave-32.png" className="app-icon"></img>;
+      case 'Discord':
+        return <img src="./icons/icons8-discord-new-32.png" className="app-icon"></img>;
+      case 'explorer':
+        return <img src="./icons/icons8-file-explorer-new-32.png" className="app-icon"></img>;
+      case 'WindowsTerminal':
+        return <img src="./icons/icons8-terminal-32.png" className="app-icon"></img>;
+      case 'Code':
+        return <img src="./icons/icons8-visual-studio-code-insides-32.png" className="app-icon"></img>;
+      case 'devenv':
+        return <img src="./icons/icons8-visual-studio-32.png" className="app-icon"></img>;
+      case 'ApplicationFrameHost':
+        return <img src="./icons/icons8-settings-32.png" className="app-icon"></img>;
+      case 'Spotify':
+        return <img src="./icons/icons8-spotify-32.png" className="app-icon"></img>;
+      case 'msedgewebview2':
+        return <img src="./icons/icons8-edge-32.png" className="app-icon"></img>;
+      case 'steamwebhelper':
+        return <img src="./icons/icons8-steam-32.png" className="app-icon"></img>;
+      case 'Messenger':
+        return <img src="./icons/icons8-facebook-messenger-32.png" className="app-icon"></img>;
+      case 'SystemInformer':
+        return <img src="./icons/systeminformer-32x32.png" className="app-icon"></img>;
+      case 'MediBangPaintPro':
+        return <img src="./icons/icons8-medibang-paint-32.png" className="app-icon"></img>;
+      case 'Docker Desktop':
+        return <img src="./icons/icons8-docker-32.png" className="app-icon"></img>;
+      case 'obs64':
+        return <img src="./icons/icons8-obs-32.png" className="app-icon"></img>;
+      case 'sublime_text':
+        return <img src="./icons/icons8-sublime-text-32.png" className="app-icon"></img>;
+      case 'FanSpeedSetting':
+        return <img src="./icons/icons8-fan-32.png" className="app-icon"></img>;
+      case '7zFM':
+        return <img src="./icons/icons8-7zip-32.png" className="app-icon"></img>;
+      default:
+        return <img src="./icons/icons8-application-32.png" className="app-icon"></img>;
+    }
+  }
+  const IconApps = {
+    process: <img src="./icons/icons8-application-32.png" className="app-icon"></img>,
+    brave: <img src="./icons/icons8-brave-32.png" className="app-icon"></img>,
+    Discord: <img src="./icons/icons8-discord-new-32.png" className="app-icon"></img>,
+    explorer: <img src="./icons/icons8-file-explorer-new-32.png" className="app-icon"></img>,
+    WindowsTerminal: <img src="./icons/icons8-terminal-32.png" className="app-icon"></img>,
+    Code: <img src="./icons/icons8-visual-studio-code-insides-32.png" className="app-icon"></img>,
+    devenv: <img src="./icons/icons8-visual-studio-32.png" className="app-icon"></img>,
+    ApplicationFrameHost: <img src="./icons/icons8-settings-32.png" className="app-icon"></img>,
+    Spotify: <img src="./icons/icons8-spotify-32.png" className="app-icon"></img>,
+    msedgewebview2: <img src="./icons/icons8-edge-32.png" className="app-icon"></img>,
+    steamwebhelper: <img src="./icons/icons8-steam-32.png" className="app-icon"></img>,
+    Messenger: <img src="./icons/icons8-facebook-messenger-32.png" className="app-icon"></img>,
+    SystemInformer: <img src="./icons/systeminformer-32x32.png" className="app-icon"></img>,
+    MediBangPaintPro: <img src="./icons/icons8-medibang-paint-32.png" className="app-icon"></img>,
+    "Docker Desktop": <img src="./icons/icons8-docker-32.png" className="app-icon"></img>,
+    obs64: <img src="./icons/icons8-obs-32.png" className="app-icon"></img>,
+    sublime_text: <img src="./icons/icons8-sublime-text-32.png" className="app-icon"></img>,
+    FanSpeedSetting: <img src="./icons/icons8-fan-32.png" className="app-icon"></img>,
+    "7zFM": <img src="./icons/icons8-7zip-32.png" className="app-icon" ></img>,
+  };
+
+  function renderChilds(child, index) {
+    if (child.type === 'window') {
+      return (
+        <div className={`element ${child.hasFocus ? 'focus' : ''}`} key={index}>
+          {getAppIcon(child.processName)}
+        </div>
+      );
+    } else if (child.type === 'split') {
+      return (
+        <div key={`split-${index}`}>
+          {child.children.map((subChild, subIndex) => 
+            renderChilds(subChild, subIndex) // Używamy rekurencyjnie, przekazując subIndex jako key
+          )}
+        </div>
+      );
+    }
+    return null;
   }
 
 
@@ -190,7 +272,7 @@ function App() {
       </div>
 
       <div className="center">
-        {output.glazewm && (
+        {/* {output.glazewm && (
           <>
           {output.glazewm.focusedWorkspace.children.map(
             (window) =>
@@ -205,6 +287,17 @@ function App() {
               )
             )}
           </>
+        )} */}
+        {output.glazewm && (
+          output.glazewm.allWorkspaces.map((workspace) =>
+            workspace.isDisplayed && (
+              <div className="template" key={workspace.name}>
+                {workspace.children.map((child, index) => (
+                  renderChilds(child, index)
+                ))}
+              </div>
+            )
+          )
         )}
       </div>
 
