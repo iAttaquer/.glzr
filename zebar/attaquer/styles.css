@@ -358,6 +358,15 @@ img {
 }
 
 
+.spotify {
+  font-size: 12px;
+  max-width: 400px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+
+
 /* usage */
 .low-usage {
   color: var(--green);
