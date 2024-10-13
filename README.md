@@ -1,5 +1,6 @@
 # Config for [GlazeWM](https://github.com/glzr-io/glazewm) and [Zebar](https://github.com/glzr-io/zebar)
-![Screenshot 2024-10-08 104538](https://github.com/user-attachments/assets/f2441fe4-a1af-4b59-9a64-c93ca59e4bd2)
+![image](https://github.com/user-attachments/assets/ea32bb54-82a1-4d93-9d8d-7acc1a8a72b7)
+
 
 for 1080p resolution
 
