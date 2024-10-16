@@ -1,0 +1,13 @@
+.logo {
+  color: var(--windows-color);
+  width: 24px;
+  align-items: center;
+  font-size: 16px;
+  padding: 1px 0 0 5px;
+}
+
+.search {
+  width: 24px;
+  padding: 1px 3px 2px;
+  margin-right: 3px;
+}

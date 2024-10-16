@@ -1,0 +1,7 @@
+.current-window {
+  color: #fff;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 700px;
+  text-overflow: ellipsis;
+}

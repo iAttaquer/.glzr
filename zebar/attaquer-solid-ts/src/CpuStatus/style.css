@@ -1,0 +1,15 @@
+.cpu {
+  width: 3.1rem;
+}
+
+.i-cpu {
+  font-size: 13px;
+  width: 14px;
+}
+
+.cpu-bar {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 1.8rem;
+}

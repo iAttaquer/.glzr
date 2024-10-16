@@ -1,0 +1,10 @@
+.date {
+    width: 3.8rem;
+    color: rgb(180, 200, 255);
+    white-space: nowrap;
+    overflow: hidden;
+}
+img {
+    width: 17px;
+    height: 17px;
+}

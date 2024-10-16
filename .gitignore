@@ -6,5 +6,7 @@
 !/zebar/
 !/zebar/settings.json
 !/zebar/normalize.css
-!/zebar/attaquer/
-!/zebar/attaquer/**
+!/zebar/attaquer-buildless/
+!/zebar/attaquer-buildless/**
+!/zebar/attaquer-solid-ts/
+!/zebar/attaquer-solid-ts/**

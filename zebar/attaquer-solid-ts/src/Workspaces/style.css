@@ -1,0 +1,59 @@
+.workspaces {
+  display: flex;
+  align-items: center;
+}
+
+.workspace {
+  width: 24px;
+  justify-content: center;
+  transition:
+    background 0.5s ease,
+    width 0.5s ease;
+  -webkit-transition:
+    background 0.5s ease,
+    width 0.5s ease;
+  -moz-transition:
+    background 0.5s ease,
+    width 0.5s ease;
+  -ms-transition:
+    background 0.5s ease,
+    width 0.5s ease;
+  -o-transition:
+    background 0.5s ease,
+    width 0.5s ease;
+}
+.workspace-icon {
+  display: inline-block;
+  pointer-events: none;
+}
+/* .workspace:active .workspace-content {
+# animation: appear 0.2s ease;
+} */
+.displayed {
+  background: #aeaeae33;
+  box-shadow:
+    0 -1px 1px #9e9e9e44,
+    0 1px 1px #24242455;
+}
+.focused {
+  span {
+    animation: appear 0.2s ease;
+    -webkit-animation: appear 0.2s ease;
+  }
+}
+# {
+  /* spotify */
+  span {
+    text-indent: -4px;
+  }
+}
+# {
+  /* discord */
+  span {
+    text-indent: -7px;
+    font-size: 12px;
+  }
+}
+.i-brave {
+  margin-top: 4px;
+}

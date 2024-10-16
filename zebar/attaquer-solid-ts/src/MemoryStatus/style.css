@@ -1,0 +1,108 @@
+.memory {
+  width: 3.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  padding-left: 2px;
+
+  .i {
+    width: 14px;
+    font-size: 14px;
+    margin-left: 2px;
+  }
+
+  .mem-content:active {
+    animation: appear 0.2s ease;
+    -webkit-animation: appear 0.2s ease;
+  }
+
+  &:hover {
+    .mem-bar {
+      transform: translateY(200%);
+      opacity: 0;
+      -webkit-transform: translateY(200%);
+      -moz-transform: translateY(200%);
+      -ms-transform: translateY(200%);
+      -o-transform: translateY(200%);
+    }
+
+    .labels {
+      transform: translateY(0%);
+      opacity: 1;
+      -webkit-transform: translateY(0%);
+      -moz-transform: translateY(0%);
+      -ms-transform: translateY(0%);
+      -o-transform: translateY(0%);
+    }
+  }
+
+  .mem-bar {
+    /* border: 1px solid white; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 100%;
+    width: 2.3rem;
+    overflow: hidden;
+    opacity: 1;
+    transform: translateY(0%);
+    transition:
+      transform 0.3s ease,
+      opacity 0.3s ease;
+    -webkit-transform: translateY(0%);
+    -moz-transform: translateY(0%);
+    -ms-transform: translateY(0%);
+    -o-transform: translateY(0%);
+    -webkit-transition:
+      transform 0.3s ease,
+      opacity 0.3s ease;
+    -moz-transition:
+      transform 0.3s ease,
+      opacity 0.3s ease;
+    -ms-transition:
+      transform 0.3s ease,
+      opacity 0.3s ease;
+    -o-transition:
+      transform 0.3s ease,
+      opacity 0.3s ease;
+  }
+
+  .labels {
+    /* border: 1px solid white; */
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    margin-left: 18px;
+    opacity: 0;
+    transform: translateY(-100%);
+    transition:
+      transform 0.3s ease,
+      opcity 0.3s ease;
+    -webkit-transform: translateY(-100%);
+    -moz-transform: translateY(-100%);
+    -ms-transform: translateY(-100%);
+    -o-transform: translateY(-100%);
+    -webkit-transition:
+      transform 0.3s ease,
+      opcity 0.3s ease;
+    -moz-transition:
+      transform 0.3s ease,
+      opcity 0.3s ease;
+    -ms-transition:
+      transform 0.3s ease,
+      opcity 0.3s ease;
+    -o-transition:
+      transform 0.3s ease,
+      opcity 0.3s ease;
+  }
+
+  .label {
+    display: flex;
+    gap: 3px;
+    justify-content: space-between;
+    font-size: 8px;
+  }
+}

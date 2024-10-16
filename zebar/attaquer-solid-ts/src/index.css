@@ -1,0 +1,265 @@
+/**
+* Import the Nerdfonts icon font.
+* Ref https://www.nerdfonts.com/cheat-sheet for a cheatsheet of available Nerdfonts icons.
+*/
+@import 'https://www.nerdfonts.com/assets/css/webfont.css';
+
+:root {
+  --color: #00CC6A;
+  --green: #75ea07;
+  --b-yellow: #ebec6c;
+  --yellow: #e0e109;
+  --b-orange: #FB8C00;
+  --orange: #ec6f08;
+  --b-red: #ff3e3e;
+  --red: #db1e1d;
+  --purple: #be70fa;
+  --blue: #05e7e5;
+  --night-blue: #016ff6;
+  --windows-color: #3A86FF;
+}
+
+@font-face {
+  font-family: 'CaskaydiaMonoNerdFont Locally';
+  src: url('./fonts/CaskaydiaMonoNerdFont-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* @keyframes rubberBand {
+  from { transform: scale3d(1, 1, 1); }
+  30% { transform: scale3d(1.25, 0.75, 1); }
+  40% { transform: scale3d(0.75, 1.25, 1); }
+  50% { transform: scale3d(1.15, 0.85, 1); }
+  65% { transform: scale3d(0.95, 1.05, 1); }
+  75% { transform: scale3d(1.05, 0.95, 1); }
+  to { transform: scale3d(1, 1, 1); }
+}
+
+@keyframes tada {
+  from { transform: scale3d(1, 1, 1); }
+  10%, 20% { transform: scale3d(0.9, 0.9, 0.9) rotate3d(0, 0, 1, -3deg); }
+  30%, 50%, 70%, 90% { transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg); }
+  40%, 60%, 80% { transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg); }
+  to { transform: scale3d(1, 1, 1); }
+}
+
+@keyframes flash {
+  from, 50%, to { opacity: 1; }
+  25%, 75% { opacity: 0; }
+}
+
+@keyframes pulse-test {
+  from {
+    transform: scale(0);
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    transform: scale(2);
+  }
+}
+
+@keyframes pulse-size {
+  from,
+  20%,
+  53%,
+  to {
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    transform: translate3d(0, 0, 0);
+  }
+
+  40%,
+  43% {
+    animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+    transform: translate3d(0, -30px, 0) scaleY(1.1);
+  }
+
+  70% {
+    animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+    transform: translate3d(0, -15px, 0) scaleY(1.05);
+  }
+
+  80% {
+    transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    transform: translate3d(0, 0, 0) scaleY(0.95);
+  }
+
+  90% {
+    transform: translate3d(0, -4px, 0) scaleY(1.02);
+  }
+}
+
+@keyframes shine {
+    0%{background-position:0% 100%}
+    100%{}
+}
+@keyframes fadeInMoveUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+} */
+@keyframes appear {
+  from {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.8);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+@keyframes anticlockwise {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-90deg);
+  }
+}
+@keyframes clockwise {
+  from {
+    transform: rotate(-90deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+@keyframes hoverbutton {
+  from {
+  }
+  to {
+    background: #aeaeae50;
+    box-shadow: 0 -1px 1px #9e9e9e44,
+                0 1px 1px #24242455;
+  }
+}
+@keyframes unhoverbutton {
+  from {
+    background: #aeaeae50;
+    box-shadow: 0 -1px 1px #9e9e9e44,
+                0 1px 1px #24242455;
+  }
+  to {
+  }
+}
+
+body {
+  color: rgb(255 255 255 / 90%);
+  font-family: 'CaskaydiaMonoNerdFont Locally', ui-monospace, monospace;
+  font-size: 13px;
+  overflow: hidden;
+}
+html,
+body,
+#root {
+  height: 100%;
+}
+
+#root {
+  background: #1c1c1ccc;
+}
+
+i {
+  color: rgb(115 130 175 / 95%);
+  margin-right: 5px;
+}
+
+span {
+  display: flex;
+  align-items: center;
+  user-select: none;
+}
+button {
+  display: flex;
+  align-items: center;
+  text-shadow: 0 0 2px black;
+  margin: 0 1px 0 0;
+  padding: 0 3px 0 3px;
+  height: 22px;
+  color: #fff;
+  border: none;
+  background: none;
+  border-radius: 4px;
+  /* animation: unhoverbutton 0.1s ease forwards; */
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+  &:active {
+    .content {
+      animation: appear 0.2s ease;
+      -webkit-animation: appear 0.2s ease;
+    }
+  }
+}
+button:hover {
+  animation: hoverbutton 0.1s ease forwards;
+  -webkit-animation: hoverbutton 0.1s ease forwards;
+}
+img {
+  /* border-left: 1px solid white;
+  user-select: none; */
+  pointer-events: none;
+}
+
+.app {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  color: #fff;
+  height: 32px;
+  padding: 0 0 6px 0;
+}
+
+.template {
+  display: flex;
+  align-items: center;
+  user-select: none;
+  margin: 0 2px 0 2px;
+  height: 100%;
+}
+
+
+.left,
+.center,
+.right {
+  display: flex;
+  align-items: center;
+}
+
+.left {
+  padding-left: 2px;
+}
+
+.center {
+  justify-self: center;
+}
+
+.right {
+  justify-self: end;
+}
+
+/* usage */
+.low-usage {
+  color: var(--green);
+}
+.medium-usage {
+  color: var(--yellow);
+}
+.high-usage {
+  color: var(--orange);
+}
+.extreme-usage {
+  color: var(--b-red);
+}
+
+
+
+

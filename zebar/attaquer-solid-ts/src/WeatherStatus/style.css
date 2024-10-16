@@ -1,0 +1,7 @@
+.weather {
+    color: var(--b-yellow);
+    i {
+      color: var(--b-yellow);
+      font-size: 16px;
+    }
+  }

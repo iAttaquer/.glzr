@@ -1,0 +1,31 @@
+.network {
+  color: var(--blue);
+  padding: 0 5px 0 5px;
+
+  .ii {
+    font-size: 7px;
+    width: 0;
+  }
+  .labels {
+    width: 3rem;
+    display: flex;
+    flex-direction: column;
+  }
+  .label {
+    display: flex;
+    gap: 3px;
+    justify-content: space-between;
+    font-size: 8px;
+  }
+  .net-line {
+    width: 2.7rem;
+    justify-content: end;
+  }
+}
+.i-wifi {
+  margin-bottom: 0px;
+  margin-left: -4px;
+}
+.i-eth {
+  margin: 0 1px 0px -3px;
+}

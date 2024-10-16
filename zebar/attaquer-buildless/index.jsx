@@ -388,7 +388,7 @@ function App() {
           className="logo"
           onClick={() => {
             output.glazewm.runCommand(
-              "shell-exec %userprofile%/.glzr/zebar/attaquer/scripts/OpenStartMenu.vbs"
+              "shell-exec %userprofile%/.glzr/zebar/attaquer-buildless/scripts/OpenStartMenu.vbs"
             );
           }}
         >
@@ -398,7 +398,7 @@ function App() {
           className="search"
           onClick={() => {
             output.glazewm.runCommand(
-              "shell-exec %userprofile%/.glzr/zebar/attaquer/scripts/OpenWindowsSearch.ahk"
+              "shell-exec %userprofile%/.glzr/zebar/attaquer-buildless/scripts/OpenWindowsSearch.ahk"
             );
           }}
         >
@@ -571,7 +571,7 @@ function App() {
             className="network"
             onClick={() => {
               output.glazewm.runCommand(
-                "shell-exec %userprofile%/.glzr/zebar/attaquer/scripts/OpenActionCenter.ahk"
+                "shell-exec %userprofile%/.glzr/zebar/attaquer-buildless/scripts/OpenActionCenter.ahk"
               );
             }}
           >
