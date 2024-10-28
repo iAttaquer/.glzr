@@ -3,6 +3,7 @@ import { Component } from "solid-js";
 import { GlazeWmOutput } from "zebar";
 
 interface ApplicationProps {
+  glazewm: GlazeWmOutput;
   window: GlazeWmOutput["allWorkspaces"][0]["children"][0];
 }
 
@@ -13,6 +14,7 @@ const Application: Component<ApplicationProps> = (props) => {
     Discord: <img src="./assets/icons/icons8-discord-new-32.png" class="app-icon"/>,
     explorer: <img src="./assets/icons/icons8-file-explorer-new-32.png" class="app-icon"/>,
     WindowsTerminal: <img src="./assets/icons/icons8-terminal-32.png" class="app-icon"/>,
+    Cursor: <img src="./assets/icons/cursor.png" class="app-icon"/>,
     Code: <img src="./assets/icons/icons8-visual-studio-code-insides-32.png" class="app-icon"/>,
     devenv: <img src="./assets/icons/icons8-visual-studio-32.png" class="app-icon"/>,
     ApplicationFrameHost: <img src="./assets/icons/icons8-settings-32.png" class="app-icon"/>,
@@ -29,14 +31,17 @@ const Application: Component<ApplicationProps> = (props) => {
     "7zFM": <img src="./assets/icons/icons8-7zip-32.png" class="app-icon"/>,
   };
   return (
-    <div
+    <button
       classList={{
         element: true,
         focus: props.window.hasFocus,
       }}
+      onClick={() => {
+        props.glazewm.runCommand(`shell-exec %userprofile%/.glzr/zebar/attaquer-solid-ts/dist/assets/scripts/FocusWindow.ahk ${props.window.handle}`);
+      }}
     >
       {IconApps[props.window.processName] ?? IconApps["process"]}
-    </div>
+    </button>
   );
 };
 

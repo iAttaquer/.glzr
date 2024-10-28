@@ -16,7 +16,7 @@ const CurrentApps: Component<CurrentAppsProps> = (props) => {
     child: GlazeWmOutput["allWorkspaces"][0]["children"][0]
   ) => {
     if (child.type === "window") {
-      return <Application window={child} />;
+      return <Application window={child} glazewm={props.glazewm} />;
     } else if (child.type === "split") {
       return (
         <For each={child.children}>{(subChild) => renderChilds(subChild)}</For>

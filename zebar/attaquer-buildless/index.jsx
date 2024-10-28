@@ -365,9 +365,14 @@ function App() {
   function renderChilds(child, index) {
     if (child.type === "window") {
       return (
-        <div className={`element ${child.hasFocus ? "focus" : ""}`} key={index}>
+        <button className={`element ${child.hasFocus ? "focus" : ""}`}
+        key={index}
+        onClick={() => {
+          output.glazewm.runCommand(`shell-exec %userprofile%/.glzr/zebar/attaquer-buildless/scripts/FocusWindow.ahk ${child.handle}`);
+        }}
+        >
           {getAppIcon(child.processName)}
-        </div>
+        </button>
       );
     } else if (child.type === "split") {
       return (
