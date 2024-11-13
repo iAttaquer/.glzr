@@ -3,16 +3,14 @@ import { Component } from "solid-js";
 import { NetworkOutput } from "zebar";
 import { GlazeWmOutput } from "zebar";
 
-type NetworkInterface = NetworkOutput["interfaces"][0];
 interface NetworkStatusProps {
   network: NetworkOutput;
   glazewm: GlazeWmOutput;
 }
 
 const NetworkStatus: Component<NetworkStatusProps> = (props) => {
-  const interf: NetworkInterface = props.network?.defaultInterface;
   const getNetworkIcon = () => {
-    switch (interf?.type) {
+    switch (props.network?.defaultInterface.type) {
       case "ethernet":
         return (
           <img
@@ -23,8 +21,6 @@ const NetworkStatus: Component<NetworkStatusProps> = (props) => {
           ></img>
         );
       case "wifi":
-        // console.log(props.network.defaultInterface.type);
-        // console.log(props.network.defaultGateway?.signalStrength);
         if (props.network.defaultGateway?.signalStrength >= 75) {
           return (
             <img

@@ -1,0 +1,138 @@
+/**
+* Import the Nerdfonts icon font.
+* Ref https://www.nerdfonts.com/cheat-sheet for a cheatsheet of available Nerdfonts icons.
+*/
+@import 'https://www.nerdfonts.com/assets/css/webfont.css';
+
+:root {
+  --color: #00CC6A;
+  --green: #75ea07;
+  --b-yellow: #ebec6c;
+  --yellow: #e0e109;
+  --b-orange: #FB8C00;
+  --orange: #ec6f08;
+  --b-red: #ff3e3e;
+  --red: #db1e1d;
+  --purple: #be70fa;
+  --blue: #05e7e5;
+  --night-blue: #016ff6;
+  --windows-color: #3A86FF;
+
+  --widget-bg: #1c1c1cee;
+  --widget-text: rgba(255, 255, 255, 0.9);
+  --charging-green: #02ff67;
+  --progress-bg: rgba(255, 255, 255, 0.1);
+  --bordercl: #a1a1a1;
+}
+
+@font-face {
+  font-family: 'CaskaydiaMonoNerdFont Locally';
+  src: url('./fonts/CaskaydiaMonoNerdFont-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  color: rgb(255 255 255 / 90%);
+  font-family: 'CaskaydiaMonoNerdFont Locally', ui-monospace, monospace;
+  font-size: 13px;
+  overflow: hidden;
+}
+html,
+body,
+#root {
+  height: 100%;
+}
+
+.widget {
+  background-color: var(--widget-bg);
+  border-radius: 16px;
+  padding: 16px;
+  color: var(--widget-text);
+  font-family: 'CaskaydiaMonoNerdFont Locally', sans-serif;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--bordercl);
+  height: 100%;
+  width: 100%;
+}
+
+.charging-info {
+  display: flex;
+  align-items: left;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.charging-icon {
+  margin-right: 8px;
+  font-size: 1.1em;
+}
+.health-icon {
+  margin-right: 8px;
+  font-size: 1.1em;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 26px;
+  background-color: var(--progress-bg);
+  border-radius: 8px;
+  position: relative;
+  margin: 5px 0 10px 0;
+  border: 1px solid var(--bordercl);
+}
+
+.progress-fill {
+  height: 100%;
+  background-color: var(--charging-green);
+  border-radius: 8px;
+  transition: width 0.5s ease;
+  z-index: 1;
+  -webkit-transition: width 0.5s ease;
+  -moz-transition: width 0.5s ease;
+  -ms-transition: width 0.5s ease;
+  -o-transition: width 0.5s ease;
+}
+
+.progress-labels {
+  display: flex;
+  grid-template-columns: 1fr 1fr 1fr;
+  width: 100%;
+  align-items: center;
+  font-size: 0.8em;
+  margin-top: 4px;
+  span {
+    min-width: 33.3%;
+  }
+  .center {
+    text-align: center;
+  }
+  .right {
+    text-align: right;
+  }
+}
+.charging {
+  background-color: var(--charging-green);
+  box-shadow: 0 0 20px 0 var(--charging-green);
+}
+
+.full {
+  background-color: var(--charging-green);
+  box-shadow: 0 0 10px 0 var(--charging-green);
+}
+.half {
+  background-color: var(--yellow);
+  box-shadow: 0 0 10px 0 var(--yellow);
+}
+.low {
+  background-color: var(--orange);
+  box-shadow: 0 0 10px 0 var(--orange);
+}
+.very-low {
+  background-color: var(--b-red);
+  box-shadow: 0 0 10px 0 var(--b-red);
+}
+
+
+
