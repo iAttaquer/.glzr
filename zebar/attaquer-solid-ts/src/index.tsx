@@ -9,15 +9,13 @@ import Workspaces from "./Workspaces/Workspaces";
 import TilingBinding from "./TilingBinding/TilingBinding";
 import WindowTitle from "./WindowTitle/WindowTitle";
 import CurrentApps from "./CurrentApps/CurrentApps";
-import SpotifyStatus from "./Spotify/SpotifyStatus";
+import MediaStatus from "./Media/MediaStatus";
 import CpuStatus from "./CpuStatus/CpuStatus";
 import MemoryStatus from "./MemoryStatus/MemoryStatus";
 import WeatherStatus from "./WeatherStatus/WeatherStatus";
 import NetworkStatus from "./NetworkStatus/NetworkStatus";
 import BatteryStatus from "./BatteryStatus/BatteryStatus";
 import TimeStatus from "./Time/TimeStatus";
-import { AppProvider } from "./AppContext";
-import Bateria from "./Batterynew/bateria";
 
 const providers = zebar.createProviderGroup({
   glazewm: { type: "glazewm" },
@@ -27,6 +25,7 @@ const providers = zebar.createProviderGroup({
   network: { type: "network", refreshInterval: 2000 },
   battery: { type: "battery", refreshInterval: 10000 },
   date: { type: "date", formatting: "HH:mm" },
+  media: { type: "media" },
 });
 
 render(() => <App />, document.getElementById("root")!);
@@ -37,7 +36,6 @@ function App() {
   providers.onOutput((outputMap) => setOutput(outputMap));
 
   return (
-    <AppProvider>
     <div class="app">
       <div class="left">
         <WindowsButton glazewm={output.glazewm} />
@@ -49,7 +47,7 @@ function App() {
         <CurrentApps glazewm={output.glazewm} />
       </div>
       <div class="right">
-        <SpotifyStatus />
+        <MediaStatus media={output.media} />
         <CpuStatus cpu={output.cpu} glazewm={output.glazewm} />
         <MemoryStatus memory={output.memory} glazewm={output.glazewm} />
         {output.weather && <WeatherStatus weather={output.weather} />}
@@ -58,6 +56,5 @@ function App() {
         <TimeStatus date={output.date} glazewm={output.glazewm} />
       </div>
     </div>
-    </AppProvider>
   );
 }

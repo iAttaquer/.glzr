@@ -3,14 +3,12 @@ import { Component } from "solid-js";
 import { GlazeWmOutput } from "zebar";
 import { For } from "solid-js";
 import Application from "./Application";
-import { useAppContext } from "../AppContext";
 
 interface CurrentAppsProps {
   glazewm: GlazeWmOutput;
 }
 
 const CurrentApps: Component<CurrentAppsProps> = (props) => {
-  const { setSpotifyTitle } = useAppContext();
 
   const renderChilds = (
     child: GlazeWmOutput["allWorkspaces"][0]["children"][0]
@@ -29,20 +27,10 @@ const CurrentApps: Component<CurrentAppsProps> = (props) => {
       {props.glazewm?.allWorkspaces.map((workspace) => {
         if (workspace.isDisplayed) {
           return workspace.children.map((child) => {
-            if (child.processName === "Spotify") {
-              setSpotifyTitle(child.title);
-            } else {
-              setSpotifyTitle(undefined);
-            }
             return renderChilds(child);
           });
         } else {
           workspace.children.forEach((child) => {
-            if (child.processName === "Spotify") {
-              setSpotifyTitle(child.title);
-            } else {
-              setSpotifyTitle(undefined);
-            }
           });
           return null;
         }

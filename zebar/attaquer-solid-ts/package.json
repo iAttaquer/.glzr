@@ -8,8 +8,9 @@
   },
   "dependencies": {
     "@glzr/style-guide": "^1.1.0",
-    "solid-js": "1.8.11",
-    "zebar": "^2.0.0"
+    "pnpm": "^9.13.2",
+    "solid-js": "1.9.2",
+    "zebar": "^2.5.1"
   },
   "devDependencies": {
     "rollup-plugin-copy": "^3.5.0",

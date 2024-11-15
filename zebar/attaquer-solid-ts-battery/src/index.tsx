@@ -70,7 +70,7 @@ function App() {
           {Math.round(output.battery?.chargePercent)}%
           {BatteryTime()}
         </span>
-        <span><span class="health-icon"></span> • {output.battery?.healthPercent.toPrecision(3)}%</span>
+        <span><span class="health-icon"></span> • {Math.round(output.battery?.healthPercent)}%</span>
       </div>
       <div class="progress-labels">
         <span class="left">0</span>
