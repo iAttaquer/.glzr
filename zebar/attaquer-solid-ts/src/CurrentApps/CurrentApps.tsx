@@ -10,14 +10,14 @@ interface CurrentAppsProps {
 
 const CurrentApps: Component<CurrentAppsProps> = (props) => {
 
-  const renderChilds = (
+  const RenderChilds = (
     child: GlazeWmOutput["allWorkspaces"][0]["children"][0]
   ) => {
     if (child.type === "window") {
       return <Application window={child} glazewm={props.glazewm} />;
     } else if (child.type === "split") {
       return (
-        <For each={child.children}>{(subChild) => renderChilds(subChild)}</For>
+        <For each={child.children}>{(subChild) => RenderChilds(subChild)}</For>
       );
     }
     return undefined;
@@ -27,7 +27,7 @@ const CurrentApps: Component<CurrentAppsProps> = (props) => {
       {props.glazewm?.allWorkspaces.map((workspace) => {
         if (workspace.isDisplayed) {
           return workspace.children.map((child) => {
-            return renderChilds(child);
+            return RenderChilds(child);
           });
         } else {
           workspace.children.forEach((child) => {
