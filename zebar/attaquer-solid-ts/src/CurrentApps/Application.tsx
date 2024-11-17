@@ -29,6 +29,15 @@ const Application: Component<ApplicationProps> = (props) => {
     sublime_text: <img src="./assets/icons/icons8-sublime-text-32.png" class="app-icon"/>,
     FanSpeedSetting: <img src="./assets/icons/icons8-fan-32.png" class="app-icon"/>,
     "7zFM": <img src="./assets/icons/icons8-7zip-32.png" class="app-icon"/>,
+    Obsidian: <img src="./assets/icons/Obsidian-32.png" class="app-icon"/>,
+    AutoHotkeyUX: <img src="./assets/icons/AutoHotkeyUX-32.png" class="app-icon"/>,
+    Signal: <img src="./assets/icons/Signal-32.png" class="app-icon"/>,
+    "Universal x86 Tuning Utility": <img src="./assets/icons/Universal-x86-Tuning-Utility-32.png" class="app-icon"/>,
+    windhawk: <img src="./assets/icons/windhawk-32.png" class="app-icon"/>,
+    VirtualBox: <img src="./assets/icons/VirtualBox-32.png" class="app-icon"/>,
+    vmware: <img src="./assets/icons/VMware-Workstation-Pro-32.png" class="app-icon"/>,
+    "Feather Launcher": <img src="./assets/icons/Feather-Launcher-32.png" class="app-icon"/>,
+    dnplayer: <img src="./assets/icons/LDPlayer-9-32.png" class="app-icon"/>,
   };
   return (
     <button
