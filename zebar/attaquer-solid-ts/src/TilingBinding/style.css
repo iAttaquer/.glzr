@@ -4,7 +4,8 @@
 }
 
 .tiling-direction {
-  text-indent: -3px;
+  padding-top: 1px;
+  text-indent: -2px;
   font-size: 13px;
 }
 

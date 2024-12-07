@@ -1,7 +1,8 @@
 .media {
   font-size: 12px;
-  max-width: 150px;
+  max-width: 500px;
   white-space: nowrap;
+  align-items: center;
   overflow: hidden;
   position: relative;
   border-radius: 3px;
@@ -22,12 +23,31 @@
   left: 0;
   height: 1px;
   background-color: #b3ebff;
-  border-radius: 3px;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  -ms-border-radius: 3px;
-  -o-border-radius: 3px;
+  border-radius: 2px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -o-border-radius: 2px;
 }
-.media:hover {
-  max-width: 500px;
+.media-text {
+  max-width: 130px;
+  margin-left: 3px;
+  transition: max-width 0.4s ease;
+  -webkit-transition: max-width 0.4s ease;
+  -moz-transition: max-width 0.4s ease;
+  -ms-transition: max-width 0.4s ease;
+  -o-transition: max-width 0.4s ease;
+}
+.media-text:hover {
+  max-width:450px;
+}
+.prev,
+.play-pause,
+.next {
+  padding-top: 1px;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  font-size: 15px;
 }

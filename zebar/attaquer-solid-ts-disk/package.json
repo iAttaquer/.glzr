@@ -9,7 +9,7 @@
   "dependencies": {
     "@glzr/style-guide": "^1.1.0",
     "solid-js": "1.8.11",
-    "zebar": "^2.5.1"
+    "zebar": "^2.6.1"
   },
   "devDependencies": {
     "rollup-plugin-copy": "^3.5.0",

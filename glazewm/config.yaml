@@ -122,6 +122,10 @@ window_rules:
   - commands: ['move --workspace ']
     match:
     - window_process: { equals: 'Spotify' }
+  
+  - commands: ['set-floating', 'size --width 1440 --height 810']
+    match:
+    - window_process: { equals: 'FanSpeedSetting' }
 
 binding_modes:
   # When enabled, the focused window can be resized via arrow keys or HJKL.
