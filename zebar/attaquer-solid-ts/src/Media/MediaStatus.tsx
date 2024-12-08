@@ -1,6 +1,6 @@
 import "./style.css";
 import { Component } from "solid-js";
-import { MediaOutput } from "/zebar";
+import { MediaOutput } from "zebar";
 
 interface MediaStatusProps {
   media: MediaOutput;
@@ -39,7 +39,6 @@ const MediaStatus: Component<MediaStatusProps> = (props) => {
             <button class="play-pause"
               onClick={() => {
                 props.media?.togglePlayPause();
-                console.log(props.media?.allSessions);
               }}>
                 <span class="content">
                   {props.media?.currentSession.isPlaying ? "󰏤" : "󰐊"}

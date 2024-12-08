@@ -13,7 +13,8 @@
   --orange: #ec6f08;
   --b-red: #ff3e3e;
   --red: #db1e1d;
-  --purple: #be70fa;
+  --pink: #be70fa;
+  --purple: #8800dd;
   --blue: #05e7e5;
   --night-blue: #016ff6;
   --windows-color: #3A86FF;
@@ -26,110 +27,60 @@
   font-style: normal;
 }
 
-/* @keyframes rubberBand {
-  from { transform: scale3d(1, 1, 1); }
-  30% { transform: scale3d(1.25, 0.75, 1); }
-  40% { transform: scale3d(0.75, 1.25, 1); }
-  50% { transform: scale3d(1.15, 0.85, 1); }
-  65% { transform: scale3d(0.95, 1.05, 1); }
-  75% { transform: scale3d(1.05, 0.95, 1); }
-  to { transform: scale3d(1, 1, 1); }
-}
-
-@keyframes tada {
-  from { transform: scale3d(1, 1, 1); }
-  10%, 20% { transform: scale3d(0.9, 0.9, 0.9) rotate3d(0, 0, 1, -3deg); }
-  30%, 50%, 70%, 90% { transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg); }
-  40%, 60%, 80% { transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg); }
-  to { transform: scale3d(1, 1, 1); }
-}
-
-@keyframes flash {
-  from, 50%, to { opacity: 1; }
-  25%, 75% { opacity: 0; }
-}
-
-@keyframes pulse-test {
-  from {
-    transform: scale(0);
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-    transform: scale(2);
-  }
-}
-
-@keyframes pulse-size {
-  from,
-  20%,
-  53%,
-  to {
-    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    transform: translate3d(0, 0, 0);
-  }
-
-  40%,
-  43% {
-    animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
-    transform: translate3d(0, -30px, 0) scaleY(1.1);
-  }
-
-  70% {
-    animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
-    transform: translate3d(0, -15px, 0) scaleY(1.05);
-  }
-
-  80% {
-    transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    transform: translate3d(0, 0, 0) scaleY(0.95);
-  }
-
-  90% {
-    transform: translate3d(0, -4px, 0) scaleY(1.02);
-  }
-}
-
-@keyframes shine {
-    0%{background-position:0% 100%}
-    100%{}
-}
-@keyframes fadeInMoveUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-} */
 @keyframes appear {
   from {
     transform: scale(1);
-  }
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+}
   50% {
     transform: scale(0.8);
-  }
+    -webkit-transform: scale(0.8);
+    -moz-transform: scale(0.8);
+    -ms-transform: scale(0.8);
+    -o-transform: scale(0.8);
+}
   to {
     transform: scale(1);
-  }
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+}
 }
 @keyframes anticlockwise {
   from {
     transform: rotate(0deg);
-  }
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+}
   to {
     transform: rotate(-90deg);
-  }
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
+}
 }
 @keyframes clockwise {
   from {
     transform: rotate(-90deg);
-  }
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
+}
   to {
     transform: rotate(0deg);
-  }
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+}
 }
 @keyframes hoverbutton {
   from {

@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "@glzr/style-guide": "^1.1.0",
+    "@kobalte/core": "^0.13.7",
     "pnpm": "^9.13.2",
     "solid-js": "1.9.2",
     "zebar": "^2.6.1"

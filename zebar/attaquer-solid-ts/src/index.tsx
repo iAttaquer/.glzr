@@ -9,6 +9,7 @@ import Workspaces from "./Workspaces/Workspaces";
 import TilingBinding from "./TilingBinding/TilingBinding";
 import WindowTitle from "./WindowTitle/WindowTitle";
 import CurrentApps from "./CurrentApps/CurrentApps";
+import VolumeStatus from "./VolumeStatus/VolumeStatus";
 import MediaStatus from "./Media/MediaStatus";
 import CpuStatus from "./CpuStatus/CpuStatus";
 import MemoryStatus from "./MemoryStatus/MemoryStatus";
@@ -21,11 +22,12 @@ const providers = zebar.createProviderGroup({
   glazewm: { type: "glazewm" },
   cpu: { type: "cpu", refreshInterval: 2000 },
   memory: { type: "memory", refreshInterval: 4000 },
-  weather: { type: "weather", latitude: 50, longitude: 22 },
+  weather: { type: "weather" },
   network: { type: "network", refreshInterval: 2000 },
   battery: { type: "battery", refreshInterval: 10000 },
   date: { type: "date", formatting: "HH:mm" },
   media: { type: "media" },
+  audio: { type: "audio" },
 });
 
 render(() => <App />, document.getElementById("root")!);
@@ -52,6 +54,7 @@ function App() {
         <MemoryStatus memory={output.memory} glazewm={output.glazewm} />
         {output.weather && <WeatherStatus weather={output.weather} />}
         <NetworkStatus network={output.network} glazewm={output.glazewm} />
+        <VolumeStatus audio={output.audio} glazewm={output.glazewm}/>
         <BatteryStatus battery={output.battery} />
         <TimeStatus date={output.date} glazewm={output.glazewm} />
       </div>
