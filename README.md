@@ -1,9 +1,11 @@
 # Config for [GlazeWM](https://github.com/glzr-io/glazewm) and [Zebar](https://github.com/glzr-io/zebar)
-![image](https://github.com/user-attachments/assets/ea32bb54-82a1-4d93-9d8d-7acc1a8a72b7)
+![{3B6D867A-7997-41E8-9C77-9C719D053E77}](https://github.com/user-attachments/assets/ac3354fa-7f96-470d-978a-3883571c4af0)
+
 
 for 1080p resolution, bar height is 32px on 125% system scale
 
 ## Zebar Features:
+### Top bar:
 #### Left:
 - **Windows button** - opens Start Menu using VBScript
 - **Search button** - opens windows Search using AHK
@@ -11,9 +13,13 @@ for 1080p resolution, bar height is 32px on 125% system scale
 - **Tiling direction** - from GlazeWM
 - **Binding mode status** - from GlazeWM
 #### Center:
-- **Opened Apps** - show application icons running on **displayed workspaces** from GlazeWM using Icons8<br>
+- **Opened Apps** - show application icons running on **displayed workspaces** from GlazeWM using Icons8, activate clicked application<br>
   ![](./zebar/attaquer-solid-ts/src/icons/icons8-application-32.png)
   ![](./zebar/attaquer-solid-ts/src/icons/icons8-7zip-32.png)
+  ![](./zebar/attaquer-solid-ts/src/icons/icons8-audio-0-32.png)
+  ![](./zebar/attaquer-solid-ts/src/icons/icons8-audio-1-32.png)
+  ![](./zebar/attaquer-solid-ts/src/icons/icons8-audio-2-32.png)
+  ![](./zebar/attaquer-solid-ts/src/icons/icons8-audio-3-32.png)
   ![](./zebar/attaquer-solid-ts/src/icons/icons8-battery-32.png)
   ![](./zebar/attaquer-solid-ts/src/icons/icons8-battery-1-32.png)
   ![](./zebar/attaquer-solid-ts/src/icons/icons8-battery-2-32.png)
@@ -30,6 +36,7 @@ for 1080p resolution, bar height is 32px on 125% system scale
   ![](./zebar/attaquer-solid-ts/src/icons/icons8-fan-32.png)
   ![](./zebar/attaquer-solid-ts/src/icons/icons8-file-explorer-new-32.png)
   ![](./zebar/attaquer-solid-ts/src/icons/icons8-medibang-paint-32.png)
+  ![](./zebar/attaquer-solid-ts/src/icons/icons8-musical-note-32.png)
   ![](./zebar/attaquer-solid-ts/src/icons/icons8-obs-32.png)
   ![](./zebar/attaquer-solid-ts/src/icons/icons8-search-32.png)
   ![](./zebar/attaquer-solid-ts/src/icons/icons8-settings-32.png)
@@ -46,26 +53,39 @@ for 1080p resolution, bar height is 32px on 125% system scale
   ![](./zebar/attaquer-solid-ts/src/icons/icons8-wired-network-32.png)
   ![](./zebar/attaquer-solid-ts/src/icons/icons8-no-network-32.png)
   ![](./zebar/attaquer-solid-ts/src/icons/systeminformer-32x32.png)
+  ![](./zebar/attaquer-solid-ts/src/icons/windhawk-32.png)
+  ![](./zebar/attaquer-solid-ts/src/icons/AutoHotkeyUX-32.png)
+  ![](./zebar/attaquer-solid-ts/src/icons/Feather-Launcher-32.png)
+  ![](./zebar/attaquer-solid-ts/src/icons/LDPlayer-9-32.png)
+  ![](./zebar/attaquer-solid-ts/src/icons/Obsidian-32.png)
+  ![](./zebar/attaquer-solid-ts/src/icons/Signal-32.png)
+  ![](./zebar/attaquer-solid-ts/src/icons/Universal-x86-Tuning-Utility-32.png)
+  ![](./zebar/attaquer-solid-ts/src/icons/VMware-Workstation-Pro-32.png)
+  ![](./zebar/attaquer-solid-ts/src/icons/VirtualBox-32.png)
+
+  
 #### Right:
-- **Spotify Status** - shows currently playing song from Spotify app title (refresh only on workspace change)
+- **Media Status** - shows currently playing song title and artist with prev, play-pause and next buttons
 - **CPU status button** - shows Cpu usage, opens System Informer (refresh every 2s)
 - **Memory Stats button** - shows Memory usage and when hovering used and total memory in GB, opens Mem Reduct (refresh every 4s)
 - **Weather status** - shows weather icon and temperature in Celsius (refresh every 1h)
-- **Network status** - shows wifi or ethernet icon, download and upload speed in Bytes, opens action center using AHK (refresh every 2s)
+- **Network status** - shows wifi or ethernet icon, download and upload speed in Bytes, opens quick settings using AHK (refresh every 2s)
+- **Volume status** - shows system volume with slider when hover, opens sound output menu
 - **Battery status** - shows battery icon and actual percentage charge (refresh every 10s)
 - **Time status** - shows actual time in format 'HH:mm', opens notification panel
 
 
 
 ## Used
+
 Font: **CaskaydiaMono Nerd Font** <br>
-https://www.nerdfonts.com/font-downloads
+![favicon](https://github.com/user-attachments/assets/28ce628b-0034-4b0e-886c-db7ffba49931) https://www.nerdfonts.com/font-downloads
 
 Icons: **Icons8** <br>
-https://icons8.com/icons
+<img src="https://github.com/user-attachments/assets/3e0ef5d6-f239-4815-b934-17e2a426a3bf" width="18" height="18"> https://icons8.com/icons
 
 Scripts: **AutoHotkey**, **VBScript** (in the system) <br>
-https://www.autohotkey.com
+<img src="https://github.com/user-attachments/assets/185d9ddf-1ea5-44ac-b57f-798e0e2055d5" width="18" height="18"> https://www.autohotkey.com
 
 Cpu button open [System Informer](https://systeminformer.sourceforge.io/) 
 
@@ -74,7 +94,7 @@ Memory button open [Mem Reduct](https://github.com/henrypp/memreduct)
 
 ## Instalation
 If you don't want to make any modifications then download from the [releases](https://github.com/iAttaquer/.glzr/releases), but if you want to modify
-you have two versions. <br>One is in react and need internet to run `zebar/attaquer-buildless` and second in solid-js `zebar/attaquer-solid-ts`. This version need to be build.
+you have two versions. <br>One is in react and need internet to run `zebar/attaquer-buildless`(**non-updated version**) and second in solid-js `zebar/attaquer-solid-ts`. This version need to be build.
 Download and install [Node.js](https://nodejs.org/en/download/prebuilt-installer).
 Go to the `attaquer-solid-ts` directory:
 ```shell
@@ -90,7 +110,7 @@ npm run build
 ```
 Now you can activate widget using tray icon.
 
-You also need to download [AutoHotkey](https://www.autohotkey.com/) to be able to use search and network buttons.
+You also need to download [AutoHotkey](https://www.autohotkey.com/) to be able to use search, network buttons and other stuff.
 #### Quick installation of Ahk using the console:
 ```
 winget install AutoHotkey.AutoHotkey
