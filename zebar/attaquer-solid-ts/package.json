@@ -9,14 +9,14 @@
   "dependencies": {
     "@glzr/style-guide": "^1.1.0",
     "@kobalte/core": "^0.13.7",
-    "pnpm": "^9.13.2",
-    "solid-js": "1.9.2",
-    "zebar": "^2.6.1"
+    "pnpm": "^9.15.4",
+    "solid-js": "^1.9.5",
+    "zebar": "^2.7.0"
   },
   "devDependencies": {
     "rollup-plugin-copy": "^3.5.0",
     "typescript": "5.3.3",
-    "vite": "^5.4.8",
-    "vite-plugin-solid": "2.8.2"
+    "vite": "^6.2.2",
+    "vite-plugin-solid": "^2.11.6"
   }
 }

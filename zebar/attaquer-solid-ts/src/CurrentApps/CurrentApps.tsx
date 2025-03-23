@@ -9,9 +9,8 @@ interface CurrentAppsProps {
 }
 
 const CurrentApps: Component<CurrentAppsProps> = (props) => {
-
   const RenderChilds = (
-    child: GlazeWmOutput["allWorkspaces"][0]["children"][0]
+    child: GlazeWmOutput["allWorkspaces"][0]["children"][0],
   ) => {
     if (child.type === "window") {
       return <Application window={child} glazewm={props.glazewm} />;
@@ -30,8 +29,7 @@ const CurrentApps: Component<CurrentAppsProps> = (props) => {
             return RenderChilds(child);
           });
         } else {
-          workspace.children.forEach((child) => {
-          });
+          workspace.children.forEach((child) => {});
           return null;
         }
       })}

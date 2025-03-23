@@ -1,10 +1,11 @@
 import "./style.css";
 import { Component } from "solid-js";
 import { GlazeWmOutput } from "zebar";
+import { Window } from "glazewm";
 
 interface ApplicationProps {
   glazewm: GlazeWmOutput;
-  window: GlazeWmOutput["allWorkspaces"][0]["children"][0];
+  window: Window;
 }
 
 const Application: Component<ApplicationProps> = (props) => {
@@ -94,6 +95,7 @@ const Application: Component<ApplicationProps> = (props) => {
       <img src="./assets/icons/Feather-Launcher-32.png" class="app-icon" />
     ),
     dnplayer: <img src="./assets/icons/LDPlayer-9-32.png" class="app-icon" />,
+    Postman: <img src="./assets/icons/Postman-32.png" class="app-icon" />,
   };
   return (
     <button
