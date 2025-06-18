@@ -1,0 +1,48 @@
+{
+  "$schema": "https://github.com/glzr-io/zebar/raw/v3.1.0/resources/zpack-schema.json",
+  "name": "attaquer-solid-ts-battery",
+  "version": "0.0.0",
+  "description": "",
+  "tags": [],
+  "previewImages": [],
+  "repositoryUrl": "",
+  "widgets": [
+    {
+      "name": "battery-widget",
+      "htmlPath": "./dist/index.html",
+      "zOrder": "bottom_most",
+      "shownInTaskbar": false,
+      "focused": false,
+      "resizable": false,
+      "transparent": true,
+      "includeFiles": [
+        "**/**"
+      ],
+      "caching": {
+        "defaultDuration": 604800,
+        "rules": []
+      },
+      "privileges": {
+        "shellCommands": []
+      },
+      "presets": [
+        {
+          "name": "default",
+          "anchor": "top_left",
+          "offsetX": "50px",
+          "offsetY": "600px",
+          "width": "200px",
+          "height": "170px",
+          "monitorSelection": {
+            "type": "all"
+          },
+          "dockToEdge": {
+            "enabled": false,
+            "edge": null,
+            "windowMargin": "0px"
+          }
+        }
+      ]
+    }
+  ]
+}

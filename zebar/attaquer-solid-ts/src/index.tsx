@@ -17,17 +17,19 @@ import WeatherStatus from "./WeatherStatus/WeatherStatus";
 import NetworkStatus from "./NetworkStatus/NetworkStatus";
 import BatteryStatus from "./BatteryStatus/BatteryStatus";
 import TimeStatus from "./Time/TimeStatus";
+import Systray from "./Systray/Systray";
 
 const providers = zebar.createProviderGroup({
   glazewm: { type: "glazewm" },
-  cpu: { type: "cpu", refreshInterval: 2000 },
-  memory: { type: "memory", refreshInterval: 4000 },
+  cpu: { type: "cpu", refreshInterval: 3000 },
+  memory: { type: "memory", refreshInterval: 5000 },
   weather: { type: "weather", latitude: 50, longitude: 22 },
   network: { type: "network", refreshInterval: 2000 },
   battery: { type: "battery", refreshInterval: 10000 },
   date: { type: "date", formatting: "HH:mm" },
   media: { type: "media" },
   audio: { type: "audio" },
+  systray: { type: "systray" },
 });
 
 render(() => <App />, document.getElementById("root")!);
@@ -50,11 +52,12 @@ function App() {
       </div>
       <div class="right">
         <MediaStatus media={output.media} />
+        <Systray systray={output.systray} glazewm={output.glazewm} />
         <CpuStatus cpu={output.cpu} glazewm={output.glazewm} />
         <MemoryStatus memory={output.memory} glazewm={output.glazewm} />
         {output.weather && <WeatherStatus weather={output.weather} />}
         <NetworkStatus network={output.network} glazewm={output.glazewm} />
-        <VolumeStatus audio={output.audio} glazewm={output.glazewm}/>
+        <VolumeStatus audio={output.audio} glazewm={output.glazewm} />
         <BatteryStatus battery={output.battery} />
         <TimeStatus date={output.date} glazewm={output.glazewm} />
       </div>

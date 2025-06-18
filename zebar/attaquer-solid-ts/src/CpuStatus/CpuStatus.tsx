@@ -2,6 +2,7 @@ import "./style.css";
 import { Component } from "solid-js";
 import { CpuOutput } from "zebar";
 import { GlazeWmOutput } from "zebar";
+import * as zebar from "zebar";
 
 interface CpuStatusProps {
   cpu: CpuOutput;
@@ -16,22 +17,25 @@ const CpuStatus: Component<CpuStatusProps> = (props) => {
     else return "low-usage";
   };
   return (
-    <button
+    <div
       classList={{
         cpu: true,
         [getCpuUsageRate(Math.round(props.cpu?.usage))]: true,
       }}
       onClick={() => {
-        props.glazewm.runCommand(
-          "shell-exec %ProgramFiles%/SystemInformer/SystemInformer.exe"
+        zebar.shellExec(
+          "C:\\Program Files\\SystemInformer\\SystemInformer.exe",
         );
+        // props.glazewm.runCommand(
+        //   "shell-exec %ProgramFiles%/SystemInformer/SystemInformer.exe",
+        // );
       }}
     >
       <span class="content">
         <span class="i-cpu"></span>
         <span class="cpu-bar">{Math.round(props.cpu?.usage)}%</span>
       </span>
-    </button>
+    </div>
   );
 };
 

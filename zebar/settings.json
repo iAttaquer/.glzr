@@ -1,6 +1,10 @@
 {
-  "$schema": "https://github.com/glzr-io/zebar/raw/v2.1.0/resources/settings-schema.json",
+  "$schema": "https://github.com/glzr-io/zebar/raw/v3.1.0/resources/settings-schema.json",
   "startupConfigs": [
-    "attaquer-solid-ts\\top-bar.zebar.json"
+    {
+      "pack": "attaquer-solid-ts",
+      "widget": "top-bar",
+      "preset": "default"
+    }
   ]
 }

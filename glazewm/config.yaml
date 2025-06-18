@@ -24,7 +24,7 @@ general:
   # - 'cloak': Recommended. Hides windows with no animation and keeps them
   # visible in the taskbar.
   # - 'hide': Legacy method (v3.5 and earlier) that has a brief animation,
-  # but has stability issues with some apps. 
+  # but has stability issues with some apps.
   hide_method: 'hide'
 
 gaps:
@@ -109,6 +109,7 @@ window_rules:
 
       # Ignore rules for various 3rd-party apps.
       - window_process: { equals: 'PowerToys.PowerAccent' }
+
       - window_process: { equals: 'Lively' }
         window_class: { regex: 'HwndWrapper*' }
 
@@ -122,7 +123,7 @@ window_rules:
   - commands: ['move --workspace ']
     match:
     - window_process: { equals: 'Spotify' }
-  
+
   - commands: ['set-floating', 'size --width 1440 --height 810']
     match:
     - window_process: { equals: 'FanSpeedSetting' }
@@ -240,7 +241,7 @@ keybindings:
 
   - commands: ['shell-exec %ProgramFiles%/SystemInformer/SystemInformer.exe']
     bindings: ['alt+''']
-  
+
   - commands: ['shell-exec %ProgramFiles%/Mem Reduct/memreduct.exe']
     bindings: ['alt+;']
     # bindings: ['alt+OemQuotes']

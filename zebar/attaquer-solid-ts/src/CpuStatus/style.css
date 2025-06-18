@@ -1,10 +1,30 @@
 .cpu {
-  width: 3.1rem;
+  /* width: 3.1rem; */
+  /* height: 22px; */
+  display: inline-block;
+  border-radius: 4px;
+  padding: 0.2rem 0.3rem 0.2rem 0.2rem;
+  /* gap: 1.5rem; */
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+  &:active {
+    .content {
+      animation: appear 0.2s ease;
+      -webkit-animation: appear 0.2s ease;
+    }
+  }
+  &:hover {
+    animation: hoverbutton 0.1s ease forwards;
+    -webkit-animation: hoverbutton 0.1s ease forwards;
+  }
 }
 
 .i-cpu {
   font-size: 13px;
-  width: 14px;
+  width: 1rem;
+  /* width: 14px; */
 }
 
 .cpu-bar {
@@ -12,4 +32,31 @@
   align-items: center;
   text-align: center;
   width: 1.8rem;
+}
+button {
+  display: flex;
+  align-items: center;
+  text-shadow: 0 0 2px black;
+  margin: 0 1px 0 0;
+  padding: 0 3px 0 3px;
+  height: 22px;
+  color: #fff;
+  border: none;
+  background: none;
+  border-radius: 4px;
+  /* animation: unhoverbutton 0.1s ease forwards; */
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+  &:active {
+    .content {
+      animation: appear 0.2s ease;
+      -webkit-animation: appear 0.2s ease;
+    }
+  }
+}
+button:hover {
+  animation: hoverbutton 0.1s ease forwards;
+  -webkit-animation: hoverbutton 0.1s ease forwards;
 }

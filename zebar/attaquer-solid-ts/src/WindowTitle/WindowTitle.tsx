@@ -10,15 +10,16 @@ const WindowTitle: Component<WindowTitleProps> = (props) => {
   return (
     <>
       {props.glazewm?.focusedWorkspace.children.map(
-        (window) =>
-          window.hasFocus && (
+        (item) =>
+          "title" in item &&
+          item.hasFocus && (
             <div class="current-window">
-              {window.title &&
-                (window.title?.length > 90
-                  ? window.title.slice(0, 90) + "..."
-                  : window.title)}
+              {item.title &&
+                (item.title.length > 90
+                  ? item.title.slice(0, 90) + "..."
+                  : item.title)}
             </div>
-          )
+          ),
       )}
     </>
   );
