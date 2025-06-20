@@ -23,9 +23,11 @@ const CpuStatus: Component<CpuStatusProps> = (props) => {
         [getCpuUsageRate(Math.round(props.cpu?.usage))]: true,
       }}
       onClick={() => {
+        // zebar.shellExec("taskmgr"); // open task manager
         zebar.shellExec(
           "C:\\Program Files\\SystemInformer\\SystemInformer.exe",
         );
+        // old one:
         // props.glazewm.runCommand(
         //   "shell-exec %ProgramFiles%/SystemInformer/SystemInformer.exe",
         // );

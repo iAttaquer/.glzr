@@ -1,9 +1,68 @@
+.systray-container {
+  display: flex;
+  align-items: center;
+  gap: 1px;
+  margin: 0 2px 0 2px;
+  user-select: none;
+}
+
+.systray-toggle {
+  /* background: #aeaeae33; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  width: 22px;
+  height: 22px;
+  border-radius: 4px;
+}
+
+.systray-toggle:hover {
+  background-color: #aeaeae50;
+  box-shadow:
+    0 -1px 1px #9e9e9e44,
+    0 1px 1px #24242455;
+}
+
+.systray-toggle:active .content {
+  animation: appear 0.2s ease;
+  -webkit-animation: appear 0.2s ease;
+}
+
+.expand-icon {
+  width: 16px;
+  height: 16px;
+}
+
+.systray-toggle .content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.systray-toggle.expanded .content {
+  animation: clockwise2 0.3s ease-in-out forwards;
+}
+
+.systray-toggle.tucked .content {
+  animation: anticlockwise2 0.3s ease-in-out forwards;
+}
+
 .systray {
   display: flex;
   align-items: center;
   gap: 1px;
-  margin-right: 2px;
-  user-select: none;
+  overflow: hidden;
+  max-width: 0;
+  transition: max-width 0.4s ease-out;
+  -webkit-transition: max-width 0.4s ease-out;
+  -moz-transition: max-width 0.4s ease-out;
+  -ms-transition: max-width 0.4s ease-out;
+  -o-transition: max-width 0.4s ease-out;
+}
+
+.systray.expanded {
+  max-width: 500px;
 }
 
 .systray-icon-container {
@@ -14,6 +73,11 @@
   width: 22px;
   height: 22px;
   border-radius: 4px;
+}
+
+.systray-icon.clicked-animated {
+  animation: appear 0.2s ease;
+  -webkit-animation: appear 0.2s ease;
 }
 
 .systray-icon-container:hover {

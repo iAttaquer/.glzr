@@ -103,6 +103,7 @@ const Application: Component<ApplicationProps> = (props) => {
         element: true,
         focus: props.window.hasFocus,
       }}
+      title={props.window.title}
       onClick={() => {
         props.glazewm.runCommand(
           `shell-exec %userprofile%/.glzr/zebar/attaquer-solid-ts/dist/assets/scripts/FocusWindow.ahk ${props.window.handle}`,

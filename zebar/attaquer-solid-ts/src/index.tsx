@@ -26,7 +26,7 @@ const providers = zebar.createProviderGroup({
   weather: { type: "weather", latitude: 50, longitude: 22 },
   network: { type: "network", refreshInterval: 2000 },
   battery: { type: "battery", refreshInterval: 10000 },
-  date: { type: "date", formatting: "HH:mm" },
+  date: { type: "date", formatting: "HH:mm ccc d LLLL y" },
   media: { type: "media" },
   audio: { type: "audio" },
   systray: { type: "systray" },
