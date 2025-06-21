@@ -4,10 +4,16 @@
   align-items: center;
   font-size: 16px;
   padding: 1px 0 0 5px;
+  &.clicked-animated .content {
+    animation: appear 0.2s ease;
+  }
 }
 
 .search {
   width: 24px;
   padding: 1px 3px 2px;
   margin-right: 3px;
+  &.clicked-animated .content {
+    animation: appear 0.2s ease;
+  }
 }

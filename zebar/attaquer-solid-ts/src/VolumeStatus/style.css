@@ -1,6 +1,11 @@
 .volume {
   color: var(--pink);
 }
+.volume-icon {
+  &.clicked-animated .content {
+    animation: appear 0.2s ease;
+  }
+}
 .volume-status {
   display: flex;
   align-items: center;
@@ -22,11 +27,21 @@
   touch-action: none;
   width: 0;
   opacity: 0;
-  transition: width 0.4s ease, opacity 0.2s ease;
-  -webkit-transition: width 0.4s ease, opacity 0.2s ease;
-  -moz-transition: width 0.4s ease, opacity 0.2s ease;
-  -ms-transition: width 0.4s ease, opacity 0.2s ease;
-  -o-transition: width 0.4s ease, opacity 0.2s ease;
+  transition:
+    width 0.4s ease,
+    opacity 0.2s ease;
+  -webkit-transition:
+    width 0.4s ease,
+    opacity 0.2s ease;
+  -moz-transition:
+    width 0.4s ease,
+    opacity 0.2s ease;
+  -ms-transition:
+    width 0.4s ease,
+    opacity 0.2s ease;
+  -o-transition:
+    width 0.4s ease,
+    opacity 0.2s ease;
 }
 .SliderRoot.expanded {
   width: 130px;

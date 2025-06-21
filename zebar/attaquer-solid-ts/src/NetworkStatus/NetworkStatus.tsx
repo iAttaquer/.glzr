@@ -2,6 +2,7 @@ import "./style.css";
 import { Component } from "solid-js";
 import { NetworkOutput } from "zebar";
 import { GlazeWmOutput } from "zebar";
+import { useAnimatedClick } from "../hooks/useAnimatedClick";
 
 interface NetworkStatusProps {
   network: NetworkOutput;
@@ -9,6 +10,14 @@ interface NetworkStatusProps {
 }
 
 const NetworkStatus: Component<NetworkStatusProps> = (props) => {
+  const { isActive, handleClick } = useAnimatedClick();
+
+  const handleOpenActionCenterClick = () => {
+    handleClick();
+    props.glazewm.runCommand(
+      "shell-exec %userprofile%/.glzr/zebar/attaquer-solid-ts/dist/assets/scripts/OpenActionCenter.ahk",
+    );
+  };
   const getNetworkIcon = () => {
     switch (props.network?.defaultInterface.type) {
       case "ethernet":
@@ -71,12 +80,8 @@ const NetworkStatus: Component<NetworkStatusProps> = (props) => {
   };
   return (
     <button
-      class="network"
-      onClick={() => {
-        props.glazewm.runCommand(
-          "shell-exec %userprofile%/.glzr/zebar/attaquer-solid-ts/dist/assets/scripts/OpenActionCenter.ahk"
-        );
-      }}
+      class={`network ${isActive() ? "clicked-animated" : ""}`}
+      onClick={handleOpenActionCenterClick}
     >
       <span class="content">
         {getNetworkIcon()}

@@ -1,6 +1,7 @@
 import "./style.css";
 import { Component, For, createSignal } from "solid-js";
 import { SystrayOutput, GlazeWmOutput } from "zebar";
+import { useAnimatedClick } from "../hooks/useAnimatedClick";
 
 interface SystrayProps {
   systray: SystrayOutput;
@@ -9,7 +10,6 @@ interface SystrayProps {
 
 const Systray: Component<SystrayProps> = (props) => {
   const [expanded, setExpanded] = createSignal(true);
-  const [activeIconId, setActiveIconId] = createSignal<string | null>(null);
 
   return (
     <>
@@ -17,34 +17,31 @@ const Systray: Component<SystrayProps> = (props) => {
         {props.systray?.icons && (
           <div class={`systray ${expanded() ? "expanded" : ""}`}>
             <For each={props.systray?.icons}>
-              {(icon) => (
-                <div
-                  class="systray-icon-container"
-                  title={icon.tooltip}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    props.systray.onLeftClick(icon.id);
-
-                    setActiveIconId(icon.id);
-                    setTimeout(() => {
-                      setActiveIconId(null);
-                    }, 200);
-                  }}
-                  onContextMenu={(e) => {
-                    e.preventDefault();
-                    props.systray.onRightClick(icon.id);
-                    setActiveIconId(icon.id);
-                    setTimeout(() => {
-                      setActiveIconId(null);
-                    }, 200);
-                  }}
-                >
-                  <img
-                    class={`systray-icon ${activeIconId() === icon.id ? "clicked-animated" : ""}`}
-                    src={icon.iconUrl}
-                  />
-                </div>
-              )}
+              {(icon) => {
+                const { isActive: isIconActive, handleClick: handleIconClick } =
+                  useAnimatedClick();
+                return (
+                  <div
+                    class="systray-icon-container"
+                    title={icon.tooltip}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleIconClick();
+                      props.systray.onLeftClick(icon.id);
+                    }}
+                    onContextMenu={(e) => {
+                      e.preventDefault();
+                      handleIconClick();
+                      props.systray.onRightClick(icon.id);
+                    }}
+                  >
+                    <img
+                      class={`systray-icon ${isIconActive() ? "clicked-animated" : ""}`}
+                      src={icon.iconUrl}
+                    />
+                  </div>
+                );
+              }}
             </For>
           </div>
         )}

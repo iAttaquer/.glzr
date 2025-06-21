@@ -54,12 +54,12 @@ function App() {
         <MediaStatus media={output.media} />
         <Systray systray={output.systray} glazewm={output.glazewm} />
         <CpuStatus cpu={output.cpu} glazewm={output.glazewm} />
-        <MemoryStatus memory={output.memory} glazewm={output.glazewm} />
+        <MemoryStatus memory={output.memory} />
         {output.weather && <WeatherStatus weather={output.weather} />}
         <NetworkStatus network={output.network} glazewm={output.glazewm} />
         <VolumeStatus audio={output.audio} glazewm={output.glazewm} />
         <BatteryStatus battery={output.battery} />
-        <TimeStatus date={output.date} glazewm={output.glazewm} />
+        <TimeStatus date={output.date} />
       </div>
     </div>
   );

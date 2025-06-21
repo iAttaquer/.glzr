@@ -9,12 +9,6 @@
   -moz-border-radius: 4px;
   -ms-border-radius: 4px;
   -o-border-radius: 4px;
-  &:active {
-    .content {
-      animation: appear 0.2s ease;
-      -webkit-animation: appear 0.2s ease;
-    }
-  }
   &:hover {
     animation: hoverbutton 0.1s ease forwards;
     -webkit-animation: hoverbutton 0.1s ease forwards;
@@ -33,6 +27,15 @@
   text-align: center;
   width: 1.8rem;
 }
+
+.cpu.clicked-animated .content {
+  animation: appear 0.2s ease;
+  -webkit-animation: appear 0.2s ease;
+  -moz-animation: appear 0.2s ease;
+  -ms-animation: appear 0.2s ease;
+  -o-animation: appear 0.2s ease;
+}
+
 button {
   display: flex;
   align-items: center;
@@ -49,13 +52,8 @@ button {
   -moz-border-radius: 4px;
   -ms-border-radius: 4px;
   -o-border-radius: 4px;
-  &:active {
-    .content {
-      animation: appear 0.2s ease;
-      -webkit-animation: appear 0.2s ease;
-    }
-  }
 }
+
 button:hover {
   animation: hoverbutton 0.1s ease forwards;
   -webkit-animation: hoverbutton 0.1s ease forwards;

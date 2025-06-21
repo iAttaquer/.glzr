@@ -2,6 +2,7 @@ import "./style.css";
 import { Component } from "solid-js";
 import { GlazeWmOutput } from "zebar";
 import { Window } from "glazewm";
+import { useAnimatedClick } from "../hooks/useAnimatedClick";
 
 interface ApplicationProps {
   glazewm: GlazeWmOutput;
@@ -9,6 +10,15 @@ interface ApplicationProps {
 }
 
 const Application: Component<ApplicationProps> = (props) => {
+  const { isActive, handleClick } = useAnimatedClick();
+
+  const handleAppClick = () => {
+    handleClick();
+    props.glazewm.runCommand(
+      `shell-exec %userprofile%/.glzr/zebar/attaquer-solid-ts/dist/assets/scripts/FocusWindow.ahk ${props.window.handle}`,
+    );
+  };
+
   const IconApps = {
     process: (
       <img src="./assets/icons/icons8-application-32.png" class="app-icon" />
@@ -102,13 +112,10 @@ const Application: Component<ApplicationProps> = (props) => {
       classList={{
         element: true,
         focus: props.window.hasFocus,
+        "clicked-animated": isActive(),
       }}
       title={props.window.title}
-      onClick={() => {
-        props.glazewm.runCommand(
-          `shell-exec %userprofile%/.glzr/zebar/attaquer-solid-ts/dist/assets/scripts/FocusWindow.ahk ${props.window.handle}`,
-        );
-      }}
+      onClick={handleAppClick}
     >
       {IconApps[props.window.processName] ?? IconApps["process"]}
     </button>

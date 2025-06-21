@@ -39,7 +39,7 @@
   -o-transition: max-width 0.4s ease;
 }
 .media-text:hover {
-  max-width:450px;
+  max-width: 450px;
 }
 .prev,
 .play-pause,
@@ -50,4 +50,10 @@
   width: 18px;
   height: 18px;
   font-size: 15px;
+  &:active {
+    .content {
+      animation: appear 0.2s ease;
+      -webkit-animation: appear 0.2s ease;
+    }
+  }
 }

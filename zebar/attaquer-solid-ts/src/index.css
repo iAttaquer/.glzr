@@ -177,12 +177,12 @@ button {
   -moz-border-radius: 4px;
   -ms-border-radius: 4px;
   -o-border-radius: 4px;
-  &:active {
+  /* &:active {
     .content {
       animation: appear 0.2s ease;
       -webkit-animation: appear 0.2s ease;
     }
-  }
+  } */
 }
 button:hover {
   animation: hoverbutton 0.1s ease forwards;

@@ -1,11 +1,11 @@
 import "./style.css";
 import { Component } from "solid-js";
 import { MemoryOutput } from "zebar";
-import { GlazeWmOutput } from "zebar";
+import * as zebar from "zebar";
+import { useAnimatedClick } from "../hooks/useAnimatedClick";
 
 interface MemoryStatusProps {
   memory: MemoryOutput;
-  glazewm: GlazeWmOutput;
 }
 
 const MemoryStatus: Component<MemoryStatusProps> = (props) => {
@@ -15,17 +15,21 @@ const MemoryStatus: Component<MemoryStatusProps> = (props) => {
     else if (usage > 45) return "medium-usage";
     else return "low-usage";
   };
+
+  const { isActive, handleClick } = useAnimatedClick();
+
+  const handleMemoryClick = (e: MouseEvent) => {
+    handleClick();
+    zebar.shellExec("C:\\Program Files\\Mem Reduct\\memreduct.exe");
+  };
   return (
     <button
       classList={{
         memory: true,
         [getMemoryUsageRate(props.memory?.usage)]: true,
+        "clicked-animated": isActive(),
       }}
-      onClick={() => {
-        props.glazewm.runCommand(
-          "shell-exec %ProgramFiles%/Mem Reduct/memreduct.exe"
-        );
-      }}
+      onClick={handleMemoryClick}
     >
       <span class="content">
         <span class="i"></span>

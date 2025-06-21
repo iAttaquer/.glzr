@@ -79,6 +79,30 @@ const BatteryStatus: Component<BatteryStatusProps> = (props) => {
     if (chargePercent > 15) return "high-usage";
     return "extreme-usage";
   };
+
+  const BatteryTime = () => {
+    let result = "";
+    if (props.battery?.state === "charging") {
+      const hours = Math.trunc(props.battery?.timeTillFull / 3600000);
+      if (hours) {
+        result += "Charging: " + hours + "h ";
+      }
+      result +=
+        Math.trunc((props.battery?.timeTillFull % 3600000) / 60000) +
+        "min left";
+    } else if (props.battery?.state === "discharging") {
+      const hours = Math.trunc(props.battery?.timeTillEmpty / 3600000);
+      if (hours) {
+        result += "Discharging: " + hours + "h ";
+      }
+      result +=
+        Math.trunc((props.battery?.timeTillEmpty % 3600000) / 60000) +
+        "min left";
+    } else {
+      result += "idle";
+    }
+    return result;
+  };
   return (
     <div
       classList={{
@@ -86,6 +110,7 @@ const BatteryStatus: Component<BatteryStatusProps> = (props) => {
         battery: true,
         [getBatteryUsageRate(props.battery?.chargePercent)]: true,
       }}
+      title={BatteryTime()}
     >
       {getBatteryIcon()}
       {Math.round(props.battery?.chargePercent)}%

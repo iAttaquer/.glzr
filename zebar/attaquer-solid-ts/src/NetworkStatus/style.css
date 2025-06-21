@@ -2,6 +2,10 @@
   color: var(--blue);
   padding: 0 5px 0 5px;
 
+  &.clicked-animated .content {
+    animation: appear 0.2s ease;
+  }
+
   .ii {
     font-size: 7px;
     width: 0;

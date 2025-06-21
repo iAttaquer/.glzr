@@ -1,22 +1,26 @@
 import "./style.css";
 import { Component } from "solid-js";
 import { DateOutput } from "zebar";
-import { GlazeWmOutput } from "zebar";
 import * as zebar from "zebar";
+import { useAnimatedClick } from "../hooks/useAnimatedClick";
 
 interface TimeStatusProps {
   date: DateOutput;
-  glazewm: GlazeWmOutput;
 }
 
 const TimeStatus: Component<TimeStatusProps> = (props) => {
+  const { isActive, handleClick } = useAnimatedClick();
+
+  const handleTimeClick = () => {
+    handleClick();
+    zebar.shellExec("explorer.exe", "ms-actioncenter://");
+  };
+
   return (
     <button
-      class="date"
+      class={`date ${isActive() ? "clicked-animated" : ""}`}
       title={props.date?.formatted}
-      onClick={() => {
-        zebar.shellExec("explorer.exe", "ms-actioncenter://");
-      }}
+      onClick={handleTimeClick}
     >
       <span class="content">
         <img src="./assets/icons/icons8-time-32.png"></img>
