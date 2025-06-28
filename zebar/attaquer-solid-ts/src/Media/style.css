@@ -6,11 +6,6 @@
   overflow: hidden;
   position: relative;
   border-radius: 3px;
-  transition: max-width 0.4s ease;
-  -webkit-transition: max-width 0.4s ease;
-  -moz-transition: max-width 0.4s ease;
-  -ms-transition: max-width 0.4s ease;
-  -o-transition: max-width 0.4s ease;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   -ms-border-radius: 3px;
@@ -30,17 +25,12 @@
   -o-border-radius: 2px;
 }
 .media-text {
-  max-width: 130px;
+  max-width: 200px;
   margin-left: 3px;
-  transition: max-width 0.4s ease;
-  -webkit-transition: max-width 0.4s ease;
-  -moz-transition: max-width 0.4s ease;
-  -ms-transition: max-width 0.4s ease;
-  -o-transition: max-width 0.4s ease;
+  white-space: nowrap;
+  overflow: hidden;
 }
-.media-text:hover {
-  max-width: 450px;
-}
+
 .prev,
 .play-pause,
 .next {

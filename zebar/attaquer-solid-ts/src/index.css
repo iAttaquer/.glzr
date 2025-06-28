@@ -224,6 +224,9 @@ img {
 
 .center {
   justify-self: center;
+  flex-grow: 1;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 .right {

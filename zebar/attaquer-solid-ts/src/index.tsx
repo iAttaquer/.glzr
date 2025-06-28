@@ -46,12 +46,12 @@ function App() {
         <SearchButton glazewm={output.glazewm} />
         <Workspaces glazewm={output.glazewm} />
         <TilingBinding glazewm={output.glazewm} />
+        <MediaStatus media={output.media} />
       </div>
       <div class="center">
         <CurrentApps glazewm={output.glazewm} />
       </div>
       <div class="right">
-        <MediaStatus media={output.media} />
         <Systray systray={output.systray} glazewm={output.glazewm} />
         <CpuStatus cpu={output.cpu} glazewm={output.glazewm} />
         <MemoryStatus memory={output.memory} />

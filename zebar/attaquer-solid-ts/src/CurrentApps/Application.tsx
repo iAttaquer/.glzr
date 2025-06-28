@@ -106,6 +106,8 @@ const Application: Component<ApplicationProps> = (props) => {
     ),
     dnplayer: <img src="./assets/icons/LDPlayer-9-32.png" class="app-icon" />,
     Postman: <img src="./assets/icons/Postman-32.png" class="app-icon" />,
+    rider64: <img src="./assets/icons/rider64-32.png" class="app-icon" />,
+    firefox: <img src="./assets/icons/Firefox-32.png" class="app-icon" />,
   };
   return (
     <button
