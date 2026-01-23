@@ -38,6 +38,7 @@ const Application: Component<ApplicationProps> = (props) => {
       <img src="./assets/icons/icons8-terminal-32.png" class="app-icon" />
     ),
     zed: <img src="./assets/icons/zed.png" class="app-icon" />,
+    Zed: <img src="./assets/icons/zed-nightly.png" class="app-icon" />,
     Cursor: <img src="./assets/icons/cursor.png" class="app-icon" />,
     Code: (
       <img

@@ -28,7 +28,7 @@ general:
   hide_method: 'hide'
 
 gaps:
-  scale_with_dpi: false
+  scale_with_dpi: true
   # Gap between adjacent windows.
   inner_gap: '1px'
 

@@ -21,7 +21,7 @@ import Systray from "./Systray/Systray";
 
 const providers = zebar.createProviderGroup({
   glazewm: { type: "glazewm" },
-  cpu: { type: "cpu", refreshInterval: 3000 },
+  cpu: { type: "cpu", refreshInterval: 5000 },
   memory: { type: "memory", refreshInterval: 5000 },
   weather: { type: "weather" },
   network: { type: "network", refreshInterval: 2000 },

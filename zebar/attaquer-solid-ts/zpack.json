@@ -53,7 +53,7 @@
           "width": "100%",
           "height": "26px",
           "monitorSelection": {
-            "type": "secondary"
+            "type": "primary"
           },
           "dockToEdge": {
             "enabled": false,

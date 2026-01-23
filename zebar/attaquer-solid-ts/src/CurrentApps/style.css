@@ -26,3 +26,28 @@
   white-space: nowrap;
   overflow: hidden;
 }
+
+.app-entry {
+  margin: 6px 0;
+}
+
+.template {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1px;
+  flex-wrap: nowrap;
+}
+
+.slide-up {
+  transform: translateY(12px);
+  opacity: 0;
+  animation: slideUp 300ms cubic-bezier(0.22, 0.9, 0.31, 1) both;
+}
+
+@keyframes slideUp {
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
