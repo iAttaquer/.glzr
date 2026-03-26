@@ -84,12 +84,12 @@ window_behavior:
 
 workspaces:
   - name: '1'
-    bind_to_monitor: 1
+    bind_to_monitor: 0
   - name: '2'
   - name: '3'
   - name: ''
   - name: 'web'
-    bind_to_monitor: 0
+    bind_to_monitor: 1
     keep_alive: false
   - name: '6'
   - name: '7'
@@ -240,7 +240,7 @@ keybindings:
     bindings: ['alt+enter']
 
   - commands: ['shell-exec %ProgramFiles%/SystemInformer/SystemInformer.exe']
-    bindings: ['alt+''']
+    bindings: ["alt+'"]
 
   - commands: ['shell-exec %ProgramFiles%/Mem Reduct/memreduct.exe']
     bindings: ['alt+;']

@@ -41,6 +41,10 @@
           {
             "program": "C:\\Program Files\\Mem Reduct\\memreduct.exe",
             "argsRegex": ""
+          },
+          {
+            "program": "start",
+            "argsRegex": ".*"
           }
         ]
       },
