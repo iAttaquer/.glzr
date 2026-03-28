@@ -3,6 +3,7 @@
 :root {
   /* Accent — indigo */
   --accent: #818cf8;
+  --accent: #3884ff;
   --accent-bg: rgba(129, 140, 248, 0.1);
   --accent-border: rgba(129, 140, 248, 0.28);
 
@@ -16,6 +17,7 @@
   /* Text */
   --t1: rgba(210, 215, 255, 0.95);
   --t2: rgba(140, 155, 200, 0.58);
+  --t3: rgba(210, 215, 255, 0.8);
 
   /* Status colors — softer palette */
   --color: #86efac;
@@ -185,6 +187,7 @@ button:hover {
 }
 .right {
   justify-self: end;
+  padding-right: 0.225rem;
 }
 
 /* ─── Usage classes ──────────────────────────────────────── */

@@ -16,6 +16,10 @@ const TimeStatus: Component<TimeStatusProps> = (props) => {
     zebar.shellExec("explorer.exe", "ms-actioncenter://");
   };
 
+  const parts = () => props.date?.formatted?.split(" ") ?? [];
+  const time = () => parts()[0] ?? "00:00";
+  const date = () => parts()[2] && parts()[3] ? `${parts()[2]} ${parts()[3].substring(0, 3)}` : "";
+
   return (
     <button
       class={`date ${isActive() ? "clicked-animated" : ""}`}
@@ -23,8 +27,11 @@ const TimeStatus: Component<TimeStatusProps> = (props) => {
       onClick={handleTimeClick}
     >
       <span class="content">
-        <img src="./assets/icons/icons8-time-32.png"></img>
-        <span class="time">{props.date?.formatted.substring(0, 5)}</span>
+        <span class="time-icon">󰥔</span>
+        <span class="time-block">
+          <span class="time-value">{time()}</span>
+          <span class="time-date">{date()}</span>
+        </span>
       </span>
     </button>
   );
