@@ -1,14 +1,24 @@
 .logo {
   color: var(--accent);
-  width: 1.5rem;
   align-items: center;
   font-size: 1rem;
-  padding: 0.0625rem 0 0 0.3125rem;
-  transition: opacity 0.15s ease;
+  background: var(--btn-dark-bg);
+  border: 1px solid var(--btn-dark-border);
+  border-radius: var(--radius-md);
+  padding: 0.07rem 0.6rem 0.07rem 0.35rem;
+  height: 1.638675rem;
+  width: 1.638675rem;
+  transition: background 0.12s ease;
 
   &:hover {
-    opacity: 0.75;
-    background: transparent;
+    animation: none !important;
+    box-shadow: none !important;
+    background: var(--btn-dark-hover-bg);
+  }
+
+  &:active {
+    animation: none !important;
+    background: var(--btn-dark-active-bg);
   }
 
   &.clicked-animated .content {
@@ -17,14 +27,28 @@
 }
 
 .search {
-  width: 1.5rem;
-  padding: 0.0625rem 0.1875rem 0.125rem;
-  margin-right: 0.1875rem;
+  align-items: center;
+  background: var(--btn-dark-bg);
+  border: 1px solid var(--btn-dark-border);
+  border-radius: var(--radius-md);
+  padding: 0.07rem 0.2rem;
+  height: 1.638675rem;
+  width: 1.638675rem;
   color: var(--t2);
-  transition: color 0.15s ease, background 0.15s ease;
+  transition:
+    background 0.12s ease,
+    color 0.12s ease;
 
   &:hover {
+    animation: none !important;
+    box-shadow: none !important;
+    background: var(--btn-dark-hover-bg);
     color: var(--t1);
+  }
+
+  &:active {
+    animation: none !important;
+    background: var(--btn-dark-active-bg);
   }
 
   &.clicked-animated .content {
