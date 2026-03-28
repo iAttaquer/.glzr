@@ -21,19 +21,68 @@ const BatteryStatus: Component<BatteryStatusProps> = (props) => {
   const getBatteryIcon = () => {
     switch (props.battery?.state) {
       case "full":
-        return <img src="./assets/icons/icons8-battery-max-charged-32.png" class="i-battery" width="16" height="16" />;
+        return (
+          <img
+            src="./assets/icons/icons8-battery-max-charged-32.svg"
+            class="i-battery"
+            width="16"
+            height="16"
+          />
+        );
       case "charging":
-        return <img src="./assets/icons/icons8-battery-charging-32.png" class="i-battery" width="16" height="16" />;
+        return (
+          <img
+            src="./assets/icons/icons8-battery-charging-32.svg"
+            class="i-battery"
+            width="16"
+            height="16"
+          />
+        );
       case "discharging":
         if (props.battery.chargePercent > 90)
-          return <img src="./assets/icons/icons8-battery-4-32.png" class="i-battery" width="16" height="16" />;
+          return (
+            <img
+              src="./assets/icons/icons8-battery-4-32.svg"
+              class="i-battery"
+              width="16"
+              height="16"
+            />
+          );
         if (props.battery.chargePercent > 70)
-          return <img src="./assets/icons/icons8-battery-3-32.png" class="i-battery" width="16" height="16" />;
+          return (
+            <img
+              src="./assets/icons/icons8-battery-3-32.svg"
+              class="i-battery"
+              width="16"
+              height="16"
+            />
+          );
         if (props.battery.chargePercent > 40)
-          return <img src="./assets/icons/icons8-battery-2-32.png" class="i-battery" width="16" height="16" />;
+          return (
+            <img
+              src="./assets/icons/icons8-battery-2-32.svg"
+              class="i-battery"
+              width="16"
+              height="16"
+            />
+          );
         if (props.battery.chargePercent > 15)
-          return <img src="./assets/icons/icons8-battery-1-32.png" class="i-battery" width="16" height="16" />;
-        return <img src="./assets/icons/icons8-battery-32.png" class="i-battery" width="16" height="16" />;
+          return (
+            <img
+              src="./assets/icons/icons8-battery-1-32.svg"
+              class="i-battery"
+              width="16"
+              height="16"
+            />
+          );
+        return (
+          <img
+            src="./assets/icons/icons8-battery-32.svg"
+            class="i-battery"
+            width="16"
+            height="16"
+          />
+        );
     }
   };
 
