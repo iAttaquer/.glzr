@@ -1,0 +1,40 @@
+.workspaces {
+  display: flex;
+  align-items: center;
+  gap: 0.125rem;
+  padding: 0 0.125rem;
+}
+
+.workspace {
+  width: 1.5rem;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+  color: var(--t2);
+  transition: background 0.18s ease, color 0.18s ease, border-color 0.18s ease;
+  border: 1px solid transparent;
+}
+
+.workspace-icon {
+  display: inline-block;
+  pointer-events: none;
+}
+
+.displayed {
+  background: var(--s1);
+  border-color: var(--border);
+  color: var(--t1);
+}
+
+.focused {
+  background: var(--accent-bg);
+  border-color: var(--accent-border);
+  color: var(--accent);
+
+  span {
+    animation: appear 0.2s ease;
+  }
+}
+
+.i-brave {
+  margin-top: 0.25rem;
+}

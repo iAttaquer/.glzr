@@ -1,0 +1,33 @@
+.logo {
+  color: var(--accent);
+  width: 1.5rem;
+  align-items: center;
+  font-size: 1rem;
+  padding: 0.0625rem 0 0 0.3125rem;
+  transition: opacity 0.15s ease;
+
+  &:hover {
+    opacity: 0.75;
+    background: transparent;
+  }
+
+  &.clicked-animated .content {
+    animation: appear 0.2s ease;
+  }
+}
+
+.search {
+  width: 1.5rem;
+  padding: 0.0625rem 0.1875rem 0.125rem;
+  margin-right: 0.1875rem;
+  color: var(--t2);
+  transition: color 0.15s ease, background 0.15s ease;
+
+  &:hover {
+    color: var(--t1);
+  }
+
+  &.clicked-animated .content {
+    animation: appear 0.2s ease;
+  }
+}

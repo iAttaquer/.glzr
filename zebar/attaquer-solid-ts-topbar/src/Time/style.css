@@ -1,0 +1,16 @@
+.date {
+  width: 3.8rem;
+  color: var(--accent);
+  white-space: nowrap;
+  overflow: hidden;
+  letter-spacing: 0.02em;
+
+  &.clicked-animated .content {
+    animation: appear 0.2s ease;
+  }
+}
+
+img {
+  width: 1.0625rem;
+  height: 1.0625rem;
+}

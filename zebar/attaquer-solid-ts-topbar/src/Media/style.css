@@ -1,0 +1,48 @@
+.media {
+  font-size: 0.75rem;
+  max-width: 31.25rem;
+  white-space: nowrap;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+  border-radius: var(--radius-sm);
+}
+
+.progress-play {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 1px;
+  background-color: var(--accent);
+  opacity: 0.6;
+  border-radius: 1px;
+}
+
+.media-text {
+  max-width: 12.5rem;
+  margin-left: 0.1875rem;
+  white-space: nowrap;
+  overflow: hidden;
+  color: var(--t1);
+}
+
+.prev,
+.play-pause,
+.next {
+  padding-top: 0.0625rem;
+  align-items: center;
+  justify-content: center;
+  width: 1.125rem;
+  height: 1.125rem;
+  font-size: 0.9375rem;
+  color: var(--t2);
+  transition: color 0.15s ease, background 0.15s ease;
+
+  &:hover {
+    color: var(--t1);
+  }
+
+  &:active .content {
+    animation: appear 0.2s ease;
+  }
+}

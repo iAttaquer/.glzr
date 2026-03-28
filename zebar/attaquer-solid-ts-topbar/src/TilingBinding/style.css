@@ -1,0 +1,31 @@
+.toggle-tiling-direction {
+  width: 1.5rem;
+  justify-content: center;
+  color: var(--t2);
+  border-radius: var(--radius-sm);
+  transition: color 0.15s ease, background 0.15s ease;
+
+  &:hover {
+    color: var(--t1);
+  }
+}
+
+.tiling-direction {
+  padding-top: 0.0625rem;
+  text-indent: -0.125rem;
+  font-size: 0.8125rem;
+}
+
+.horizontal span {
+  animation: clockwise 0.2s ease-in-out forwards;
+}
+
+.vertical span {
+  animation: anticlockwise 0.2s ease-in-out forwards;
+}
+
+.binding-mode {
+  margin-right: 0.25rem;
+  color: var(--accent);
+  font-size: 0.75rem;
+}
