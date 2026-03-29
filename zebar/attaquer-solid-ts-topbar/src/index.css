@@ -163,7 +163,7 @@ button:hover {
   display: flex;
   align-items: center;
   user-select: none;
-  margin: 0 0.125rem;
+  /*margin: 0 0.125rem;*/
   height: 100%;
 }
 
