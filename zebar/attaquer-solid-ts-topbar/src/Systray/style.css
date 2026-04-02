@@ -2,7 +2,6 @@
   display: flex;
   align-items: center;
   gap: 0.0625rem;
-  margin: 0 0.125rem;
   user-select: none;
 }
 
@@ -11,16 +10,24 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  width: 1.375rem;
-  height: 1.375rem;
-  border-radius: var(--radius-sm);
-  color: var(--t2);
-  transition: background 0.15s ease, color 0.15s ease;
+  width: 1.638675rem;
+  height: 1.638675rem;
+  background: var(--btn-dark-bg);
+  border: 1px solid var(--btn-dark-border);
+  border-radius: var(--radius-md);
+  color: var(--txt3);
+  transition:
+    background 0.12s ease,
+    color 0.12s ease;
 }
 
 .systray-toggle:hover {
-  background: var(--s2);
-  color: var(--t1);
+  background: var(--btn-dark-hover-bg);
+  color: var(--txt2);
+}
+
+.systray-toggle:active {
+  background: var(--btn-dark-active-bg);
 }
 
 .systray-toggle:active .content {
@@ -67,7 +74,10 @@
   width: 1.375rem;
   height: 1.375rem;
   border-radius: var(--radius-sm);
-  transition: background 0.15s ease;
+  border: 1px solid transparent;
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease;
 }
 
 .systray-icon.clicked-animated {
@@ -75,7 +85,8 @@
 }
 
 .systray-icon-container:hover {
-  background: var(--s2);
+  background: var(--s1);
+  border-color: var(--border);
 }
 
 .systray-icon {

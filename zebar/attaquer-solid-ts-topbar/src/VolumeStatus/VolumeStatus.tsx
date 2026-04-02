@@ -2,7 +2,6 @@ import "./style.css";
 import { Component, createSignal, createEffect } from "solid-js";
 import { AudioOutput } from "zebar";
 import { GlazeWmOutput } from "zebar";
-import { Slider } from "@kobalte/core/slider";
 import { useAnimatedClick } from "../hooks/useAnimatedClick";
 
 interface VolumeStatusProps {
@@ -14,19 +13,50 @@ const VolumeStatus: Component<VolumeStatusProps> = (props) => {
   const [volume, setVolume] = createSignal(0);
   const [expanded, setExpanded] = createSignal(false);
 
+  let lastInteraction = 0;
+  let isDragging = false;
+  let trackRef: HTMLDivElement | undefined;
+
   createEffect(() => {
-    if (props.audio?.defaultPlaybackDevice) {
-      setVolume(props.audio?.defaultPlaybackDevice.volume);
-    } else {
-      setVolume(0);
+    const v = props.audio?.defaultPlaybackDevice?.volume;
+    if (v !== undefined && Date.now() - lastInteraction > 1200) {
+      setVolume(v);
     }
   });
 
-  const handleSliderChange = (value: number) => {
-    if (props.audio?.defaultPlaybackDevice) {
-      props.audio?.setVolume(value);
-      setVolume(value);
-    }
+  const applyVolume = (clientX: number) => {
+    if (!trackRef) return;
+    const rect = trackRef.getBoundingClientRect();
+    const pos = Math.min(1, Math.max(0, (clientX - rect.left) / rect.width));
+    const val = Math.round(pos * 100);
+    lastInteraction = Date.now();
+    setVolume(val);
+    props.audio?.setVolume(val);
+  };
+
+  const handlePointerDown = (e: PointerEvent) => {
+    e.preventDefault();
+    isDragging = true;
+    (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId);
+    applyVolume(e.clientX);
+  };
+
+  const handlePointerMove = (e: PointerEvent) => {
+    if (!isDragging) return;
+    applyVolume(e.clientX);
+  };
+
+  const handlePointerUp = () => {
+    isDragging = false;
+  };
+
+  const handleWheel = (e: WheelEvent) => {
+    e.preventDefault();
+    const delta = e.deltaY < 0 ? 2 : -2;
+    const val = Math.min(100, Math.max(0, volume() + delta));
+    lastInteraction = Date.now();
+    setVolume(val);
+    props.audio?.setVolume(val);
   };
 
   const { isActive, handleClick } = useAnimatedClick();
@@ -35,50 +65,26 @@ const VolumeStatus: Component<VolumeStatusProps> = (props) => {
     handleClick();
     props.glazewm.runCommand(
       "shell-exec %userprofile%/.glzr/zebar/attaquer-solid-ts/dist/assets/scripts/OpenSoundOutput.ahk",
-      // "shell-exec %userprofile%/AppData/Roaming/zebar/downloads/iattaquer.attaquer@1.0.1/dist/assets/scripts/OpenSoundOutput.ahk",
     );
   };
 
   const VolumeIcon = () => {
     const vol = volume();
     if (vol > 80) {
-      return (
-        <img
-          src="./assets/icons/icons8-audio-3-32.png"
-          height={23}
-          width={23}
-        />
-      );
+      return <img src="./assets/icons/icons8-audio-3-32.png" height={23} width={23} />;
     } else if (vol > 40) {
-      return (
-        <img
-          src="./assets/icons/icons8-audio-2-32.png"
-          height={23}
-          width={23}
-        />
-      );
+      return <img src="./assets/icons/icons8-audio-2-32.png" height={23} width={23} />;
     } else if (vol > 0) {
-      return (
-        <img
-          src="./assets/icons/icons8-audio-1-32.png"
-          height={23}
-          width={23}
-        />
-      );
+      return <img src="./assets/icons/icons8-audio-1-32.png" height={23} width={23} />;
     } else {
-      return (
-        <img
-          src="./assets/icons/icons8-audio-0-32.png"
-          height={23}
-          width={23}
-        />
-      );
+      return <img src="./assets/icons/icons8-audio-0-32.png" height={23} width={23} />;
     }
   };
+
   return (
     <>
       {props.audio?.defaultPlaybackDevice && (
-        <div class="template volume">
+        <div class="template volume" onWheel={handleWheel}>
           <button
             class={`volume-icon ${isActive() ? "clicked-animated" : ""}`}
             onClick={handleVolumeClick}
@@ -86,31 +92,21 @@ const VolumeStatus: Component<VolumeStatusProps> = (props) => {
             <span class="content">{VolumeIcon()}</span>
           </button>
           <div
-            class={`volume-status`}
+            class="volume-status"
             onMouseEnter={() => setExpanded(true)}
-            onMouseLeave={() => setExpanded(false)}
+            onMouseLeave={() => { if (!isDragging) setExpanded(false); }}
           >
-            <div class="volume-text">
-              {props.audio?.defaultPlaybackDevice.volume}%
-            </div>
-            <Slider
-              class={`SliderRoot ${expanded() ? "expanded" : ""}`}
-              step={2}
-              minValue={0}
-              maxValue={100}
-              value={[volume()]}
-              onChange={([newValue]) => handleSliderChange(newValue)}
+            <div class="volume-text">{volume()}</div>
+            <div
+              class={`vol-track ${expanded() ? "expanded" : ""}`}
+              ref={trackRef}
+              onPointerDown={handlePointerDown}
+              onPointerMove={handlePointerMove}
+              onPointerUp={handlePointerUp}
+              onPointerCancel={handlePointerUp}
             >
-              <Slider.Track class="SliderTrack">
-                <Slider.Fill class="SliderRange" />
-                <Slider.Thumb class="SliderThumb">
-                  <Slider.Input />
-                </Slider.Thumb>
-                <Slider.Thumb class="SliderThumb">
-                  <Slider.Input />
-                </Slider.Thumb>
-              </Slider.Track>
-            </Slider>
+              <div class="vol-fill" style={{ width: `${volume()}%` }} />
+            </div>
           </div>
         </div>
       )}

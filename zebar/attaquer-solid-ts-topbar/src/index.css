@@ -1,7 +1,6 @@
 @import "https://www.nerdfonts.com/assets/css/webfont.css";
 
 :root {
-  /* Accent — indigo */
   --accent: #818cf8;
   --accent: #3884ff;
   --accent-bg: rgba(129, 140, 248, 0.1);
@@ -18,6 +17,9 @@
   --t1: rgba(210, 215, 255, 0.95);
   --t2: rgba(140, 155, 200, 0.58);
   --t3: rgba(210, 215, 255, 0.8);
+  --txt1: rgba(255, 255, 255, 0.95);
+  --txt2: rgba(255, 255, 255, 0.9);
+  --txt3: rgba(255, 255, 255, 0.8);
 
   /* Status colors — softer palette */
   --color: #86efac;
@@ -114,7 +116,7 @@ body {
 #root {
   height: 100%;
   align-items: center;
-  background: rgba(10, 10, 14, 0.93);
+  background: rgba(10, 10, 14, 0.73);
 }
 
 i {

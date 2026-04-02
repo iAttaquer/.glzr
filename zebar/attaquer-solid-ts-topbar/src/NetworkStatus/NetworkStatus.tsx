@@ -24,7 +24,7 @@ const NetworkStatus: Component<NetworkStatusProps> = (props) => {
       case "ethernet":
         return (
           <img
-            src="./assets/icons/icons8-wired-network-32.png"
+            src="./assets/icons/icons8-wired-network-64.png"
             class="i-eth"
             width="20"
             height="20"
