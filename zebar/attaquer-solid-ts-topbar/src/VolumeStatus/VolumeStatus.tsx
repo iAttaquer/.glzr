@@ -70,15 +70,66 @@ const VolumeStatus: Component<VolumeStatusProps> = (props) => {
 
   const VolumeIcon = () => {
     const vol = volume();
-    if (vol > 80) {
-      return <img src="./assets/icons/icons8-audio-3-32.png" height={23} width={23} />;
-    } else if (vol > 40) {
-      return <img src="./assets/icons/icons8-audio-2-32.png" height={23} width={23} />;
-    } else if (vol > 0) {
-      return <img src="./assets/icons/icons8-audio-1-32.png" height={23} width={23} />;
-    } else {
-      return <img src="./assets/icons/icons8-audio-0-32.png" height={23} width={23} />;
-    }
+    const level = vol > 65 ? 3 : vol > 40 ? 2 : vol > 0 ? 1 : 0;
+    const active = "rgba(255,255,255,0.8)";
+    const muted = "rgba(255,255,255,0.25)";
+
+    return (
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 32 32"
+        width="20"
+        height="20"
+      >
+        <polygon points="4,11 10,11 17,5 17,27 10,21 4,21" fill={active} />
+        {level === 0 ? (
+          <>
+            <line
+              x1="21"
+              y1="11"
+              x2="29"
+              y2="21"
+              stroke={active}
+              stroke-width="2"
+              stroke-linecap="round"
+            />
+            <line
+              x1="29"
+              y1="11"
+              x2="21"
+              y2="21"
+              stroke={active}
+              stroke-width="2"
+              stroke-linecap="round"
+            />
+          </>
+        ) : (
+          <>
+            <path
+              d="M20,12 Q23,16 20,20"
+              fill="none"
+              stroke-linecap="round"
+              stroke={level >= 1 ? active : muted}
+              stroke-width="2"
+            />
+            <path
+              d="M22.5,9.5 Q27.5,16 22.5,22.5"
+              fill="none"
+              stroke-linecap="round"
+              stroke={level >= 2 ? active : muted}
+              stroke-width="2"
+            />
+            <path
+              d="M25,7 Q32,16 25,25"
+              fill="none"
+              stroke-linecap="round"
+              stroke={level >= 3 ? active : muted}
+              stroke-width="2"
+            />
+          </>
+        )}
+      </svg>
+    );
   };
 
   return (
@@ -94,7 +145,9 @@ const VolumeStatus: Component<VolumeStatusProps> = (props) => {
           <div
             class="volume-status"
             onMouseEnter={() => setExpanded(true)}
-            onMouseLeave={() => { if (!isDragging) setExpanded(false); }}
+            onMouseLeave={() => {
+              if (!isDragging) setExpanded(false);
+            }}
           >
             <div class="volume-text">{volume()}</div>
             <div
