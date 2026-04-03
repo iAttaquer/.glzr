@@ -31,7 +31,6 @@
   }
 
   .labels {
-    width: 3rem;
     display: flex;
     flex-direction: column;
   }
@@ -39,13 +38,13 @@
   .label {
     display: flex;
     gap: 0.1875rem;
-    justify-content: space-between;
     font-size: 0.5rem;
     color: rgba(255, 255, 255, 0.95);
   }
 
   .net-line {
-    width: 2.7rem;
+    width: 2.3rem;
+    word-spacing: -0.13rem;
     justify-content: end;
   }
 }
