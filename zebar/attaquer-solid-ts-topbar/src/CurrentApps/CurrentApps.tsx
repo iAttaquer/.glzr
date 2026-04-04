@@ -15,10 +15,34 @@ interface CurrentAppsProps {
 
 const CurrentApps: Component<CurrentAppsProps> = (props) => {
   const seen = new Set<string | number>();
+  const entryRefs: Record<string, HTMLDivElement> = {};
 
   const [currentWorkspace, setCurrentWorkspace] = createSignal<string | null>(
     null,
   );
+  const [refVersion, setRefVersion] = createSignal(0);
+
+  const focusedHandle = () => {
+    const displayedWorkspace =
+      props.glazewm?.allWorkspaces.find((w) => w.isDisplayed);
+    if (!displayedWorkspace) return null;
+    const focused = flattenWorkspaceChildren(displayedWorkspace).find(
+      (e) => (e.child as any).hasFocus,
+    );
+    return focused?.handle ?? null;
+  };
+
+  const pillStyle = () => {
+    refVersion();
+    const handle = focusedHandle();
+    if (!handle) return { display: "none" };
+    const el = entryRefs[handle];
+    if (!el || el.offsetWidth === 0) return { display: "none" };
+    return {
+      transform: `translateX(${el.offsetLeft}px)`,
+      width: `${el.offsetWidth}px`,
+    };
+  };
 
   let animationTimer: number | undefined;
 
@@ -97,6 +121,7 @@ const CurrentApps: Component<CurrentAppsProps> = (props) => {
 
   return (
     <div class="template">
+      <div class="apps-pill" style={pillStyle()} />
       <For each={props.glazewm?.allWorkspaces ?? []}>
         {(workspace) => {
           if (!workspace.isDisplayed) return null;
@@ -113,6 +138,10 @@ const CurrentApps: Component<CurrentAppsProps> = (props) => {
 
                 return (
                   <div
+                    ref={(el) => {
+                      entryRefs[handle] = el;
+                      setRefVersion((v) => v + 1);
+                    }}
                     classList={{ "app-entry": true, "slide-up": shouldAnimate }}
                     style={{ "animation-delay": `${idx() * STAGGER_MS}ms` }}
                     onanimationend={(e) =>

@@ -71,8 +71,8 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  width: 1.375rem;
-  height: 1.375rem;
+  width: 1.425rem;
+  height: 1.425rem;
   border-radius: var(--radius-sm);
   border: 1px solid transparent;
   transition:

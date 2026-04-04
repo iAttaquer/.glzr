@@ -2,16 +2,43 @@
   display: flex;
   align-items: center;
   gap: 0.125rem;
-  padding: 0 0.125rem;
+  padding: 0 0.1rem;
+  position: relative;
+  border: 1px solid var(--btn-dark-border);
+  border-radius: var(--radius-sm);
+  background: var(--btn-dark-bg);
+  height: 1.638675rem;
+}
+
+.workspace-pill {
+  position: absolute;
+  left: 0;
+  top: 2px;
+  bottom: 2px;
+  /*width: 1.425rem;*/
+  /*height: 1.425rem;*/
+  background: var(--s2);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: var(--radius-sm);
+  pointer-events: none;
+  transition:
+    transform 0.32s cubic-bezier(0.4, 0, 0.2, 1),
+    width 0.32s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .workspace {
-  width: 1.5rem;
+  width: 1.425rem;
+  position: relative;
   justify-content: center;
   border-radius: var(--radius-sm);
-  color: var(--t2);
-  transition: background 0.18s ease, color 0.18s ease, border-color 0.18s ease;
+  color: var(--txt5);
   border: 1px solid transparent;
+  transition: color 0.18s ease;
+}
+
+.workspace:hover {
+  border-color: var(--border);
+  background: var(--s1);
 }
 
 .workspace-icon {
@@ -20,15 +47,11 @@
 }
 
 .displayed {
-  background: var(--s1);
-  border-color: var(--border);
-  color: var(--t1);
+  color: var(--txt3);
 }
 
 .focused {
-  background: var(--accent-bg);
-  border-color: var(--accent-border);
-  color: var(--accent);
+  color: var(--txt1);
 
   span {
     animation: appear 0.2s ease;

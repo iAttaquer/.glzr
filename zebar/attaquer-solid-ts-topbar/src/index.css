@@ -20,8 +20,10 @@
   --txt1: rgba(255, 255, 255, 0.95);
   --txt2: rgba(255, 255, 255, 0.9);
   --txt3: rgba(255, 255, 255, 0.8);
+  --txt4: rgba(255, 255, 255, 0.7);
+  --txt5: rgba(255, 255, 255, 0.6);
 
-  /* Status colors — softer palette */
+  /* Status colors */
   --color: #86efac;
   --green: #86efac;
   --b-yellow: #fef08a;
@@ -34,7 +36,6 @@
   --purple: #a78bfa;
   --blue: #67e8f9;
   --night-blue: #60a5fa;
-  --windows-color: var(--accent);
 
   /* Border radius */
   --radius-sm: 0.3125rem;
@@ -224,6 +225,7 @@ button:hover {
 .center {
   justify-self: center;
   flex-grow: 1;
+  padding: 0 2.5rem;
   overflow: hidden;
   white-space: nowrap;
   animation: slideInDown 0.6s ease-out both;
