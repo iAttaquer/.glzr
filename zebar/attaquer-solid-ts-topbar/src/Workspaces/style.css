@@ -51,6 +51,7 @@
 .workspace:hover {
   border-color: var(--border);
   background: var(--s1);
+  color: var(--txt3);
 }
 
 .workspace-icon {
@@ -87,4 +88,35 @@
     transform: translateY(0);
     opacity: 1;
   }
+}
+
+.workspace-add {
+  width: 1.425rem;
+  position: relative;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+  color: var(--txt3);
+  border: 1px solid transparent;
+  opacity: 0.6;
+
+  transition:
+    color 0.18s ease,
+    opacity 0.18s ease,
+    border-color 0.18s ease,
+    background 0.18s ease;
+  z-index: 2;
+}
+
+.workspace-add:hover {
+  border-color: var(--border);
+  background: var(--s1);
+  opacity: 1;
+  color: var(--txt3);
+}
+
+.workspace-add-icon {
+  display: inline-block;
+  pointer-events: none;
+  font-size: 1rem;
+  line-height: 1;
 }

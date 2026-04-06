@@ -2,9 +2,11 @@ import "./style.css";
 import {
   Component,
   For,
+  Show,
   createEffect,
   createMemo,
   createSignal,
+  untrack,
 } from "solid-js";
 import { GlazeWmOutput } from "zebar";
 
@@ -18,9 +20,16 @@ const PAD = 0.1; // rem
 
 const EASE_STD = "cubic-bezier(0.4, 0, 0.2, 1)";
 
+const MAX_WORKSPACES = 10;
+
 const Workspaces: Component<WorkspacesProps> = (props) => {
   // DOM refs — used for FLIP position capture and pill placement.
   const buttonRefs: Record<string, HTMLButtonElement> = {};
+
+  let addButtonRef: HTMLButtonElement | undefined;
+  let prevAddVisibleRef = false;
+  const [addEntering, setAddEntering] = createSignal(false);
+
   const [names, setNames] = createSignal<string[]>([], {
     equals: (a, b) => a.length === b.length && a.every((n, i) => n === b[i]),
   });
@@ -43,16 +52,28 @@ const Workspaces: Component<WorkspacesProps> = (props) => {
   };
 
   const groupBgStyle = () => {
-    const n = names().length;
+    let n = names().length;
+    if (nextAvailableWorkspace() !== null) n += 1;
     if (n === 0) return { display: "none" };
     const width = n * BTN_W + (n - 1) * GAP + 2 * PAD;
     return { width: `${width}rem` };
+  };
+
+  const nextAvailableWorkspace = () => {
+    const active = new Set(
+      (props.glazewm?.allWorkspaces ?? []).map((w) => w.name),
+    );
+    for (let i = 1; i <= MAX_WORKSPACES; i++) {
+      if (!active.has(String(i))) return String(i);
+    }
+    return null;
   };
 
   createEffect(() => {
     const current = props.glazewm?.currentWorkspaces ?? [];
     const currentNames = current.map((w) => w.name);
     const prevNames = prevNamesRef;
+    const isInitialLoad = prevNames.length === 0;
 
     const savedLeft = new Map<string, number>();
     if (prevNames.length > 0) {
@@ -61,6 +82,9 @@ const Workspaces: Component<WorkspacesProps> = (props) => {
         if (el) savedLeft.set(name, el.offsetLeft);
       }
     }
+
+    const savedAddLeft = addButtonRef?.offsetLeft;
+    const wasAddVisible = prevAddVisibleRef;
 
     if (prevNames.length > 0) {
       for (const name of currentNames) {
@@ -72,8 +96,14 @@ const Workspaces: Component<WorkspacesProps> = (props) => {
 
     prevNamesRef = currentNames;
     setNames(currentNames);
+    prevAddVisibleRef = untrack(() => nextAvailableWorkspace() !== null);
 
-    if (savedLeft.size > 0) {
+    const shouldAnimate =
+      savedLeft.size > 0 ||
+      savedAddLeft !== undefined ||
+      (!isInitialLoad && !wasAddVisible && prevAddVisibleRef);
+
+    if (shouldAnimate) {
       queueMicrotask(() => {
         for (const name of currentNames) {
           const el = buttonRefs[name];
@@ -92,6 +122,23 @@ const Workspaces: Component<WorkspacesProps> = (props) => {
             ],
             { duration: 300, easing: EASE_STD },
           );
+        }
+
+        if (addButtonRef && savedAddLeft !== undefined) {
+          const delta = savedAddLeft - addButtonRef.offsetLeft;
+          if (Math.abs(delta) >= 0.5) {
+            addButtonRef.animate(
+              [
+                { transform: `translateX(${delta}px)` },
+                { transform: "translateX(0)" },
+              ],
+              { duration: 300, easing: EASE_STD },
+            );
+          }
+        }
+
+        if (!isInitialLoad && !wasAddVisible && addButtonRef) {
+          setAddEntering(true);
         }
       });
     }
@@ -137,6 +184,25 @@ const Workspaces: Component<WorkspacesProps> = (props) => {
           );
         }}
       </For>
+
+      <Show when={nextAvailableWorkspace() !== null}>
+        <button
+          ref={(el) => (addButtonRef = el)}
+          classList={{
+            "workspace-add": true,
+            "ws-enter": addEntering(),
+          }}
+          onAnimationEnd={(e) => {
+            if (e.animationName === "ws-slide-up") setAddEntering(false);
+          }}
+          onClick={() => {
+            const next = nextAvailableWorkspace();
+            if (next) props.glazewm.runCommand(`focus --workspace ${next}`);
+          }}
+        >
+          <span class="workspace-add-icon">+</span>
+        </button>
+      </Show>
     </div>
   );
 };
