@@ -2,6 +2,9 @@ import "./style.css";
 import { Component, createSignal, onCleanup } from "solid-js";
 import { MediaOutput } from "zebar";
 
+const RING_RADIUS = 9;
+const RING_CIRCUMFERENCE = 2 * Math.PI * RING_RADIUS;
+
 interface MediaStatusProps {
   media: MediaOutput;
 }
@@ -20,19 +23,20 @@ const MediaStatus: Component<MediaStatusProps> = (props) => {
   }>({ direction: "forward", isPaused: false, startTime: 0 });
   const [scrollDistance, setScrollDistance] = createSignal(0);
 
+  const ringOffset = () => {
+    const session = props.media?.currentSession;
+    if (!session?.endTime) return RING_CIRCUMFERENCE;
+    const progress = Math.min(1, Math.max(0, session.position / session.endTime));
+    return RING_CIRCUMFERENCE * (1 - progress);
+  };
+
   const MediaIcons = {
     media: (
-      <img
-        src="./assets/icons/icons8-musical-note-32.png"
-        height={23}
-        width={23}
-      />
+      <img src="./assets/icons/icons8-musical-note-32.png" class="media-icon" />
     ),
-    Brave: (
-      <img src="./assets/icons/icons8-brave-32.png" height={23} width={23} />
-    ),
+    Brave: <img src="./assets/icons/icons8-brave-32.png" class="media-icon" />,
     "Spotify.exe": (
-      <img src="./assets/icons/icons8-spotify-32.png" height={23} width={23} />
+      <img src="./assets/icons/icons8-spotify-32.png" class="media-icon" />
     ),
   };
 
@@ -156,16 +160,42 @@ const MediaStatus: Component<MediaStatusProps> = (props) => {
           >
             <span class="content">󰒮</span>
           </button>
-          <button
-            class="play-pause"
-            onClick={() => {
-              props.media?.togglePlayPause();
-            }}
-          >
-            <span class="content">
-              {props.media?.currentSession.isPlaying ? "󰏤" : "󰐊"}
-            </span>
-          </button>
+          <div class="play-pause-container">
+            <svg
+              class="media-ring"
+              width="22"
+              height="22"
+              viewBox="0 0 22 22"
+            >
+              <circle
+                class="media-ring-track"
+                cx="11"
+                cy="11"
+                r={RING_RADIUS}
+              />
+              <circle
+                class="media-ring-progress"
+                cx="11"
+                cy="11"
+                r={RING_RADIUS}
+                transform="rotate(-90 11 11)"
+                style={{
+                  "stroke-dasharray": `${RING_CIRCUMFERENCE}`,
+                  "stroke-dashoffset": `${ringOffset()}`,
+                }}
+              />
+            </svg>
+            <button
+              class="play-pause"
+              onClick={() => {
+                props.media?.togglePlayPause();
+              }}
+            >
+              <span class="content">
+                {props.media?.currentSession.isPlaying ? "󰏤" : "󰐊"}
+              </span>
+            </button>
+          </div>
           <button
             class="next"
             onClick={() => {
@@ -183,10 +213,6 @@ const MediaStatus: Component<MediaStatusProps> = (props) => {
               {props.media?.currentSession?.artist}
             </span>
           </div>
-          <div
-            class="progress-play"
-            style={`width: ${(props.media?.currentSession?.position / props.media?.currentSession?.endTime) * 100}%`}
-          ></div>
         </div>
       )}
     </>
