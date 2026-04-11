@@ -51,10 +51,32 @@
   }
 }
 
+.bm-enter {
+  animation: bm-slide-up 320ms cubic-bezier(0, 0, 0.2, 1) both !important;
+}
+
+@keyframes bm-slide-up {
+  from {
+    transform: translateY(150%);
+    opacity: 0;
+    max-width: 0;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+    max-width: 8rem;
+    padding-left: 0.35rem;
+    padding-right: 0.35rem;
+  }
+}
+
 .binding-mode {
   display: flex;
   align-items: center;
   gap: 0.2rem;
+  overflow: hidden;
   background: var(--btn-dark-bg);
   border: 1px solid var(--btn-dark-border);
   border-radius: var(--radius-md);
