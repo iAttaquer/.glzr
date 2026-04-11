@@ -51,6 +51,14 @@ const Workspaces: Component<WorkspacesProps> = (props) => {
     };
   };
 
+  const containerWidth = () => {
+    let n = names().length;
+    if (nextAvailableWorkspace() !== null) n += 1;
+    if (n === 0) return {};
+    const width = n * BTN_W + (n - 1) * GAP + 2 * PAD;
+    return { width: `${width}rem` };
+  };
+
   const groupBgStyle = () => {
     let n = names().length;
     if (nextAvailableWorkspace() !== null) n += 1;
@@ -145,7 +153,7 @@ const Workspaces: Component<WorkspacesProps> = (props) => {
   });
 
   return (
-    <div class="workspaces">
+    <div class="workspaces" style={containerWidth()}>
       <div class="workspace-group-bg" style={groupBgStyle()} />
       <div class="workspace-pill" style={pillStyle()} />
 

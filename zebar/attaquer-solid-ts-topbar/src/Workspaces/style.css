@@ -7,6 +7,7 @@
   height: 1.638675rem;
   border-radius: var(--radius-sm);
   overflow: hidden;
+  transition: width 0.32s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .workspace-group-bg {
@@ -39,6 +40,7 @@
 
 .workspace {
   width: 1.425rem;
+  flex-shrink: 0;
   position: relative;
   justify-content: center;
   border-radius: var(--radius-sm);
@@ -92,6 +94,7 @@
 
 .workspace-add {
   width: 1.425rem;
+  flex-shrink: 0;
   position: relative;
   justify-content: center;
   border-radius: var(--radius-sm);
