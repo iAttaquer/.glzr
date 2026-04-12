@@ -1,5 +1,5 @@
 import "./style.css";
-import { Component, createSignal, createEffect } from "solid-js";
+import { Component, createSignal, createEffect, on } from "solid-js";
 import { AudioOutput } from "zebar";
 import { GlazeWmOutput } from "zebar";
 import { useAnimatedClick } from "../hooks/useAnimatedClick";
@@ -17,12 +17,16 @@ const VolumeStatus: Component<VolumeStatusProps> = (props) => {
   let isDragging = false;
   let trackRef: HTMLDivElement | undefined;
 
-  createEffect(() => {
-    const v = props.audio?.defaultPlaybackDevice?.volume;
-    if (v !== undefined && Date.now() - lastInteraction > 1200) {
-      setVolume(v);
-    }
-  });
+  createEffect(
+    on(
+      () => props.audio?.defaultPlaybackDevice?.volume,
+      (v) => {
+        if (v !== undefined && Date.now() - lastInteraction > 1200) {
+          setVolume(v);
+        }
+      },
+    ),
+  );
 
   const applyVolume = (clientX: number) => {
     if (!trackRef) return;
