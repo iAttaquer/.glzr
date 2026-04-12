@@ -51,23 +51,7 @@ const Workspaces: Component<WorkspacesProps> = (props) => {
     };
   };
 
-  const containerWidth = () => {
-    let n = names().length;
-    if (nextAvailableWorkspace() !== null) n += 1;
-    if (n === 0) return {};
-    const width = n * BTN_W + (n - 1) * GAP + 2 * PAD;
-    return { width: `${width}rem` };
-  };
-
-  const groupBgStyle = () => {
-    let n = names().length;
-    if (nextAvailableWorkspace() !== null) n += 1;
-    if (n === 0) return { display: "none" };
-    const width = n * BTN_W + (n - 1) * GAP + 2 * PAD;
-    return { width: `${width}rem` };
-  };
-
-  const nextAvailableWorkspace = () => {
+  const nextAvailableWorkspace = createMemo(() => {
     const active = new Set(
       (props.glazewm?.allWorkspaces ?? []).map((w) => w.name),
     );
@@ -75,7 +59,15 @@ const Workspaces: Component<WorkspacesProps> = (props) => {
       if (!active.has(String(i))) return String(i);
     }
     return null;
-  };
+  });
+
+  const containerDimensions = createMemo(() => {
+    let n = names().length;
+    if (nextAvailableWorkspace() !== null) n += 1;
+    if (n === 0) return { container: {} as Record<string, string>, groupBg: { display: "none" } as Record<string, string> };
+    const width = `${n * BTN_W + (n - 1) * GAP + 2 * PAD}rem`;
+    return { container: { width }, groupBg: { width } };
+  });
 
   createEffect(() => {
     const current = props.glazewm?.currentWorkspaces ?? [];
@@ -153,8 +145,8 @@ const Workspaces: Component<WorkspacesProps> = (props) => {
   });
 
   return (
-    <div class="workspaces" style={containerWidth()}>
-      <div class="workspace-group-bg" style={groupBgStyle()} />
+    <div class="workspaces" style={containerDimensions().container}>
+      <div class="workspace-group-bg" style={containerDimensions().groupBg} />
       <div class="workspace-pill" style={pillStyle()} />
 
       <For each={names()}>
