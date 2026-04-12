@@ -41,7 +41,8 @@
   stroke-width: 3;
   stroke-linecap: round;
   opacity: 0.7;
-  transition: stroke-dashoffset 0.6s ease;
+  will-change: stroke-dashoffset;
+  transition: stroke-dashoffset 0.15s linear;
 }
 
 .media-text {

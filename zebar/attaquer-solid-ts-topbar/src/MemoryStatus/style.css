@@ -44,7 +44,8 @@
       fill: none;
       stroke-width: 3;
       stroke-linecap: round;
-      transition: stroke-dashoffset 0.4s ease;
+      will-change: stroke-dashoffset;
+      transition: stroke-dashoffset 0.2s ease;
     }
   }
 
