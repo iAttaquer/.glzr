@@ -9,26 +9,14 @@ interface NetworkStatusProps {
   glazewm: GlazeWmOutput;
 }
 
-const formatSpeed = (bytes: number): string => {
-  const kb = bytes / 1024;
-  if (kb >= 1024) {
-    const mb = kb / 1024;
-    if (mb >= 1024) {
-      return `${(mb / 1024).toFixed(1)} GB`;
-    }
-    return `${mb >= 100 ? Math.round(mb) : mb.toFixed(1)} MB`;
-  }
-  return `${Math.round(kb)} KB`;
-};
-
 const NetworkStatus: Component<NetworkStatusProps> = (props) => {
   const { isActive, handleClick } = useAnimatedClick();
 
   const handleOpenActionCenterClick = () => {
     handleClick();
     props.glazewm.runCommand(
-      "shell-exec %userprofile%/.glzr/zebar/attaquer-solid-ts/dist/assets/scripts/OpenActionCenter.ahk",
-      // "shell-exec %userprofile%/AppData/Roaming/zebar/downloads/iattaquer.attaquer@1.0.1/dist/assets/scripts/OpenActionCenter.ahk",
+      "shell-exec %userprofile%/.glzr/zebar/attaquer-solid-ts/dist/topbar-old/assets/scripts/OpenActionCenter.ahk",
+      // "shell-exec %userprofile%/AppData/Roaming/zebar/downloads/iattaquer.attaquer@1.0.1/dist/topbar-old/assets/scripts/OpenActionCenter.ahk",
     );
   };
   const getNetworkIcon = () => {
@@ -36,7 +24,7 @@ const NetworkStatus: Component<NetworkStatusProps> = (props) => {
       case "ethernet":
         return (
           <img
-            src="./assets/icons/icons8-wired-network-64.png"
+            src="./assets/icons/icons8-wired-network-32.png"
             class="i-eth"
             width="20"
             height="20"
@@ -102,13 +90,15 @@ const NetworkStatus: Component<NetworkStatusProps> = (props) => {
           <span class="label">
             <span class="ii"></span>
             <span class="net-line">
-              {formatSpeed(props.network?.traffic.received.bytes ?? 0)}
+              {props.network?.traffic.received.siValue}{" "}
+              {props.network?.traffic.received.siUnit}
             </span>
           </span>
           <span class="label">
             <span class="ii"></span>
             <span class="net-line">
-              {formatSpeed(props.network?.traffic.transmitted.bytes ?? 0)}
+              {props.network?.traffic.transmitted.siValue}{" "}
+              {props.network?.traffic.transmitted.siUnit}
             </span>
           </span>
         </div>

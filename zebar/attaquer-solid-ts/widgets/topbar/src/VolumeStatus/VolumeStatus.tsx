@@ -68,7 +68,7 @@ const VolumeStatus: Component<VolumeStatusProps> = (props) => {
   const handleVolumeClick = () => {
     handleClick();
     props.glazewm.runCommand(
-      "shell-exec %userprofile%/.glzr/zebar/attaquer-solid-ts/dist/assets/scripts/OpenSoundOutput.ahk",
+      "shell-exec %userprofile%/.glzr/zebar/attaquer-solid-ts/dist/topbar/assets/scripts/OpenSoundOutput.ahk",
     );
   };
 

@@ -3,8 +3,12 @@
   "version": "0.0.0",
   "description": "",
   "scripts": {
-    "build": "vite build",
-    "dev": "vite build --watch"
+    "build": "npm run build:topbar && npm run build:topbar-old",
+    "build:topbar": "vite build --config vite.config.topbar.ts",
+    "build:topbar-old": "vite build --config vite.config.topbar-old.ts",
+    "dev": "npm run dev:topbar",
+    "dev:topbar": "vite build --watch --config vite.config.topbar.ts",
+    "dev:topbar-old": "vite build --watch --config vite.config.topbar-old.ts"
   },
   "dependencies": {
     "@glzr/style-guide": "^1.1.0",

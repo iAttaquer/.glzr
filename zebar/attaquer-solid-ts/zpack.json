@@ -4,22 +4,106 @@
   "version": "1.0.1",
   "description": "for 1080p resolution, bar height is 32px on 125% system scale, autohotkey needed for several things to work",
   "tags": [],
-  "previewImages": [
-    "Preview1.png"
-  ],
+  "previewImages": ["Preview1.png"],
   "repositoryUrl": "https://github.com/iAttaquer/.glzr",
   "widgets": [
     {
       "name": "top-bar",
-      "htmlPath": "./dist/index.html",
+      "htmlPath": "./dist/topbar/index.topbar.html",
       "zOrder": "normal",
       "shownInTaskbar": false,
       "focused": false,
       "resizable": false,
       "transparent": true,
-      "includeFiles": [
-        "dist/**"
-      ],
+      "includeFiles": ["dist/topbar/**"],
+      "caching": {
+        "defaultDuration": 604800,
+        "rules": []
+      },
+      "privileges": {
+        "shellCommands": [
+          {
+            "program": "C:\\Program Files\\SystemInformer\\SystemInformer.exe",
+            "argsRegex": ""
+          },
+          {
+            "program": "explorer.exe",
+            "argsRegex": "ms-actioncenter://"
+          },
+          {
+            "program": "taskmgr",
+            "argsRegex": ""
+          },
+          {
+            "program": "C:\\Program Files\\Mem Reduct\\memreduct.exe",
+            "argsRegex": ""
+          },
+          {
+            "program": "start",
+            "argsRegex": ".*"
+          }
+        ]
+      },
+      "presets": [
+        {
+          "name": "1080p",
+          "anchor": "top_left",
+          "offsetX": "0px",
+          "offsetY": "0px",
+          "width": "100%",
+          "height": "26px",
+          "monitorSelection": {
+            "type": "primary"
+          },
+          "dockToEdge": {
+            "enabled": false,
+            "edge": null,
+            "windowMargin": "0px"
+          }
+        },
+        {
+          "name": "1440p",
+          "anchor": "top_left",
+          "offsetX": "0px",
+          "offsetY": "0px",
+          "width": "100%",
+          "height": "38px",
+          "monitorSelection": {
+            "type": "primary"
+          },
+          "dockToEdge": {
+            "enabled": false,
+            "edge": null,
+            "windowMargin": "0px"
+          }
+        },
+        {
+          "name": "default3",
+          "anchor": "top_left",
+          "offsetX": "0px",
+          "offsetY": "0px",
+          "width": "100%",
+          "height": "32px",
+          "monitorSelection": {
+            "type": "secondary"
+          },
+          "dockToEdge": {
+            "enabled": false,
+            "edge": null,
+            "windowMargin": "0px"
+          }
+        }
+      ]
+    },
+    {
+      "name": "top-bar-old",
+      "htmlPath": "./dist/topbar-old/index.topbar-old.html",
+      "zOrder": "normal",
+      "shownInTaskbar": false,
+      "focused": false,
+      "resizable": false,
+      "transparent": true,
+      "includeFiles": ["dist/topbar-old/**"],
       "caching": {
         "defaultDuration": 604800,
         "rules": []
