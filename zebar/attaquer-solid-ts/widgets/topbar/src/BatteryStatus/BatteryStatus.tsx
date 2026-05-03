@@ -97,16 +97,16 @@ const BatteryStatus: Component<BatteryStatusProps> = (props) => {
   const BatteryTime = () => {
     let result = "";
     if (props.battery?.state === "charging") {
-      const hours = Math.trunc(props.battery?.timeTillFull / 3600000);
+      const hours = Math.trunc((props.battery.timeTillFull ?? 0) / 3600000);
       if (hours) result += "Charging: " + hours + "h ";
       result +=
-        Math.trunc((props.battery?.timeTillFull % 3600000) / 60000) +
+        Math.trunc(((props.battery?.timeTillFull ?? 0) % 3600000) / 60000) +
         "min left";
     } else if (props.battery?.state === "discharging") {
-      const hours = Math.trunc(props.battery?.timeTillEmpty / 3600000);
+      const hours = Math.trunc((props.battery.timeTillEmpty ?? 0) / 3600000);
       if (hours) result += "Discharging: " + hours + "h ";
       result +=
-        Math.trunc((props.battery?.timeTillEmpty % 3600000) / 60000) +
+        Math.trunc(((props.battery?.timeTillEmpty ?? 0) % 3600000) / 60000) +
         "min left";
     } else {
       result += "idle";

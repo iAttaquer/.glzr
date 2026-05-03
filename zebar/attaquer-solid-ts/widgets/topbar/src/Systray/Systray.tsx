@@ -5,7 +5,7 @@ import { useAnimatedClick } from "../hooks/useAnimatedClick";
 
 interface SystrayProps {
   systray: SystrayOutput;
-  glazewm: GlazeWmOutput;
+  glazewm: GlazeWmOutput | null;
 }
 
 const Systray: Component<SystrayProps> = (props) => {

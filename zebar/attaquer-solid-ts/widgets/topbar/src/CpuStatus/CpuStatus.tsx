@@ -7,7 +7,7 @@ import { useAnimatedClick } from "../hooks/useAnimatedClick";
 
 interface CpuStatusProps {
   cpu: CpuOutput;
-  glazewm: GlazeWmOutput;
+  glazewm: GlazeWmOutput | null;
 }
 
 const RADIUS = 9;

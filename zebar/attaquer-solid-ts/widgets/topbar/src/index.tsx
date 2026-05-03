@@ -1,6 +1,7 @@
 /* @refresh reload */
 import "./index.css";
 import { render } from "solid-js/web";
+import { Show } from "solid-js";
 import { createStore } from "solid-js/store";
 import * as zebar from "zebar";
 import WindowsButton from "./Buttons/WindowsButton";
@@ -48,20 +49,44 @@ function App() {
         <SearchButton glazewm={output.glazewm} />
         <Workspaces glazewm={output.glazewm} />
         <TilingBinding glazewm={output.glazewm} />
-        <MediaStatus media={output.media} />
+        <Show when={output.media}>
+          {(media) => <MediaStatus media={media()} />}
+        </Show>
       </div>
       <div class="center">
-        <CurrentApps glazewm={output.glazewm} />
+        <Show when={output.glazewm}>
+          {(glazewm) => <CurrentApps glazewm={glazewm()} />}
+        </Show>
       </div>
       <div class="right">
-        <Systray systray={output.systray} glazewm={output.glazewm} />
-        <CpuStatus cpu={output.cpu} glazewm={output.glazewm} />
-        <MemoryStatus memory={output.memory} />
-        {output.weather && <WeatherStatus weather={output.weather} />}
-        <NetworkStatus network={output.network} glazewm={output.glazewm} />
-        {output.keyboard && <KeyboardStatus keyboard={output.keyboard} />}
-        <VolumeStatus audio={output.audio} glazewm={output.glazewm} />
-        <BatteryStatus battery={output.battery} />
+        <Show when={output.systray}>
+          {(systray) => (
+            <Systray systray={systray()} glazewm={output.glazewm} />
+          )}
+        </Show>
+        <Show when={output.cpu}>
+          {(cpu) => <CpuStatus cpu={cpu()} glazewm={output.glazewm} />}
+        </Show>
+        <Show when={output.memory}>
+          {(memory) => <MemoryStatus memory={memory()} />}
+        </Show>
+        <Show when={output.weather}>
+          {(weather) => <WeatherStatus weather={weather()} />}
+        </Show>
+        <Show when={output.network}>
+          {(network) => (
+            <NetworkStatus network={network()} glazewm={output.glazewm} />
+          )}
+        </Show>
+        <Show when={output.keyboard}>
+          {(keyboard) => <KeyboardStatus keyboard={keyboard()} />}
+        </Show>
+        <Show when={output.audio}>
+          {(audio) => <VolumeStatus audio={audio()} glazewm={output.glazewm} />}
+        </Show>
+        <Show when={output.battery}>
+          {(battery) => <BatteryStatus battery={battery()} />}
+        </Show>
         <TimeStatus date={output.date} />
       </div>
     </div>

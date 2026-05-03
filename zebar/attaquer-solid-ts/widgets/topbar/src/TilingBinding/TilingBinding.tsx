@@ -3,7 +3,7 @@ import { Component, For, createEffect, createSignal } from "solid-js";
 import { GlazeWmOutput } from "zebar";
 
 interface TilingBindingProps {
-  glazewm: GlazeWmOutput;
+  glazewm: GlazeWmOutput | null;
 }
 
 const exitCommand: Record<string, string> = {

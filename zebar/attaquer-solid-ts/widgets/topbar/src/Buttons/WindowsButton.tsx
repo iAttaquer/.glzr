@@ -4,7 +4,7 @@ import { GlazeWmOutput } from "zebar";
 import { useAnimatedClick } from "../hooks/useAnimatedClick";
 
 interface WindowsButtonProps {
-  glazewm: GlazeWmOutput;
+  glazewm: GlazeWmOutput | null;
 }
 
 const WindowsButton: Component<WindowsButtonProps> = (props) => {
@@ -12,7 +12,7 @@ const WindowsButton: Component<WindowsButtonProps> = (props) => {
 
   const handleWindowsClick = () => {
     handleClick();
-    props.glazewm.runCommand(
+    props.glazewm?.runCommand(
       "shell-exec %userprofile%/.glzr/zebar/attaquer-solid-ts/dist/topbar/assets/scripts/OpenStartMenu.vbs",
       // "shell-exec %userprofile%/AppData/Roaming/zebar/downloads/iattaquer.attaquer@1.0.1/dist/topbar/assets/scripts/OpenStartMenu.vbs",
     );

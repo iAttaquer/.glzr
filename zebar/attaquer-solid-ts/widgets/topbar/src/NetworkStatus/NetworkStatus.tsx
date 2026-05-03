@@ -6,7 +6,7 @@ import { useAnimatedClick } from "../hooks/useAnimatedClick";
 
 interface NetworkStatusProps {
   network: NetworkOutput;
-  glazewm: GlazeWmOutput;
+  glazewm: GlazeWmOutput | null;
 }
 
 const formatSpeed = (bytes: number): string => {
@@ -26,13 +26,13 @@ const NetworkStatus: Component<NetworkStatusProps> = (props) => {
 
   const handleOpenActionCenterClick = () => {
     handleClick();
-    props.glazewm.runCommand(
+    props.glazewm?.runCommand(
       "shell-exec %userprofile%/.glzr/zebar/attaquer-solid-ts/dist/topbar/assets/scripts/OpenActionCenter.ahk",
       // "shell-exec %userprofile%/AppData/Roaming/zebar/downloads/iattaquer.attaquer@1.0.1/dist/topbar/assets/scripts/OpenActionCenter.ahk",
     );
   };
   const getNetworkIcon = () => {
-    switch (props.network?.defaultInterface.type) {
+    switch (props.network.defaultInterface?.type) {
       case "ethernet":
         return (
           <img
@@ -43,7 +43,7 @@ const NetworkStatus: Component<NetworkStatusProps> = (props) => {
           ></img>
         );
       case "wifi":
-        if (props.network.defaultGateway?.signalStrength >= 75) {
+        if ((props.network.defaultGateway?.signalStrength ?? 0) >= 75) {
           return (
             <img
               src="./assets/icons/icons8-wifi-3-32.png"
@@ -52,7 +52,7 @@ const NetworkStatus: Component<NetworkStatusProps> = (props) => {
               height="20"
             ></img>
           );
-        } else if (props.network.defaultGateway?.signalStrength >= 45) {
+        } else if ((props.network.defaultGateway?.signalStrength ?? 0) >= 45) {
           return (
             <img
               src="./assets/icons/icons8-wifi-2-32.png"
@@ -61,7 +61,7 @@ const NetworkStatus: Component<NetworkStatusProps> = (props) => {
               height="20"
             ></img>
           );
-        } else if (props.network.defaultGateway?.signalStrength >= 5) {
+        } else if ((props.network.defaultGateway?.signalStrength ?? 0) >= 5) {
           return (
             <img
               src="./assets/icons/icons8-wifi-1-32.png"
@@ -102,13 +102,13 @@ const NetworkStatus: Component<NetworkStatusProps> = (props) => {
           <span class="label">
             <span class="ii"></span>
             <span class="net-line">
-              {formatSpeed(props.network?.traffic.received.bytes ?? 0)}
+              {formatSpeed(props.network?.traffic?.received.bytes ?? 0)}
             </span>
           </span>
           <span class="label">
             <span class="ii"></span>
             <span class="net-line">
-              {formatSpeed(props.network?.traffic.transmitted.bytes ?? 0)}
+              {formatSpeed(props.network?.traffic?.transmitted.bytes ?? 0)}
             </span>
           </span>
         </div>

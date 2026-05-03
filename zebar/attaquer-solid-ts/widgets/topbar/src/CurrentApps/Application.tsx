@@ -1,5 +1,5 @@
 import "./style.css";
-import { Component } from "solid-js";
+import { Component, JSX } from "solid-js";
 import { GlazeWmOutput } from "zebar";
 import { Window } from "glazewm";
 import { useAnimatedClick } from "../hooks/useAnimatedClick";
@@ -20,7 +20,7 @@ const Application: Component<ApplicationProps> = (props) => {
     );
   };
 
-  const IconApps = {
+  const IconApps: Record<string, JSX.Element> = {
     process: (
       <img src="./assets/icons/icons8-application-32.png" class="app-icon" />
     ),

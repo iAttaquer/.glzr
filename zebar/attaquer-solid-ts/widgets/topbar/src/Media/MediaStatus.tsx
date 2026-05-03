@@ -1,5 +1,5 @@
 import "./style.css";
-import { Component, createSignal, onCleanup } from "solid-js";
+import { Component, JSX, createSignal, onCleanup } from "solid-js";
 import { MediaOutput } from "zebar";
 
 const RING_RADIUS = 9;
@@ -30,7 +30,7 @@ const MediaStatus: Component<MediaStatusProps> = (props) => {
     return RING_CIRCUMFERENCE * (1 - progress);
   };
 
-  const MediaIcons = {
+  const MediaIcons: Record<string, JSX.Element> = {
     media: (
       <img src="./assets/icons/icons8-musical-note-32.png" class="media-icon" />
     ),

@@ -6,7 +6,7 @@ import { useAnimatedClick } from "../hooks/useAnimatedClick";
 
 interface VolumeStatusProps {
   audio: AudioOutput;
-  glazewm: GlazeWmOutput;
+  glazewm: GlazeWmOutput | null;
 }
 
 const VolumeStatus: Component<VolumeStatusProps> = (props) => {
@@ -67,7 +67,7 @@ const VolumeStatus: Component<VolumeStatusProps> = (props) => {
 
   const handleVolumeClick = () => {
     handleClick();
-    props.glazewm.runCommand(
+    props.glazewm?.runCommand(
       "shell-exec %userprofile%/.glzr/zebar/attaquer-solid-ts/dist/topbar/assets/scripts/OpenSoundOutput.ahk",
     );
   };

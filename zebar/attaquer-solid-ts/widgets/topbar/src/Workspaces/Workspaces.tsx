@@ -11,7 +11,7 @@ import {
 import { GlazeWmOutput } from "zebar";
 
 interface WorkspacesProps {
-  glazewm: GlazeWmOutput;
+  glazewm: GlazeWmOutput | null;
 }
 
 const BTN_W = 1.425; // rem
@@ -64,7 +64,11 @@ const Workspaces: Component<WorkspacesProps> = (props) => {
   const containerDimensions = createMemo(() => {
     let n = names().length;
     if (nextAvailableWorkspace() !== null) n += 1;
-    if (n === 0) return { container: {} as Record<string, string>, groupBg: { display: "none" } as Record<string, string> };
+    if (n === 0)
+      return {
+        container: {} as Record<string, string>,
+        groupBg: { display: "none" } as Record<string, string>,
+      };
     const width = `${n * BTN_W + (n - 1) * GAP + 2 * PAD}rem`;
     return { container: { width }, groupBg: { width } };
   });
@@ -173,7 +177,7 @@ const Workspaces: Component<WorkspacesProps> = (props) => {
                 if (e.animationName === "ws-slide-up") setEntering(false);
               }}
               onClick={() =>
-                props.glazewm.runCommand(`focus --workspace ${name}`)
+                props.glazewm?.runCommand(`focus --workspace ${name}`)
               }
               id={name}
             >
@@ -197,7 +201,7 @@ const Workspaces: Component<WorkspacesProps> = (props) => {
           }}
           onClick={() => {
             const next = nextAvailableWorkspace();
-            if (next) props.glazewm.runCommand(`focus --workspace ${next}`);
+            if (next) props.glazewm?.runCommand(`focus --workspace ${next}`);
           }}
         >
           <span class="workspace-add-icon">+</span>

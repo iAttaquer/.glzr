@@ -4,7 +4,7 @@ import { GlazeWmOutput } from "zebar";
 import { useAnimatedClick } from "../hooks/useAnimatedClick";
 
 interface SearchButtonProps {
-  glazewm: GlazeWmOutput;
+  glazewm: GlazeWmOutput | null;
 }
 
 const SearchButton: Component<SearchButtonProps> = (props) => {
@@ -12,7 +12,7 @@ const SearchButton: Component<SearchButtonProps> = (props) => {
 
   const handleSearchClick = () => {
     handleClick();
-    props.glazewm.runCommand(
+    props.glazewm?.runCommand(
       "shell-exec %userprofile%/.glzr/zebar/attaquer-solid-ts/dist/topbar/assets/scripts/OpenWindowsSearch.ahk",
       // "shell-exec %userprofile%/AppData/Roaming/zebar/downloads/iattaquer.attaquer@1.0.1/dist/topbar/assets/scripts/OpenWindowsSearch.ahk",
     );

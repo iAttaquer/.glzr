@@ -23,8 +23,9 @@ const CurrentApps: Component<CurrentAppsProps> = (props) => {
   const [refVersion, setRefVersion] = createSignal(0);
 
   const focusedHandle = () => {
-    const displayedWorkspace =
-      props.glazewm?.allWorkspaces.find((w) => w.isDisplayed);
+    const displayedWorkspace = props.glazewm?.allWorkspaces.find(
+      (w) => w.isDisplayed,
+    );
     if (!displayedWorkspace) return null;
     const focused = flattenWorkspaceChildren(displayedWorkspace).find(
       (e) => (e.child as any).hasFocus,
@@ -148,7 +149,7 @@ const CurrentApps: Component<CurrentAppsProps> = (props) => {
                       e.currentTarget.classList.remove("slide-up")
                     }
                     title={
-                      (entry.child.type === "window" && entry.child.title) ?? ""
+                      entry.child.type === "window" ? entry.child.title : ""
                     }
                   >
                     {RenderChilds(entry.child)}

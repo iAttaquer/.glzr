@@ -5,7 +5,7 @@ import * as zebar from "zebar";
 import { useAnimatedClick } from "../hooks/useAnimatedClick";
 
 interface TimeStatusProps {
-  date: DateOutput;
+  date: DateOutput | null;
 }
 
 const TimeStatus: Component<TimeStatusProps> = (props) => {
@@ -16,9 +16,12 @@ const TimeStatus: Component<TimeStatusProps> = (props) => {
     zebar.shellExec("explorer.exe", "ms-actioncenter://");
   };
 
-  const parts = () => props.date?.formatted?.split(" ") ?? [];
+  const parts = () => props.date?.formatted.split(" ") ?? [];
   const time = () => parts()[0] ?? "00:00";
-  const date = () => parts()[2] && parts()[3] ? `${parts()[2]} ${parts()[3].substring(0, 3)}` : "";
+  const date = () =>
+    parts()[2] && parts()[3]
+      ? `${parts()[2]} ${parts()[3].substring(0, 3)}`
+      : "";
 
   return (
     <button
