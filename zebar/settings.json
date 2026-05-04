@@ -9,7 +9,12 @@
     {
       "pack": "attaquer",
       "widget": "top-bar",
-      "preset": "default3"
+      "preset": "default"
+    },
+    {
+      "pack": "attaquer",
+      "widget": "top-bar",
+      "preset": "default2"
     }
   ]
 }
