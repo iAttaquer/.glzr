@@ -1,0 +1,75 @@
+.cpu {
+  gap: 0.25rem;
+  background: var(--btn-dark-bg);
+  border: 1px solid var(--btn-dark-border);
+  border-radius: var(--radius-md);
+  padding: 0.07rem 0.3rem;
+  height: 1.638675rem; /* computed for auto */
+  transition: background 0.12s ease;
+
+  &:hover {
+    animation: none !important;
+    box-shadow: none !important;
+    background: var(--btn-dark-hover-bg);
+  }
+
+  &:active {
+    animation: none !important;
+    background: var(--btn-dark-active-bg);
+  }
+
+  .content {
+    gap: 0.2rem;
+  }
+
+  .cpu-label {
+    font-size: 0.8125rem;
+    font-weight: normal;
+    color: rgba(255, 255, 255, 0.8);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .cpu-ring {
+    display: block;
+    flex-shrink: 0;
+
+    .cpu-ring-track {
+      fill: none;
+      stroke: rgba(255, 255, 255, 0.1);
+      stroke-width: 3;
+    }
+
+    .cpu-ring-progress {
+      fill: none;
+      stroke-width: 3;
+      stroke-linecap: round;
+      will-change: stroke-dashoffset;
+      transition: stroke-dashoffset 0.2s ease;
+    }
+  }
+
+  &.low-usage .cpu-ring-progress {
+    stroke: #4ade80;
+  }
+  &.medium-usage .cpu-ring-progress {
+    stroke: #facc15;
+  }
+  &.high-usage .cpu-ring-progress {
+    stroke: #fb923c;
+  }
+  &.extreme-usage .cpu-ring-progress {
+    stroke: #f87171;
+  }
+
+  .cpu-ring-text {
+    font-size: 0.55rem;
+    /*font-weight: 300;*/
+    fill: rgba(255, 255, 255, 0.95);
+    letter-spacing: -0.02em;
+  }
+
+  &.clicked-animated .content {
+    animation: appear 0.2s ease;
+  }
+}

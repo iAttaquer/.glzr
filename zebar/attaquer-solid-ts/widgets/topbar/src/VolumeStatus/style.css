@@ -1,0 +1,77 @@
+.volume {
+  color: rgba(255, 255, 255, 0.95);
+  gap: 0.1rem;
+  background: var(--btn-dark-bg);
+  border: 1px solid var(--btn-dark-border);
+  border-radius: var(--radius-md);
+  padding: 0 0.3rem 0 0;
+  height: 1.638675rem;
+  transition: background 0.12s ease;
+
+  &:hover {
+    background: var(--btn-dark-hover-bg);
+  }
+
+  &:active {
+    background: var(--btn-dark-active-bg);
+  }
+}
+
+.volume-icon {
+  background: transparent !important;
+  border: none;
+  height: 100%;
+  padding: 0 0.2rem;
+
+  &:hover {
+    background: transparent !important;
+  }
+
+  &.clicked-animated .content {
+    animation: appear 0.2s ease;
+  }
+}
+
+.volume-status {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  gap: 0.35rem;
+}
+
+.volume-text {
+  color: rgba(255, 255, 255, 0.95);
+}
+
+/* ── Custom slider ───────────────────────────────────────── */
+.vol-track {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 0.5rem;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+  width: 0;
+  opacity: 0;
+  transition: width 0.3s ease, opacity 0.2s ease;
+  flex-shrink: 0;
+  overflow: hidden;
+
+  &.expanded {
+    width: 8rem;
+    opacity: 1;
+  }
+}
+
+.vol-fill {
+  height: 100%;
+  border-radius: 9999px;
+  background: var(--accent);
+  pointer-events: none;
+  min-width: 0;
+}
+
+.vol-thumb {
+  display: none;
+}

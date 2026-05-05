@@ -34,7 +34,7 @@ gaps:
 
   # Gap between windows and the screen edge.
   outer_gap:
-    top: '33 px'
+    top: '38 px'
     right: '1px'
     bottom: '4px'
     left: '1px'
@@ -87,15 +87,15 @@ workspaces:
     bind_to_monitor: 0
   - name: '2'
   - name: '3'
-  - name: ''
-  - name: 'web'
+  - name: '4'
+  - name: '5'
     bind_to_monitor: 1
     keep_alive: false
   - name: '6'
   - name: '7'
   - name: '8'
   - name: '9'
-  - name: ''
+  - name: '10'
 
 window_rules:
   - commands: ['ignore']
@@ -113,14 +113,14 @@ window_rules:
       - window_process: { equals: 'Lively' }
         window_class: { regex: 'HwndWrapper*' }
 
-  - commands: ['move --workspace web']
+  - commands: ['move --workspace 5']
     match:
     # Move windows to workspace 5.
     - window_process: { equals: 'brave' }
-  - commands: ['move --workspace ']
+  - commands: ['move --workspace 4']
     match:
     - window_process: { equals: 'Discord' }
-  - commands: ['move --workspace ']
+  - commands: ['move --workspace 10']
     match:
     - window_process: { equals: 'Spotify' }
 
@@ -263,9 +263,9 @@ keybindings:
     bindings: ['alt+2']
   - commands: ['focus --workspace 3']
     bindings: ['alt+3']
-  - commands: ['focus --workspace ']
+  - commands: ['focus --workspace 4']
     bindings: ['alt+4']
-  - commands: ['focus --workspace web']
+  - commands: ['focus --workspace 5']
     bindings: ['alt+5']
   - commands: ['focus --workspace 6']
     bindings: ['alt+6']
@@ -275,7 +275,7 @@ keybindings:
     bindings: ['alt+8']
   - commands: ['focus --workspace 9']
     bindings: ['alt+9']
-  - commands: ['focus --workspace ', 'shell-exec C:/Users/Administrator/AppData/Roaming/Spotify/Spotify.exe']
+  - commands: ['focus --workspace 10', 'shell-exec C:/Users/Administrator/AppData/Roaming/Spotify/Spotify.exe']
     bindings: ['alt+0']
 
   # Move the focused window's parent workspace to a monitor in a given
@@ -296,9 +296,9 @@ keybindings:
     bindings: ['alt+shift+2']
   - commands: ['move --workspace 3', 'focus --workspace 3']
     bindings: ['alt+shift+3']
-  - commands: ['move --workspace ', 'focus --workspace ']
+  - commands: ['move --workspace 4', 'focus --workspace 4']
     bindings: ['alt+shift+4']
-  - commands: ['move --workspace web', 'focus --workspace web']
+  - commands: ['move --workspace 5', 'focus --workspace 5']
     bindings: ['alt+shift+5']
   - commands: ['move --workspace 6', 'focus --workspace 6']
     bindings: ['alt+shift+6']
@@ -308,5 +308,5 @@ keybindings:
     bindings: ['alt+shift+8']
   - commands: ['move --workspace 9', 'focus --workspace 9']
     bindings: ['alt+shift+9']
-  - commands: ['move --workspace ', 'focus --workspace ']
+  - commands: ['move --workspace 10', 'focus --workspace 10']
     bindings: ['alt+shift+0']

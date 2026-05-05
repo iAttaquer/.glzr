@@ -1,0 +1,251 @@
+@import "https://www.nerdfonts.com/assets/css/webfont.css";
+
+:root {
+  --accent: #818cf8;
+  --accent: #3884ff;
+  --accent-bg: rgba(129, 140, 248, 0.1);
+  --accent-border: rgba(129, 140, 248, 0.28);
+
+  /* Surfaces */
+  --s1: rgba(255, 255, 255, 0.045);
+  --s2: rgba(255, 255, 255, 0.08);
+
+  /* Borders */
+  --border: rgba(255, 255, 255, 0.08);
+
+  /* Text */
+  --t1: rgba(210, 215, 255, 0.95);
+  --t2: rgba(140, 155, 200, 0.58);
+  --t3: rgba(210, 215, 255, 0.8);
+  --txt1: rgba(255, 255, 255, 0.95);
+  --txt2: rgba(255, 255, 255, 0.9);
+  --txt3: rgba(255, 255, 255, 0.8);
+  --txt4: rgba(255, 255, 255, 0.7);
+  --txt5: rgba(255, 255, 255, 0.6);
+
+  /* Status colors */
+  --color: #86efac;
+  --green: #86efac;
+  --b-yellow: #fef08a;
+  --yellow: #fde68a;
+  --b-orange: #fdba74;
+  --orange: #fb923c;
+  --b-red: #fca5a5;
+  --red: #f87171;
+  --pink: #d8b4fe;
+  --purple: #a78bfa;
+  --blue: #67e8f9;
+  --night-blue: #60a5fa;
+
+  /* Border radius */
+  --radius-sm: 0.3125rem;
+  --radius-md: 0.4rem;
+  --radius-pill: 9999px;
+
+  /* Dark bordered button */
+  --btn-dark-bg: #202024;
+  --btn-dark-border: #3c3c46;
+  --btn-dark-hover-bg: #2a2a32;
+  --btn-dark-active-bg: #141418;
+}
+
+@font-face {
+  font-family: "CaskaydiaMonoNerdFont Locally";
+  src: url("./fonts/CaskaydiaMonoNerdFont-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* ─── Keyframes ──────────────────────────────────────────── */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-4rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(4rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes slideInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes appear {
+  from {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.82);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+@keyframes anticlockwise {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-90deg);
+  }
+}
+@keyframes clockwise {
+  from {
+    transform: rotate(-90deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+@keyframes anticlockwise2 {
+  from {
+    transform: rotate(0deg) translateX(1px);
+  }
+  to {
+    transform: rotate(-180deg) translateY(1px);
+  }
+}
+@keyframes clockwise2 {
+  from {
+    transform: rotate(-180deg) translateY(1px);
+  }
+  to {
+    transform: rotate(0deg) translateX(1px);
+  }
+}
+
+/* ─── Base ───────────────────────────────────────────────── */
+html,
+body {
+  height: 100vh;
+}
+
+body {
+  color: var(--t1);
+  font-family: "CaskaydiaMonoNerdFont Locally", ui-monospace, monospace;
+  font-size: 0.8125rem;
+  overflow: hidden;
+}
+
+#root {
+  height: 100%;
+  align-items: center;
+  background: rgba(10, 10, 14, 0.73);
+  animation: fadeIn 0.6s ease-out both;
+}
+
+i {
+  /*color: rgba(130, 148, 210, 0.98);*/
+  margin-right: 0.3125rem;
+}
+
+span {
+  display: flex;
+  align-items: center;
+  user-select: none;
+}
+
+img {
+  pointer-events: none;
+  opacity: 0.85;
+}
+
+/* ─── Buttons ────────────────────────────────────────────── */
+button {
+  display: flex;
+  align-items: center;
+  padding: 0 0.25rem;
+  height: 88%;
+  color: var(--t1);
+  border: none;
+  background: transparent;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+button:hover {
+  background: var(--s2);
+}
+
+/* ─── Layout ─────────────────────────────────────────────── */
+.app {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  color: var(--t1);
+  height: 100%;
+}
+
+.template {
+  display: flex;
+  align-items: center;
+  user-select: none;
+  /*margin: 0 0.125rem;*/
+  height: 100%;
+}
+
+.left,
+.center,
+.right {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  gap: 0.2rem;
+}
+
+.left {
+  padding-left: 0.125rem;
+  animation: slideInLeft 0.6s ease-out both;
+}
+.center {
+  justify-self: center;
+  flex-grow: 1;
+  padding: 0 2.5rem;
+  overflow: hidden;
+  white-space: nowrap;
+  animation: slideInDown 0.6s ease-out both;
+}
+.right {
+  justify-self: end;
+  padding-right: 0.225rem;
+  animation: slideInRight 0.6s ease-out both;
+}
+
+/* ─── Usage classes ──────────────────────────────────────── */
+.low-usage {
+  color: var(--green);
+}
+.medium-usage {
+  color: var(--yellow);
+}
+.high-usage {
+  color: var(--orange);
+}
+.extreme-usage {
+  color: var(--b-red);
+}

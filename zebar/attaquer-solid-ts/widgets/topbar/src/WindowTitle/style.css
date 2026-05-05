@@ -1,0 +1,8 @@
+.current-window {
+  color: var(--t2);
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 43.75rem;
+  text-overflow: ellipsis;
+  letter-spacing: 0.02em;
+}

@@ -1,0 +1,125 @@
+.workspaces {
+  display: flex;
+  align-items: center;
+  gap: 0.125rem;
+  padding: 0 0.1rem;
+  position: relative;
+  height: 1.638675rem;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  transition: width 0.32s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.workspace-group-bg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  background: var(--btn-dark-bg);
+  box-shadow: inset 0 0 0 1px var(--btn-dark-border);
+  border-radius: var(--radius-sm);
+  pointer-events: none;
+  transition: width 0.32s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 0;
+}
+
+.workspace-pill {
+  position: absolute;
+  left: 0;
+  top: 2px;
+  bottom: 2px;
+  background: var(--s2);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: var(--radius-sm);
+  pointer-events: none;
+  z-index: 1;
+  transition:
+    transform 0.32s cubic-bezier(0.4, 0, 0.2, 1),
+    width 0.32s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.workspace {
+  width: 1.425rem;
+  flex-shrink: 0;
+  position: relative;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+  color: var(--txt5);
+  border: 1px solid transparent;
+  transition: color 0.18s ease;
+  z-index: 2;
+}
+
+.workspace:hover {
+  border-color: var(--border);
+  background: var(--s1);
+  color: var(--txt3);
+}
+
+.workspace-icon {
+  display: inline-block;
+  pointer-events: none;
+}
+
+.displayed {
+  color: var(--txt3);
+}
+
+.focused {
+  color: var(--txt1);
+
+  span {
+    animation: appear 0.2s ease;
+  }
+}
+
+.i-brave {
+  margin-top: 0.25rem;
+}
+
+.ws-enter {
+  animation: ws-slide-up 320ms cubic-bezier(0, 0, 0.2, 1) both;
+}
+
+@keyframes ws-slide-up {
+  from {
+    transform: translateY(150%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.workspace-add {
+  width: 1.425rem;
+  flex-shrink: 0;
+  position: relative;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+  color: var(--txt3);
+  border: 1px solid transparent;
+  opacity: 0.6;
+
+  transition:
+    color 0.18s ease,
+    opacity 0.18s ease,
+    border-color 0.18s ease,
+    background 0.18s ease;
+  z-index: 2;
+}
+
+.workspace-add:hover {
+  border-color: var(--border);
+  background: var(--s1);
+  opacity: 1;
+  color: var(--txt3);
+}
+
+.workspace-add-icon {
+  display: inline-block;
+  pointer-events: none;
+  font-size: 1rem;
+  line-height: 1;
+}

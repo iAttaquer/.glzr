@@ -1,0 +1,95 @@
+.systray-container {
+  display: flex;
+  align-items: center;
+  gap: 0.0625rem;
+  user-select: none;
+}
+
+.systray-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  width: 1.638675rem;
+  height: 1.638675rem;
+  background: var(--btn-dark-bg);
+  border: 1px solid var(--btn-dark-border);
+  border-radius: var(--radius-md);
+  color: var(--txt3);
+  transition:
+    background 0.12s ease,
+    color 0.12s ease;
+}
+
+.systray-toggle:hover {
+  background: var(--btn-dark-hover-bg);
+  color: var(--txt2);
+}
+
+.systray-toggle:active {
+  background: var(--btn-dark-active-bg);
+}
+
+.systray-toggle:active .content {
+  animation: appear 0.2s ease;
+}
+
+.expand-icon {
+  width: 1rem;
+  height: 1rem;
+}
+
+.systray-toggle .content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.systray-toggle.expanded .content {
+  animation: clockwise2 0.3s ease-in-out forwards;
+}
+
+.systray-toggle.tucked .content {
+  animation: anticlockwise2 0.3s ease-in-out forwards;
+}
+
+.systray {
+  display: flex;
+  align-items: center;
+  gap: 0.0625rem;
+  overflow: hidden;
+  max-width: 0;
+  transition: max-width 0.4s ease-out;
+}
+
+.systray.expanded {
+  max-width: 31.25rem;
+}
+
+.systray-icon-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  width: 1.425rem;
+  height: 1.425rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.systray-icon.clicked-animated {
+  animation: appear 0.2s ease;
+}
+
+.systray-icon-container:hover {
+  background: var(--s1);
+  border-color: var(--border);
+}
+
+.systray-icon {
+  width: 1rem;
+  height: 1rem;
+}

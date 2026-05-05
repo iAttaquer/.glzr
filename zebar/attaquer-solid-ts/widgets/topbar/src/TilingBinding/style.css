@@ -1,0 +1,108 @@
+.toggle-tiling-direction {
+  align-items: center;
+  justify-content: center;
+  background: var(--btn-dark-bg);
+  border: 1px solid var(--btn-dark-border);
+  border-radius: var(--radius-md);
+  padding: 0.07rem 0.2rem;
+  height: 1.638675rem;
+  width: 1.638675rem;
+  color: rgba(255, 255, 255, 0.85);
+  transition:
+    background 0.12s ease,
+    color 0.12s ease;
+
+  &:hover {
+    animation: none !important;
+    box-shadow: none !important;
+    background: var(--btn-dark-hover-bg);
+    color: rgba(255, 255, 255, 0.95);
+  }
+
+  &:active {
+    animation: none !important;
+    background: var(--btn-dark-active-bg);
+  }
+}
+
+.tiling-direction {
+  padding-top: 0.0625rem;
+  text-indent: -0.125rem;
+  font-size: 0.8125rem;
+}
+
+.horizontal span {
+  animation: clockwise 0.2s ease-in-out forwards;
+}
+
+.vertical span {
+  animation: anticlockwise 0.2s ease-in-out forwards;
+}
+
+@keyframes binding-mode-pulse {
+  0%,
+  100% {
+    color: rgba(255, 255, 255, 0.85);
+    text-shadow: none;
+  }
+  50% {
+    color: var(--red);
+    text-shadow: 0 0 6px var(--red), 0 0 12px color-mix(in srgb, var(--red) 50%, transparent);
+  }
+}
+
+.bm-enter {
+  animation: bm-slide-up 320ms cubic-bezier(0, 0, 0.2, 1) both !important;
+}
+
+@keyframes bm-slide-up {
+  from {
+    transform: translateY(150%);
+    opacity: 0;
+    max-width: 0;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+    max-width: 8rem;
+    padding-left: 0.35rem;
+    padding-right: 0.35rem;
+  }
+}
+
+.binding-mode {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+  overflow: hidden;
+  background: var(--btn-dark-bg);
+  border: 1px solid var(--btn-dark-border);
+  border-radius: var(--radius-md);
+  padding: 0.07rem 0.35rem;
+  height: 1.638675rem;
+  cursor: pointer;
+  transition: background 0.12s ease;
+  animation: binding-mode-pulse 3s ease-in-out infinite;
+
+  &:hover {
+    box-shadow: none !important;
+    background: var(--btn-dark-hover-bg);
+  }
+
+  &:active {
+    background: var(--btn-dark-active-bg);
+  }
+
+  .binding-mode-name {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .binding-mode-exit {
+    font-size: 0.875rem;
+    line-height: 1;
+  }
+}
