@@ -15,7 +15,7 @@ const MemoryStatus: Component<MemoryStatusProps> = (props) => {
   const getMemoryUsageRate = (usage: number) => {
     if (usage > 90) return "extreme-usage";
     else if (usage > 65) return "high-usage";
-    else if (usage > 45) return "medium-usage";
+    else if (usage > 49) return "medium-usage";
     else return "low-usage";
   };
 
