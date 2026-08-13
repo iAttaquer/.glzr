@@ -1,11 +1,12 @@
 {
   "$schema": "https://github.com/glzr-io/zebar/raw/v3.1.0/resources/zpack-schema.json",
   "name": "attaquer",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "description": "for 1080p resolution, bar height is 32px on 125% system scale, autohotkey needed for several things to work",
-  "tags": [],
+  "tags": ["topbar", "minimal"],
   "previewImages": [
-    "Preview1.png"
+    "Preview1.png",
+    "Preview2.png"
   ],
   "repositoryUrl": "https://github.com/iAttaquer/.glzr",
   "widgets": [

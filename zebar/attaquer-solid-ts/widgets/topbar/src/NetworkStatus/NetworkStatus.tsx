@@ -28,7 +28,7 @@ const NetworkStatus: Component<NetworkStatusProps> = (props) => {
     handleClick();
     props.glazewm?.runCommand(
       "shell-exec %userprofile%/.glzr/zebar/attaquer-solid-ts/dist/topbar/assets/scripts/OpenActionCenter.ahk",
-      // "shell-exec %userprofile%/AppData/Roaming/zebar/downloads/iattaquer.attaquer@1.0.1/dist/topbar/assets/scripts/OpenActionCenter.ahk",
+      // "shell-exec %userprofile%/AppData/Roaming/zebar/downloads/iattaquer.attaquer@2.0.0/dist/topbar/assets/scripts/OpenActionCenter.ahk",
     );
   };
   const getNetworkIcon = () => {

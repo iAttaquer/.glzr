@@ -22,8 +22,8 @@ const CpuStatus: Component<CpuStatusProps> = (props) => {
 
   const handleCpuClick = (e: MouseEvent) => {
     handleClick();
-    // zebar.shellExec("taskmgr"); // open task manager
-    zebar.shellExec("C:\\Program Files\\SystemInformer\\SystemInformer.exe");
+    zebar.shellExec("taskmgr"); // open task manager
+    // zebar.shellExec("C:\\Program Files\\SystemInformer\\SystemInformer.exe");
     // old one:
     // props.glazewm.runCommand(
     //   "shell-exec %ProgramFiles%/SystemInformer/SystemInformer.exe",
